@@ -1,0 +1,161 @@
+html {
+	height: 100%;
+}
+body {
+  background: url("../images/Spud_bg.png");
+  background-attachment: fixed;
+	margin: 0;
+  font-size: 12px;
+	font-family: geneva, sans-serif;
+}
+
+img {
+  border: 0;
+}
+
+.mac-window {
+  display: block;
+	float: left;
+	clear: left;
+  border-width: 35px 20px 20px 20px;
+  border-style: solid;
+  box-sizing: border-box;
+  /*padding: 35px 20px 20px 20px;*/
+  border-image: url("../images/mac-frame.png") 30 40 22 22 fill repeat;
+  border-image-width: 30px 40px 22px 22px;
+  color: #fff;
+  background: none;
+  background-clip: content-box;
+  position: relative;
+  text-align: left;
+  min-width: 200px;
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+
+.mac-window img {
+  vertical-align: bottom;
+  max-width: 100%;
+}
+
+.mac-window blockquote, .maple-blockquote, .mac-window .quote {
+  margin: 0.2em 0 0.2em 0 !important;
+  border-style: solid;
+  border-width: 40px 30px 25px 15px;
+  border-image: url("/user/themes/maple-pet/images/mac-frame-2.png") 44 55 31 19 fill repeat;
+  border-image-width: 44px 55px 31px 19px;
+  position: relative;
+  min-width: 18em;
+}
+.mac-window blockquote > font.fonts, .mac-window blockquote > span.quotedby, .mac-window .quote .quoteheader {
+  position: absolute;
+  top: -25px;
+}
+.mac-window blockquote > hr {
+  display: none;
+}
+
+.mac-window a {
+  color: #9999cc;
+  text-shadow: none;
+}
+.mac-window a:hover {
+  color: #ccccff;
+}
+
+.mac-window-title {
+  position: absolute;
+  top: -31px;
+  text-align: center;
+  width: 100%;
+  left: 0;
+}
+.mac-window-title > span {
+  background: #ccc;
+  padding: 2px 5px 1px 5px;
+  font-size: 12px;
+  font-family: chicago, sans-serif;
+  margin-right: 20px;
+  white-space: nowrap;
+	color: #000;
+}
+
+.mac-button {
+  display: inline-block;
+  margin: 4px 5px 0 0;
+  border-style: solid;
+  border-width: 7px;
+  border-image: url("/user/themes/maple-pet/images/mac-button.png") 7 fill repeat;
+  color: #000;
+  text-decoration: none;
+  font-family: chicago, sans-serif;
+  padding: 1px 2px 0 2px;
+  text-align: center;
+}
+.mac-button:link, .mac-button:visited, .mac-button:active, .mac-button:hover {
+  color: #000 !important;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+.body-section {
+	padding-right: 80px;
+}
+.content-wrapper {
+	padding: 10px 0 10px 10px;
+}
+
+.mac-icons {
+	float: right;
+	display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  overflow-y: auto;
+  height: 100%;
+}
+.big-icon {
+	width: 64px;
+  text-decoration: none;
+  color: #000 !important;
+	display: block;
+	float: left;
+	clear: left;
+	margin: 5px 10px;
+	text-align: center;
+}
+.big-icon img {
+  display: block;
+  padding-bottom: 5px;
+  margin: auto;
+}
+.big-icon span {
+  background: #ddd;
+	padding: 2px;
+  display: inline-block;
+}
+
+@media screen and (max-height: 800px) {
+  .big-icon img {
+    width: 32px;
+    height: auto;
+  }
+}
+
+.webring {
+  width: auto;
+}
+.webring table {
+  margin: auto;
+	background: #9c9c9c;
+	box-sizing: border-box;
+	border: 5px outset;
+	border-color: #bababa #898989 #898989 #bababa;
+}
+.webring table img {
+  width: 100%;
+  object-fit: contain;
+}
+.webring a {
+	color: #000;
+}
