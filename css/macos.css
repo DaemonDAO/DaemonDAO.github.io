@@ -6,7 +6,7 @@ body {
   background-attachment: fixed;
 	margin: 0;
   font-size: 12px;
-	font-family: geneva, sans-serif;
+	font-family: ocraextended;
 }
 
 img {
@@ -158,4 +158,40 @@ img {
 }
 .webring a {
 	color: #000;
+}
+
+@font-face {
+  font-family: 'Ocraext';
+  src: url('../fonts/OCRAEXT.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Arcade i';
+  src: url('../fonts/ARCADE_I.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Arcade n';
+  src: url('../fonts/ARCADE_N.TTF') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ocr a extended';
+  src: url('../fonts/OCR-A-Extended-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Ocraextended';
+  src: url('../fonts/ocraextended.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
