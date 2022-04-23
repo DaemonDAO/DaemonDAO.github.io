@@ -21,7 +21,7 @@ img {
   border-style: solid;
   box-sizing: border-box;
   /*padding: 35px 20px 20px 20px;*/
-  border-image: url("../images/mac-frame.png") 30 40 22 22 fill repeat;
+  border-image: url("../images/mac-frame-drkr.png") 30 40 22 22 fill repeat;
   border-image-width: 30px 40px 22px 22px;
   color: #fff;
   background: none;
@@ -99,7 +99,7 @@ img {
 }
 
 .body-section {
-	padding-right: 80px;
+	padding-right: 90px; /*this controls how close the main boxes come to the icons*/
 }
 .content-wrapper {
 	float: left;
