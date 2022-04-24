@@ -116,13 +116,13 @@ img {
   height: 100%;
 }
 .big-icon {
-	width: 67px;
+	width: 64px;
   text-decoration: none;
   color: #000 !important;
 	display: block;
 	float: left;
 	clear: left;
-	margin: 5px 20px;
+	margin: 5px 10px;
 	text-align: center;
 }
 .big-icon img {
