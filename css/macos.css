@@ -10,7 +10,7 @@ body {
 }
 
 img {
-  border: 10;
+  border:10;
 }
 
 .mac-window {
@@ -116,7 +116,7 @@ img {
   height: 100%;
 }
 .big-icon {
-	width: 64px;
+	width: 80px;
   text-decoration: none;
   color: #000 !important;
 	display: block;
