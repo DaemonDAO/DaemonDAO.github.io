@@ -136,7 +136,7 @@ img {
   display: inline-block;
 }
 
-@media screen and (max-height: 800px) {
+@media screen and (max-height: 8000px) {
   .big-icon img {
     width: 64px;
     height: auto;
