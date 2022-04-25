@@ -64,7 +64,7 @@ img {
   left: 0;
 }
 .mac-window-title > span {
-  background: #ccc;
+  background: #0000;
   padding: 2px 5px 1px 5px;
   font-size: 12px;
   font-family: arcade n;
@@ -92,7 +92,7 @@ img {
 }
 
 .body-section {
-	padding-right: 90px; /*this controls how close the main boxes come to the icons*/
+	padding-right: 120px; /*this controls how close the main boxes come to the icons*/
 }
 .content-wrapper {
 	float: left;
