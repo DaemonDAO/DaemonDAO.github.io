@@ -7,12 +7,15 @@
 	h3 { max-width: 656px}
 	p { max-width: 656px}
 	body {
-	  background: url("./images/daemoncoin_matrix.png");
+	  background: url("./images/daemoncoin_matrix_min.png");
 	  background-attachment: fixed;
 		margin: 0;
 	  font-size: 12px;
 		font-family: ocraextended;
-	}
+		opacity: 0;
+		transition: opacity 1s;
+}
+
 	</style>
 	<meta charset="utf-8" />
 	<title>Home | BitDaemons NFT Project</title>
@@ -37,7 +40,7 @@
 <link href="./css/crt.css" type="text/css" rel="stylesheet">
 
 </head>
-<body id="top" class="crt">
+<body id="top" class="crt" onload="document.body.style.opacity='1'">
 
 	<div class="mac-icons">
 			<a class="big-icon" href="index.html">

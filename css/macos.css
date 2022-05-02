@@ -139,23 +139,6 @@ img {
   }
 }
 
-.webring {
-  width: auto;
-}
-.webring table {
-  margin: auto;
-	background: #9c9c9c;
-	box-sizing: border-box;
-	border: 5px outset;
-	border-color: #bababa #898989 #898989 #bababa;
-}
-.webring table img {
-  width: 100%;
-  object-fit: contain;
-}
-.webring a {
-	color: #000;
-}
 
 @font-face {
   font-family: 'Ocraext';
