@@ -24,6 +24,7 @@ img {
   min-width: 200px;
   max-width: 100%;
   margin-bottom: 15px;
+	left: 15px;
 }
 
 .mac-window img {
