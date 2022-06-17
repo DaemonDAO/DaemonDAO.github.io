@@ -11,7 +11,17 @@
 /* ==========================================================================
    Start of custom Webflow CSS
    ========================================================================== */
-
+   div.btn {
+       display: inline-block;
+       border: 2px solid #ccc;
+       margin-right: 5px;
+       padding: 2px 5px;
+       cursor: pointer;
+   }
+   div.btn.on {
+       background-color: #777;
+       color: white;
+   }
 
 
 .image {

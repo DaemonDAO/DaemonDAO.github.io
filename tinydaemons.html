@@ -4,6 +4,12 @@
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
 	<style>
+	SELECT {
+font-size: 12px;
+color: black;
+background-color: white;
+
+}
 	h3 { max-width: 646px}
 	p { max-width: 646px}
 	body {
@@ -103,11 +109,23 @@
 		<div class="content-wrapper">
 							<div id="hello!"  class="mac-window centered">
 			<div class="mac-window-title"><span>TinyDaemons Collection</span></div>
-		<h1>Introducing the gnarliest 24x24 pixel punks you've ever seen,</h1>
+		<h1>TinyDaemons: the first Omnichain Daemon collection</h1>
 <p><img alt="dpunkbanner" src="./images/td_header.png" /></p>
 <h3>10K digital entities, serving to spread Daemonic corruption across the Omnichain space.</h3>
 <h1>Mint live in: <p id="demo"></p></h1>
-<h3>Step 1: Select chain</br>
+<h3>Step 1: Select chain </h3>
+<h3>
+	<select id="chainchoice" name="chainchoice">
+
+<option Value="ETH">ETH</option>
+<option Value="FTM">FTM</option>
+<option Value="AVAX">AVAX</option>
+<option Value="CRO">CRO</option>
+<option Value="BSC">BSC</option>
+<option Value="OP">OP</option>
+</select></h3>
+
+<h3>
     Step 2: Connect wallet</br>
 		Step 3: Mint your TinyDaemons!</h3>
 
@@ -136,29 +154,9 @@
 </div>
 
 
-
-
 <div class="content-wrapper">
-					<div id="collectionintro"  class="mac-window centered">
-	<div class="mac-window-title"><span>Collection Intro</span></div>
-<h3>As we all now know, the BitDaemon mass-transit event was violently interrupted
-	by an as-yet unidentified force. Of the thousands that attempted passage, just 345
-	 BitDaemons successfully transited to the Fantom, where they now reside safely in the
-	  care of the DaemonDAO. Far from gone however, it appears that remnant subroutines of
-		 some destroyed BitDaemons latched onto the blockchain — corrupting the seminal NFT collection CryptoPunks.</h3>
-<p><img alt="LorcanShinzu" src="./images/Lorcan_Shinzu.png" /></p>
-<h3>DaemonPunks are a collection of 345 handmade punks minted on the Fantom
-	 blockchain. In a nod to the Punk project that
-	started it all, we decided to doggedly adhere to the 24x24 OG punk pixel format,
-		 and see how far we could take it with a collection of sick, handcrafted NFTs bursting
-		  with personality and Daemonic influence — an attempt at the least-derivative
-			 derivative ever.</h3>
-<h3>How did we do?</h3>
-</div>
-
-<div class="content-wrapper">
-					<div id="collectionintro"  class="mac-window centered">
-	<div class="mac-window-title"><span>Holder benefits</span></div>
+					<div id="marketplaces"  class="mac-window centered">
+	<div class="mac-window-title"><span>Marketplaces</span></div>
 <h3>We initially planned no utility for DaemonPunks beyond being a dope collectible, but the tremendous community response has made us reconsider - we pledge now that DaemonPunks will remain integral to the ever-expanding Daemon ecosystem and holders will see benefits down the line.</h3>
 <p><img alt="Geedorah" src="./images/Geedorah.gif" width="300" /></p>
 <h3>What benefits exactly? Come now we can't tell you that yet! Keep an eye on the <a href="https://twitter.com/DaemonPunks" target="_blank" rel="noreferrer noopener">DaemonPunks Twitter page</a> for updates. </h3>
@@ -210,5 +208,26 @@ var x = setInterval(function() {
     document.getElementById("demo").innerHTML = "EXPIRED";
   }
 }, 1000);
+</script>
+
+<script> //swaps drop-down menu for buttons
+$("select option").unwrap().each(function() {
+	var btn = $('<div class="btn">'+$(this).text()+'</div>');
+	if($(this).is(':checked')) btn.addClass('on');
+	$(this).replaceWith(btn);
+});
+
+$(document).on('click', '.btn', function() {
+	$('.btn').removeClass('on');
+	$(this).addClass('on');
+});
+</script>
+
+<script> //swaps background image depending on chain
+$("#chainchoice").change(function(){
+	 var imageFileName = $(this).val();
+	 $("body").css("background", "url(./images/"+imageFileName+"_tbg.png)");
+});
+
 </script>
 </html>
