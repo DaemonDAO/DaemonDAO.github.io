@@ -52,6 +52,10 @@ background-color: white;
 
 
 	<div class="mac-icons">
+		<a class="big-icon" href="#">
+		<img src="./images/mm_icon2.png" alt="daemondao" />
+		<span>Connect</span>
+	</a>
 			<a class="big-icon" href="index.html">
 			<img src="./images/home_icon.png" alt="home" />
 			<span>Home</span>
@@ -113,9 +117,10 @@ background-color: white;
 <p><img alt="dpunkbanner" src="./images/td_header.png" /></p>
 <h3>10K digital entities, serving to spread Daemonic corruption across the Omnichain space.</h3>
 <h1>Mint live in: <p id="demo"></p></h1>
-<h3>Step 1: Select chain </h3>
+<h3>1) Connect wallet (top right)</h3>
+<h3>2) Select chain:</h3>
 <h3>
-	<select id="chainchoice" name="chainchoice">
+	<select id="chainchoicemint" name="chainchoicemint">
 
 <option Value="ETH">ETH</option>
 <option Value="FTM">FTM</option>
@@ -126,38 +131,57 @@ background-color: white;
 </select></h3>
 
 <h3>
-    Step 2: Connect wallet</br>
-		Step 3: Mint your TinyDaemons!</h3>
+
+		3) Mint your TinyDaemons!</h3>
 
 
 <div class="mint-block">
 	<div class="gif-block">
 		<img src="./images/tinyminter_cropped.gif" loading="lazy" alt="" class="image-3"/>
 	</div>
-	<div class="connect-wallet-block">
-		<a href="#" class="button w-button">CONNECT WALLET</a>
-	</div>
+
 	<div class="form-block w-form">
 		<form id="wf-form-Mint-Machine" name="wf-form-Mint-Machine" data-name="Mint Machine" method="get" class="form">
 			<!--<input type="text" class="text-field div-block form w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name"/>-->
-			<input type="submit" value="MINT x1" data-wait="" id="mint-button" class="button-2 mint-utton w-button"/>
+			<input type="submit" value="WL mint" data-wait="" id="mint-button" class="button-2 mint-utton w-button"/>
+			<input type="submit" value="Public" data-wait="" id="mint-button" class="button-2 mint-utton w-button"/>
 		</form>
-		<div class="w-form-done"><div>Thank you for minting TinyDaemons!
-		</div>
-	</div>
-	<div class="w-form-fail"><div>Oops! Try again kid</div>
-</div>
-</div>
+
 <div class="number-of-nfts-minted"><p class="number-minted">0000</p><p class="divider">/</p><p class="total-number-of-nfts">10000</p>
 </div></div>
 
 </div>
+</div>
+
 
 
 <div class="content-wrapper">
 					<div id="marketplaces"  class="mac-window centered">
-	<div class="mac-window-title"><span>Marketplaces</span></div>
-<h3>We initially planned no utility for DaemonPunks beyond being a dope collectible, but the tremendous community response has made us reconsider - we pledge now that DaemonPunks will remain integral to the ever-expanding Daemon ecosystem and holders will see benefits down the line.</h3>
+	<div class="mac-window-title"><span>Post-mint</span></div>
+<h1>Your TinyDaemons can be traversed cross-chain!</h1>
+<h3>Traverse TinyDaemon ID #??? from </h3>
+
+<h3><select id="traversefrom" name="traversefrom">
+
+<option Value="ETH">ETH</option>
+<option Value="FTM">FTM</option>
+<option Value="AVAX">AVAX</option>
+<option Value="CRO">CRO</option>
+<option Value="BSC">BSC</option>
+<option Value="OP">OP</option>
+</select></h3>
+<h3> to </h3>
+<h3><select id="traverseto" name="traverseto">
+
+<option Value="ETH">ETH</option>
+<option Value="FTM">FTM</option>
+<option Value="AVAX">AVAX</option>
+<option Value="CRO">CRO</option>
+<option Value="BSC">BSC</option>
+<option Value="OP">OP</option>
+</select></h3>
+
+
 <p><img alt="Geedorah" src="./images/Geedorah.gif" width="300" /></p>
 <h3>What benefits exactly? Come now we can't tell you that yet! Keep an eye on the <a href="https://twitter.com/DaemonPunks" target="_blank" rel="noreferrer noopener">DaemonPunks Twitter page</a> for updates. </h3>
 </div>
@@ -205,26 +229,51 @@ var x = setInterval(function() {
   // If the count down is finished, write some text
   if (distance < 0) {
     clearInterval(x);
-    document.getElementById("demo").innerHTML = "EXPIRED";
+    document.getElementById("demo").innerHTML = "MINT LIVE";
   }
 }, 1000);
 </script>
+<script>
+jQuery(document).ready(function($) {
+  function ReplaceSelectWithButtons(selectField) {
+    // get the basics
+    var selectValue = selectField.val();
+    var selectId = selectField.attr('id')
 
-<script> //swaps drop-down menu for buttons
-$("select option").unwrap().each(function() {
-	var btn = $('<div class="btn">'+$(this).text()+'</div>');
-	if($(this).is(':checked')) btn.addClass('on');
-	$(this).replaceWith(btn);
-});
+    // get all options and create buttons
+    $(selectField).find('option').each(function() {
+      if ($(this).val()) {
+        var btn = $('<div data-value="' + $(this).val() + '" data-target="' + selectId  + '" class="selectbtn">' + $(this).text() + '</div>');
+        if ($(this).val() == selectValue) {
+          btn.addClass('selected');
+        }
+        btn.insertBefore(selectField);
+      }
+    });
+    // hide the select field
+    selectField.hide();
 
-$(document).on('click', '.btn', function() {
-	$('.btn').removeClass('on');
-	$(this).addClass('on');
+    // map click event to buttons
+    $(document).on('click', '.selectbtn', function() {
+      var target = $(this).data('target');
+      $('.selectbtn[data-target="' + target + '"]').removeClass('selected');
+      $(this).addClass('selected');
+
+      // deselect everything, select the selected :)
+      var selectorAll = '#' + target + ' option';
+      $(selectorAll).removeAttr('selected');
+      var selectorSingle = '#' + target + ' option[value="' + $(this).data('value') + '"]';
+      $(selectorSingle).attr('selected', 'selected');
+      $(selectorSingle).change();
+    });
+  }
+
+  // change selects
+  ReplaceSelectWithButtons($('#chainchoicemint'));
 });
 </script>
-
 <script> //swaps background image depending on chain
-$("#chainchoice").change(function(){
+$("#chainchoicemint").change(function(){
 	 var imageFileName = $(this).val();
 	 $("body").css("background-image", "url(./images/"+imageFileName+"_tbg.png)");
 });
