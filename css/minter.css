@@ -24,7 +24,6 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
        color: white;
    }
 
-
 .image {
   display: block;
   margin-right: auto;
@@ -277,7 +276,7 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
   -webkit-transition: all 350ms ease;
   transition: all 350ms ease;
   font-family: 'Ocr a extended', sans-serif;
-  font-size: 24px;
+  font-size: 14px;
   text-shadow: 0 1px 6px #fff;
 }
 
@@ -297,6 +296,23 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
   border-top-right-radius: 3px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
+  display: inline;
+  width: 133px;
+}
+
+.button-2.traverse-button {
+  margin: 2px 2px 2px 2px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-style: solid solid solid solid;
+  border-width: 3px;
+  border-color: #fff;
+  border-top-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  display: float;
+  width: 500px;
+  align: auto;
 }
 
 .div-block {
