@@ -10,6 +10,9 @@ color: black;
 background-color: white;
 
 }
+input, select, textarea{
+    color: black;
+}
 	h3 { max-width: 646px}
 	p { max-width: 646px}
 	body {
@@ -113,7 +116,7 @@ background-color: white;
 		<div class="content-wrapper">
 							<div id="hello!"  class="mac-window centered">
 			<div class="mac-window-title"><span>TinyDaemons Collection</span></div>
-		<h1>TinyDaemons: the first Omnichain Daemon collection</h1>
+		<h1 width="400">TinyDaemons: the first Omnichain Daemon collection</h1>
 <p><img alt="dpunkbanner" src="./images/td_header.png" /></p>
 <h3>10K digital entities, serving to spread Daemonic corruption across the Omnichain space.</h3>
 <h1>Mint live in: <p id="demo"></p></h1>
@@ -150,7 +153,8 @@ background-color: white;
 
 </div>
 
-<h3> Web3 wizardry by <a href="https://twitter.com/MaxFlowO2" target="_blank" rel="noreferrer noopener">MaxFlowO2</a></h3>
+<p>Web3 wizardry by <a href="https://twitter.com/MaxFlowO2" target="_blank" rel="noreferrer noopener">MaxFlowO2</a>;</br>
+Frontend hatchet-job by <a href="https://twitter.com/Luciano_NFT" target="_blank" rel="noreferrer noopener">LuckyLuciano</a></p>
 
 </div>
 
@@ -160,7 +164,8 @@ background-color: white;
 					<div id="marketplaces"  class="mac-window centered">
 	<div class="mac-window-title"><span>Post-mint</span></div>
 <h1>Your TinyDaemons can be traversed cross-chain!</h1>
-<h3>Traverse TinyDaemon ID #??? from </h3>
+<h3>Traverse TinyDaemon ID #<input color="blue" type="number" id="tinydaemonid" name="tentacles"
+       min="0" max="9999"> from </h3>
 
 <h3><select id="traversefrom" name="traversefrom">
 
@@ -234,7 +239,8 @@ var x = setInterval(function() {
   }
 }, 1000);
 </script>
-<script>
+
+<script> //converts dropdown to buttons
 jQuery(document).ready(function($) {
   function ReplaceSelectWithButtons(selectField) {
     // get the basics
