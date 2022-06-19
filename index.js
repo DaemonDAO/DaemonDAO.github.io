@@ -1,4 +1,4 @@
-import BitDaemonsTokenABI from "/bitdaemons_token.js"
+import BitDaemonsTokenABI from "./bitdaemons_token.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   const web3 = new Web3(window.ethereum)
