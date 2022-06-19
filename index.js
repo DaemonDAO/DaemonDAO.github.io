@@ -1,4 +1,4 @@
-import BitDaemonsTokenABI from "bitdaemons_token.js"
+import BitDaemonsTokenABI from "/bitdaemons_token.js"
 
 document.addEventListener("DOMContentLoaded", () => {
   const web3 = new Web3(window.ethereum)
@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const contract = new web3.eth.Contract(BitDaemonsTokenABI, "0xBEa7c3F2D91a9c6fD7F5aA9c803d4C31C1dB8db9")
     const walletAddress = document.getElementById("wallet_address").value
     contract.defaultAccount = walletAddress
-    const spacePunksBalance = await contract.methods.balanceOf(walletAddress).call()
+    const BDBalance = await contract.methods.balanceOf(walletAddress).call()
 
     document.getElementById("nfts").innerHTML = ""
 
-    for(let i = 0; i < spacePunksBalance; i++) {
+    for(let i = 0; i < BDBalance; i++) {
       const tokenId = await contract.methods.tokenOfOwnerByIndex(walletAddress, i).call()
 
       let tokenMetadataURI = await contract.methods.tokenURI(tokenId).call()
