@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<style>
+
+	h3 { max-width: 646px}
+	h2 {color: black;
+			font-size: 55;
+			max-width: 550px}
+	p { max-width: 646px}
+	body {
+	  background: url("./images/ETH_tbg.png");
+	  background-attachment: fixed;
+		margin: 0;
+	  font-size: 12px;
+		font-family: ocraextended;
+	}
+	</style>
+	<meta charset="utf-8" />
+	<title>TinyDaemons | BitDaemons NFT Project</title>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+			<meta property="og:title" content="TinyDaemons | Daemon Research" />
+		<meta property="og:type" content="website" />
+					<meta property="og:description" content="TinyDaemons NFT collection" />
+				<meta property="og:url" content="index.html" />
+					<meta property="og:image" content="./images/daemon_pfp.jpg" />
+				    <meta name="generator" content="GravCMS" />
+    <meta name="description" content="TinyDaemons NFT collection" />
+
+	<link rel="icon" type="image/png" href="./images/daemon_favicon.png" />
+	<link rel="canonical" href="index.html" />
+
+
+<link href="./css/minter.css" type="text/css" rel="stylesheet">
+<link href="./css/macos.css" type="text/css" rel="stylesheet">
+<link href="./css/custom.css" type="text/css" rel="stylesheet">
+<link href="./css/crt.css" type="text/css" rel="stylesheet">
+
+
+
+</head>
+<body id="top" class="crt">
+	<div class="preloader" style="display:flex" class="pre-load">
+		<img src="./images/taraload.gif" loading="lazy" height="400" alt="tarakudo loading icon"/>
+	</div>
+
+	<main class="p-10 flex justify-center min-h-full">
+	<div class="w-4/5">
+		<div class="mb-10">
+			<h2>
+			<input type="text" id="wallet_address" autofocus autocomplete="off" value="0xB8cd4834597DFcdcD7241487CCc03a5b573f1145" placeholder="Wallet address" class="w-2/5 border-2 border-blue-500 px-4 py-1 uppercase rounded-md text-xl text-blue-800 font-semibold outline-none">
+
+			<button id="load_button" class="border-2 border-blue-500 bg-blue-700 text-white transition-colors px-4 outline-none py-1 uppercase rounded-md text-xl font-semibold">
+				Load DaemonPunks
+			</button>
+			</h2>
+		</div>
+
+		<div id="nfts" class="flex gap-7 flex-wrap"></div>
+	</div>
+</main>
+
+<template id="nft_template">
+	<section>
+		<h1 class="font-bold bg-yellow-500 text-white text-center rounded-t-md"></h1>
+
+		<a href="" target="_blank">
+			<img class="rounded-b-md w-40 h-40" src="" alt="">
+		</a>
+	</section>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.0-rc.0/web3.min.js"></script>
+
+<script type="module" src="index.js"></script>
