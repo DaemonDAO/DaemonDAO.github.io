@@ -164,6 +164,38 @@ Frontend hatchet-job by <a href="https://twitter.com/Luciano_NFT" target="_blank
 	<div class="mac-window-title"><span>Traversal</span></div>
 <h1>Your TinyDaemons can be traversed cross-chain!</h1>
 
+<main class="p-10 flex justify-center min-h-full">
+	<div class="w-4/5">
+		<div class="mb-10">
+			<h2>
+			<input type="text" id="wallet_address" autofocus autocomplete="off" value="0x80efF130ddE6223a10e6ab27e35ee9456b635cCD" placeholder="Wallet address" class="w-2/5 border-2 border-blue-500 px-4 py-1 uppercase rounded-md text-xl text-blue-800 font-semibold outline-none">
+
+			<button id="load_button" class="border-2 border-blue-500 bg-blue-700 text-white transition-colors px-4 outline-none py-1 uppercase rounded-md text-xl font-semibold">
+				Load BitDaemons
+			</button>
+			</h2>
+		</div>
+
+		<div id="nfts" class="flex gap-7 flex-wrap"></div>
+	</div>
+</main>
+
+<template id="nft_template">
+	<section>
+		<h1 class="font-bold bg-yellow-500 text-white text-center rounded-t-md"></h1>
+
+		<a href="" target="_blank">
+			<img class="rounded-b-md w-40 h-40" src="" alt="">
+		</a>
+	</section>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.0-rc.0/web3.min.js"></script>
+
+<script type="module" src="index.js"></script>
+
+
+
 
 <div class="form-block w-form" margin:auto>
  <form align: auto id="traversal-form" name="traversal-form" data-name="Traverse" method="get" class="form">
@@ -307,4 +339,11 @@ $("#chainchoicemint").change(function(){
 });
 
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.0-rc.0/web3.min.js">//wallet viewer
+
+</script>
+
+<script type="module" src="index.js"></script>
+
 </html>
