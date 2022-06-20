@@ -7,7 +7,7 @@
 	h3 { max-width: 656px}
 	p { max-width: 656px}
 	body {
-	  background: url("./images/AvatarHead.png");
+	  background: url("./images/Spud_bg.png");
 	  background-attachment: fixed;
 		margin: 0;
 	  font-size: 12px;
@@ -89,22 +89,46 @@
 </a>
 	</div>
 	<section id="body" class="body-section">
-		<div class="content-wrapper">
-							<div id="hello!"  class="mac-window centered">
-			<div class="mac-window-title"><span>Avatars</span></div>
-<p><img alt="daoclass" src="./images/fullavatar1.png" width="300" /></p>
-<h3>3D Daemon Avatars are under construction!</h3>
-	<h3>This will be a semi-generative voxel character collection. Holders will have
-		 a fully functional (rigged and animated) Daemon avatar for use in any 3D metaverse (or game for that matter)
-	  that allows custom characters to be imported.</h3>
-<p><img alt="daoclass" src="./images/daemon_rise.gif" width="300" /></p>
-	<h3>The Daemon Avatars' first official stop will be the <a href="https://twitter.com/SlothtopiaNFT">Slothtopia</a>
-	 metaverse - being built from the ground-up as Fantom's first 3D metaverse.</h3>
 
-	 <h3>Details incoming soon!</h3>
+
+
+<div class='content-wrapper'>
+	<div id="hello!"  class="mac-window centered">
+<div class="mac-window-title"><span>Punk Viewer</span></div>
+<h3>Copy your wallet address in and hit the button to view your DaemonPunks!</h3>
+
+	<main class="p-10 flex justify-center min-h-full">
+	<div class="w-4/5">
+		<div class="mb-10">
+			<h2>
+			<input type="text" id="wallet_address" autofocus autocomplete="off" value="0xB8cd4834597DFcdcD7241487CCc03a5b573f1145" placeholder="Wallet address" class="w-2/5 border-2 border-blue-500 px-4 py-1 uppercase rounded-md text-xl text-blue-800 font-semibold outline-none">
+
+			<button id="load_button" class="border-2 border-blue-500 bg-blue-700 text-white transition-colors px-4 outline-none py-1 uppercase rounded-md text-xl font-semibold">
+				Load DaemonPunks
+			</button>
+			</h2>
+		</div>
+
+		<div id="nfts" class="flex gap-7 flex-wrap"></div>
+	</div>
+</main>
+
+<template id="nft_template">
+	<section>
+		<h1 class="font-bold bg-yellow-500 text-white text-center rounded-t-md"></h1>
+
+		<a href="" target="_blank">
+			<img class="rounded-b-md w-40 h-40" src="" alt="">
+		</a>
+	</section>
+</template>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.0-rc.0/web3.min.js"></script>
+
+<script type="module" src="index.js"></script>
+
 
 </div>
-
 
 	</section>
 
