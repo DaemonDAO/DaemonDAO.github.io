@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
       let tokenMetadataURI = await contract.methods.tokenURI(tokenId).call()
 
       if (tokenMetadataURI.startsWith("ipfs://")) {
-        tokenMetadataURI = `https://ipfs.io/ipfs/${tokenMetadataURI.split("ipfs://")[1]}`
+        tokenMetadataURI = `https://operahouse.mypinata.cloud/ipfs/${tokenMetadataURI.split("ipfs://")[1]}`
       }
 
       const tokenMetadata = await fetch(tokenMetadataURI).then((response) => response.json())
