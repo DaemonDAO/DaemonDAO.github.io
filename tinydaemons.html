@@ -31,10 +31,18 @@
     </div>
     <div class="mac-icons">
       <!-- this is the connection icon -->
-      <a class="big-icon" href="#">
-        <img src="./images/mm_icon2.png" alt="daemondao" />
-        <span>Connect</span>
-      </a>
+      <div id="prepare">
+        <button id="btn-connect" class="big-icon">
+          <img src="./images/mm_icon2.png" alt="daemondao" />
+          <span>Connect</span>
+        </button>
+      </div>
+      <div id="connected" style="display: none">
+        <button id="btn-disconnect" class="big-icon">
+          <img src="./images/mm_icon2.png" alt="daemondao" />
+          <span id="addWallet">Disconnect</span>
+        </button>
+      </div>      
       <a class="big-icon" href="index.html">
         <img src="./images/home_icon.png" alt="home" />
         <span>Home</span>
@@ -169,63 +177,61 @@
             </em>
           </p>
         </div>
-        <!-- for meow <div class="content-wrapper"> -->
         <!-- second window -->
-        <div id="marketplaces"  class="mac-window centered">
+        <div class="mac-window centered">
           <div class="mac-window-title">
             <span>Traversal</span>
           </div>
           <h1>Your TinyDaemons can be traversed cross-chain!</h1>
-          <div class="form-block w-form" margin:auto>
-          <form align: auto
-                id="traversal-form"
-                name="traversal-form"
-                data-name="Traverse"
-                method="get"
-                class="form">
-            <h2 color='black'>
-              <span style="color: white">Traverse TinyDaemon ID #</span>
-              <!-- tokenId input-->
-              <input color='blue'
-                     type="number"
-                     id="tinydaemonid"
-                     name="tentacles"
-                     min="0"
-                      max="9999">
-              <span style="color: white">from</span>
-              <!-- this is a chain selector -->
-              <select id="traversefrom" name="traversefrom">
-                <option Value="ETH">ETH</option>
-                <option Value="FTM">FTM</option>
-                <option Value="AVAX">AVAX</option>
-                <option Value="MATIC">MATIC</option>
-                <option Value="BSC">BSC</option>
-                <option Value="OP">OP</option>
-              </select>
-              <!-- this is the _chainId for traverseChains() -->
-              <span style="color: white">to</span>
-              <select id="traverseto" name="traverseto">
-                <option Value="ETH">ETH</option>
-                <option Value="FTM">FTM</option>
-                <option Value="AVAX">AVAX</option>
-                <option Value="MATIC">MATIC</option>
-                <option Value="BSC">BSC</option>
-                <option Value="OP">OP</option>
-              </select>
-              <!-- why 5 whitespaces?? -->
-              &nbsp &nbsp &nbsp
-            </h2>
-            <input type="submit"
-                   value="Traverse"
-                   data-wait=""
-                   id="traverse"
-                   class="button-2 traverse button w-button"/>
-          </form>
+          <div class="form-block w-form">
+            <form id="traversal-form"
+                  name="traversal-form"
+                  data-name="Traverse"
+                  method="get"
+                  class="form">
+              <h2>
+                <span>Traverse TinyDaemon ID #</span>
+                <!-- tokenId input-->
+                <input color='blue'
+                       type="number"
+                       id="tinydaemonid"
+                       name="tentacles"
+                       min="0"
+                       max="9999">
+                <span>from</span>
+                <!-- this is a chain selector -->
+                <select id="traversefrom" name="traversefrom">
+                  <option Value="ETH">ETH</option>
+                  <option Value="FTM">FTM</option>
+                  <option Value="AVAX">AVAX</option>
+                  <option Value="MATIC">MATIC</option>
+                  <option Value="BSC">BSC</option>
+                  <option Value="OP">OP</option>
+                </select>
+                <!-- this is the _chainId for traverseChains() -->
+                <span style="color: white">to</span>
+                <select id="traverseto" name="traverseto">
+                  <option Value="ETH">ETH</option>
+                  <option Value="FTM">FTM</option>
+                  <option Value="AVAX">AVAX</option>
+                  <option Value="MATIC">MATIC</option>
+                  <option Value="BSC">BSC</option>
+                  <option Value="OP">OP</option>
+                </select>
+                <!-- why 5 whitespaces?? -->
+                &nbsp &nbsp &nbsp
+              </h2><
+              <input type="submit"
+                     value="Traverse"
+                     data-wait=""
+                     id="traverse"
+                     class="button-2 traverse button w-button"/>
+            </form>
+          </div>
+          <p><img alt="raretiny" src="./images/raretiny.png" width="300"></p>
         </div>
-        <p><img alt="raretiny" src="./images/raretiny.png" width="300" /></p>
-      <!-- killing this end of content wrapper -->
-      <!-- </div>-->
-	<div id="marketplaces"  class="mac-window centered">
+        <!-- third window -->
+        <div id="marketplaces"  class="mac-window centered">
 	  <div class="mac-window-title">
             <span>Marketplace links</span>
           </div>
@@ -235,6 +241,7 @@
           </h3>
           <h3>This page will be updated with links post-mint, once listings are live.</h3>
         </div>
+        <!-- fourth window -->
         <div id="lore"  class="mac-window centered">
           <div class="mac-window-title">
             <span>Lore</span>
@@ -247,13 +254,14 @@
               they could do nothing but observe in terror as the Daemonic
               autonomous entity that arose from the remnant BitDaemon code
               created a breach and escaped.
-            <!-- added by max so he don't lose his mind--><br>
+          </h3>
+          <h3>
+            <!-- added by max so he don't lose his mind-->
               So the wizard known as MaxFlowO2 decided to hit the pico top of
-              Covid-19 and go 5-0 during this, "bear market." Insead of just
-              shorting the market he studied zkSNARKS, and LayerZero. This is
-              not the hero we wanted, but the hero we deserved. A dark knight
-              hell bent on sending BitDaemon code to all the chains, before he
-              designs a real world SkyNet.
+              Covid-19 and during this, "bear market." Insead of just
+              shorting the market he studied. This is not the hero we wanted,
+              but the hero we deserved. A dark knight hell bent on sending
+              BitDaemon code to all the chains, before he succumbs to a, "SkyNet."
           </h3>
           <h3>Maximising its chances of success (or pre-emptively evading capture)
               , it compressed its datastream tendrils to enable it to reach for
@@ -261,106 +269,26 @@
               that make up this greater artificial hive consciousness have been
               classified TinyDaemons.
           </h3>
+          <h3>
+            <!-- added by max so he don't lose his mind-->
+              So MaxFlowO2 teamed up with the TinyDaemons, not just creating a
+              solo portal on Fantom. No no no after his studies, he readjusted this
+              and tweaked the hexidecimal signals they sent out to him. MaxFlowO2 has
+              become one with the BitDaemons, vowing to stop the opression of, 
+              "single chain mints," to another capability, traversing the chains.
+          </h3>
         </div>
       <!-- added by max here to fix the above commment out-->
       </div>
     </section>
   </body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
- //after window is loaded completely
- window.onload = function(){
-		 //hide the preloader
-		 $(".preloader").fadeOut(1000);
-		 setTimeout(() => {
-			 document.querySelector(".preloader").style.display = "none";
-		 }, 1000);
-
-
- }
-</script>
-<script>
-// Set the date we're counting down to
-var countDownDate = new Date("Jul 15, 2023 20:00:00 UTC").getTime();
-
-// Update the count down every 1 second
-var x = setInterval(function() {
-
-  // Get today's date and time
-  var now = new Date().getTime();
-
-  // Find the distance between now and the count down date
-  var distance = countDownDate - now;
-
-  // Time calculations for days, hours, minutes and seconds
-  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-  // Display the result in the element with id="demo"
-  document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-  + minutes + "m " + seconds + "s ";
-
-  // If the count down is finished, write some text
-  if (distance < 0) {
-    clearInterval(x);
-    document.getElementById("demo").innerHTML = "MINT LIVE";
-  }
-}, 1000);
-</script>
-
-<script> //converts dropdown to buttons
-jQuery(document).ready(function($) {
-  function ReplaceSelectWithButtons(selectField) {
-    // get the basics
-    var selectValue = selectField.val();
-    var selectId = selectField.attr('id')
-
-    // get all options and create buttons
-    $(selectField).find('option').each(function() {
-      if ($(this).val()) {
-        var btn = $('<div data-value="' + $(this).val() + '" data-target="' + selectId  + '" class="selectbtn">' + $(this).text() + '</div>');
-        if ($(this).val() == selectValue) {
-          btn.addClass('selected');
-        }
-        btn.insertBefore(selectField);
-      }
-    });
-    // hide the select field
-    selectField.hide();
-
-    // map click event to buttons
-    $(document).on('click', '.selectbtn', function() {
-      var target = $(this).data('target');
-      $('.selectbtn[data-target="' + target + '"]').removeClass('selected');
-      $(this).addClass('selected');
-
-      // deselect everything, select the selected :)
-      var selectorAll = '#' + target + ' option';
-      $(selectorAll).removeAttr('selected');
-      var selectorSingle = '#' + target + ' option[value="' + $(this).data('value') + '"]';
-      $(selectorSingle).attr('selected', 'selected');
-      $(selectorSingle).change();
-    });
-  }
-
-  // change selects
-  ReplaceSelectWithButtons($('#chainchoicemint'));
-});
-</script>
-<script> //swaps background image depending on chain
-$("#chainchoicemint").change(function(){
-	 var imageFileName = $(this).val();
-	 $("body").css("background-image", "url(./images/"+imageFileName+"_tbg.png)");
-});
-
-</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- web3 adds -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3modal@1.9.0/dist/index.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/evm-chains@0.2.0/dist/umd/index.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fortmatic@2.0.6/dist/fortmatic.js"></script>
-  <script type="text/javascript" src="js/web3.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3modal@1.9.0/dist/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fortmatic@2.0.6/dist/fortmatic.js"></script>
+  <!-- the custom script -->
+  <script src="./js/tinydaemons.js"></script>
 </html>
