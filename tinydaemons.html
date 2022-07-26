@@ -1,220 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TinyDaemons | BitDaemons NFT Project</title>
 
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
-<head>
-	<style>
-
-	h3 { max-width: 646px}
-	h2 {color: black;
-			font-size: 55;
-			max-width: 550px}
-	p { max-width: 646px}
-	body {
-	  background: url("./images/ETH_tbg.png");
-	  background-attachment: fixed;
-		margin: 0;
-	  font-size: 12px;
-		font-family: ocraextended;
-	}
-	</style>
-	<meta charset="utf-8" />
-	<title>TinyDaemons | BitDaemons NFT Project</title>
-
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-			<meta property="og:title" content="TinyDaemons | Daemon Research" />
-		<meta property="og:type" content="website" />
-					<meta property="og:description" content="TinyDaemons NFT collection" />
-				<meta property="og:url" content="index.html" />
-					<meta property="og:image:secure_url" content="./images/tinyOG.png" />
-				    <meta name="generator" content="GravCMS" />
+    <!-- meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="TinyDaemons | Daemon Research" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="TinyDaemons NFT collection" />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:image:secure_url" content="./images/tinyOG.png" />
+    <meta name="generator" content="GravCMS" />
     <meta name="description" content="TinyDaemons NFT collection" />
 
-	<link rel="icon" type="image/png" href="./images/daemon_favicon.png" />
-	<link rel="canonical" href="index.html" />
+    <!-- links favicons/css -->
+    <link rel="icon" type="image/png" href="./images/daemon_favicon.png" />
+    <link rel="canonical" href="index.html" />
+    <link href="./css/minter.css" type="text/css" rel="stylesheet">
+    <link href="./css/macos.css" type="text/css" rel="stylesheet">
+    <link href="./css/custom.css" type="text/css" rel="stylesheet">
+    <link href="./css/crt.css" type="text/css" rel="stylesheet">
+    <link href="./css/tinydaemons.css" type="txet/css" rel="stylesheet">
+  </head>
+  <body id="top" class="crt">
+    <!-- why two classes here? - from Max -->
+    <div class="preloader" style="display:flex" class="pre-load">
+      <img src="./images/taraload.gif" loading="lazy" height="400" alt="tarakudo loading icon"/>
+    </div>
+    <div class="mac-icons">
+      <!-- this is the connection icon -->
+      <a class="big-icon" href="#">
+        <img src="./images/mm_icon2.png" alt="daemondao" />
+        <span>Connect</span>
+      </a>
+      <a class="big-icon" href="index.html">
+        <img src="./images/home_icon.png" alt="home" />
+        <span>Home</span>
+      </a>
+      <a class="big-icon" href="daemondao.html">
+        <img src="./images/dao_icon.png" alt="daemondao" />
+        <span>DaemonDAO</span>
+      </a>
+      <a class="big-icon" href="bitdaemons.html">
+        <img src="./images/bitdaemon_icon.png" alt="bitdaemons" />
+        <span>BitDaemons</span>
+      </a>
+      <a class="big-icon" href="daemonpunks.html">
+        <img src="./images/punk_icon.png" alt="daemonpunks" />
+        <span>DaemonPunks</span>
+      </a>
+      <a class="big-icon" href="tinydaemons.html">
+        <img src="./images/tinydaemon_icon.png"§ alt="tinydaemons" />
+        <span>TinyDaemons</span>
+      </a>
 
-
-<link href="./css/minter.css" type="text/css" rel="stylesheet">
-<link href="./css/macos.css" type="text/css" rel="stylesheet">
-<link href="./css/custom.css" type="text/css" rel="stylesheet">
-<link href="./css/crt.css" type="text/css" rel="stylesheet">
-
-
-
-</head>
-<body id="top" class="crt">
-	<div class="preloader" style="display:flex" class="pre-load">
-		<img src="./images/taraload.gif" loading="lazy" height="400" alt="tarakudo loading icon"/>
-	</div>
-
-
-	<div class="mac-icons">
-		<a class="big-icon" href="#">
-		<img src="./images/mm_icon2.png" alt="daemondao" />
-		<span>Connect</span>
-	</a>
-			<a class="big-icon" href="index.html">
-			<img src="./images/home_icon.png" alt="home" />
-			<span>Home</span>
-		</a>
-			<a class="big-icon" href="daemondao.html">
-			<img src="./images/dao_icon.png" alt="daemondao" />
-			<span>DaemonDAO</span>
-		</a>
-			<a class="big-icon" href="bitdaemons.html">
-			<img src="./images/bitdaemon_icon.png" alt="bitdaemons" />
-			<span>BitDaemons</span>
-		</a>
-			<a class="big-icon" href="daemonpunks.html">
-			<img src="./images/punk_icon.png" alt="daemonpunks" />
-			<span>DaemonPunks</span>
-		</a>
-		<a class="big-icon" href="tinydaemons.html">
-		<img src="./images/tinydaemon_icon.png"§ alt="tinydaemons" />
-		<span>TinyDaemons</span>
-	</a>
-	<!--<a class="big-icon" href="index.html">
-	<img src="./images/digidaemon_icon.png"§ alt="digidaemons" />
-	<span>DigiDaemons</span>
-</a>-->
-			<a class="big-icon" href="avatars.html">
-			<img src="./images/avatar_icon.png" alt="avatars" />
-			<span>Avatars</span>
-		</a>
-			<a class="big-icon" href="team.html">
-			<img src="./images/team_icon.png" alt="team" />
-			<span>Team</span>
-		</a>
-			<a class="big-icon" href="charity.html">
-			<img src="./images/charity_icon.png" alt="charity" />
-			<span>Charity</span>
-		</a>
-			<a class="big-icon" href="collab.html">
-			<img src="./images/collab_icon.png" alt="collab" />
-			<span>Collabs</span>
-		</a>
-			<a class="big-icon" href="https://discord.com/invite/h2wEqVgpBD" target="_blank" rel="noreferrer noopener">
-			<img src="./images/discord_icon.png" alt="discord" />
-			<span>Discord</span>
-		</a>
-		<a class="big-icon" href="https://twitter.com/bitdaemons" target="_blank" rel="noreferrer noopener">
-		<img src="./images/twitter_icon.png" alt="twitter" />
-		<span>Twitter</span>
-	</a>
-	<a class="big-icon" href="https://bitdaemons.medium.com" target="_blank" rel="noreferrer noopener">
-	<img src="./images/medium_icon.png" alt="medium" />
-	<span>Medium</span>
-</a>
-	</div>
-	<section id="body" class="body-section">
-		<div class="content-wrapper">
-							<div id="hello!"  class="mac-window centered">
-			<div class="mac-window-title"><span>TinyDaemons</span></div>
-		<h3 width="100"><em>What do you get when you compress BitDaemon datastreams?</em></h3>
-<p><img alt="TinyDaemons" src="./images/td_header.png"/></p>
-<h3>10K digital sentinels, serving to spread Daemonic corruption across the Omnichain space.</h3>
-<h1>Mint live in: <p id="demo"></p></h1>
-<h3>1) Connect wallet (top right)</h3>
-<h3>2) Select chain:</h3>
-<h3>
-	<select id="chainchoicemint" name="chainchoicemint">
-
-<option Value="ETH">ETH</option>
-<option Value="FTM">FTM</option>
-<option Value="AVAX">AVAX</option>
-<option Value="MATIC">MATIC</option>
-<option Value="BSC">BSC</option>
-</select></h3>
-
-<h3> 3) Mint your TinyDaemons!</h3>
-
-<div class="mint-block">
-	<div class="gif-block">
-		<img src="./images/tinyminter_cropped.gif" loading="lazy" alt="" class="image-3"/>
-	</div>
-
-	<div class="form-block w-form">
-		<form id="wf-form-Mint-Machine" name="wf-form-Mint-Machine" data-name="Mint Machine" method="get" class="form">
-			<!--<input type="text" class="text-field div-block form w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name"/>-->
-			<input type="submit" value="WL Mint" data-wait="" id="wlmint" class="button-2 mint-utton w-button"/>
-			<input type="submit" value="Mint" data-wait="" id="publicmint" class="button-2 mint-utton w-button"/>
-		</form>
-
-<div class="number-of-nfts-minted"><p class="number-minted">0000</p><p class="divider">/</p><p class="total-number-of-nfts">10000</p>
-</div></div>
-
-</div>
-
-<p>
-Mint is free + gas on your chain of choice! </br>
-Whitelist mint: max 2 / wallet. </br>
-Public mint: max 10 / wallet (1h after WL).</p>
-
-<p><em>Web3 wizardry by <a href="https://twitter.com/MaxFlowO2" target="_blank" rel="noreferrer noopener">MaxFlowO2</a>;</br>
-Frontend hatchet-job by <a href="https://twitter.com/Luciano_NFT" target="_blank" rel="noreferrer noopener">LuckyLuciano</a></em></p>
-
-</div>
-
-
-
-<div class="content-wrapper">
-					<div id="marketplaces"  class="mac-window centered">
-	<div class="mac-window-title"><span>Traversal</span></div>
-<h1>Your TinyDaemons can be traversed cross-chain!</h1>
-
-<div class="form-block w-form" margin:auto>
- <form align: auto id="traversal-form" name="traversal-form" data-name="Traverse" method="get" class="form">
-	 <h2 color='black'><span style="color: white">Traverse TinyDaemon ID #</span><input color='blue' type="number" id="tinydaemonid" name="tentacles"
-				 min="0" max="9999"> <span style="color: white">from</span> <select id="traversefrom" name="traversefrom">
-
-	<option Value="ETH">ETH</option>
-	<option Value="FTM">FTM</option>
-	<option Value="AVAX">AVAX</option>
-	<option Value="MATIC">MATIC</option>
-	<option Value="BSC">BSC</option>
-	<option Value="OP">OP</option>
-	</select>
-	<span style="color: white">to</span>
-	<select id="traverseto" name="traverseto">
-
-	<option Value="ETH">ETH</option>
-	<option Value="FTM">FTM</option>
-	<option Value="AVAX">AVAX</option>
-	<option Value="MATIC">MATIC</option>
-	<option Value="BSC">BSC</option>
-	<option Value="OP">OP</option>
-</select>&nbsp &nbsp &nbsp</h2>
-	 <!--<input type="text" class="text-field div-block form w-input" maxlength="256" name="name" data-name="Name" placeholder="" id="name"/>-->
-	 <input type="submit" value="Traverse" data-wait="" id="traverse" class="button-2 traverse button w-button"/>
-
- </form>
-</div>
-
-<p><img alt="raretiny" src="./images/raretiny.png" width="300" /></p>
-</div>
-
-<div class="content-wrapper">
-					<div id="marketplaces"  class="mac-window centered">
-	<div class="mac-window-title"><span>Marketplace links</span></div>
-<h3>We are aiming for Opensea and Rarible (ETH), Paintswap (FTM), Campfire (AVAX/FTM), Joepegs (AVAX), Ebisu's Bay (CRO), Binance Exchange (BSC) and Quixotic (OP).</h3>
-
-<h3>This page will be updated with links post-mint, once listings are live.</h3>
-</div>
-
-<div class="content-wrapper">
-					<div id="lore"  class="mac-window centered">
-	<div class="mac-window-title"><span>Lore</span></div>
-<h3>Daemon Science Directorate researchers have long been aware of malignant Daemon code pressing at the fragile boundaries of the Fantom blockchain.</h3>
-<h3>Understaffed and underfunded in the brutal bear market of 2022, they could do nothing but observe in terror as the Daemonic autonomous entity that arose from the remnant BitDaemon code created a breach and escaped.</h3>
-<h3>Maximising its chances of success (or pre-emptively evading capture), it compressed its datastream tendrils to enable it to reach for several neighbouring EVM chains simultaneously. The drone entities that make up this greater artificial hive consciousness have been classified TinyDaemons.
-</h3>
-</div>
-
-
-
-	</section>
-</body>
+      <!--<a class="big-icon" href="index.html">
+        <img src="./images/digidaemon_icon.png"§ alt="digidaemons" />
+        <span>DigiDaemons</span>
+      </a>-->
+      <a class="big-icon" href="avatars.html">
+        <img src="./images/avatar_icon.png" alt="avatars" />
+        <span>Avatars</span>
+      </a>
+      <a class="big-icon" href="team.html">
+        <img src="./images/team_icon.png" alt="team" />
+        <span>Team</span>
+      </a>
+      <a class="big-icon" href="charity.html">
+        <img src="./images/charity_icon.png" alt="charity" />
+        <span>Charity</span>
+      </a>
+      <a class="big-icon" href="collab.html">
+        <img src="./images/collab_icon.png" alt="collab" />
+        <span>Collabs</span>
+      </a>
+      <a class="big-icon" href="https://discord.com/invite/h2wEqVgpBD" target="_blank" rel="noreferrer noopener">
+        <img src="./images/discord_icon.png" alt="discord" />
+        <span>Discord</span>
+      </a>
+      <a class="big-icon" href="https://twitter.com/bitdaemons" target="_blank" rel="noreferrer noopener">
+        <img src="./images/twitter_icon.png" alt="twitter" />
+        <span>Twitter</span>
+      </a>
+      <a class="big-icon" href="https://bitdaemons.medium.com" target="_blank" rel="noreferrer noopener">
+        <img src="./images/medium_icon.png" alt="medium" />
+        <span>Medium</span>
+      </a>
+    </div>
+    <section id="body" class="body-section">
+      <div class="content-wrapper">
+        <!-- first window -->
+        <div id="hello!"  class="mac-window centered">
+          <div class="mac-window-title">
+            <span>TinyDaemons</span>
+          </div>
+          <h3 width="100">
+            <em>What do you get when you compress BitDaemon datastreams?</em>
+          </h3>
+          <p>
+            <img alt="TinyDaemons" src="./images/td_header.png"/>
+          </p>
+          <h3>10K digital sentinels, serving to spread Daemonic corruption across the Omnichain space.</h3>
+          <h1>Mint live in: 
+            <!-- clock output -->
+            <p id="demo"></p>
+          </h1>
+          <h3>1) Connect wallet (top right)</h3>
+          <h3>2) Select chain:</h3>
+          <!-- chain buttons -->
+          <h3>
+            <select id="chainchoicemint" name="chainchoicemint">
+              <option Value="ETH">ETH</option>
+              <option Value="FTM">FTM</option>
+              <option Value="AVAX">AVAX</option>
+              <option Value="MATIC">MATIC</option>
+              <option Value="BSC">BSC</option>
+            </select>
+          </h3>
+          <h3> 3) Mint your TinyDaemons!</h3>
+          <div class="mint-block">
+            <div class="gif-block">
+              <img src="./images/tinyminter_cropped.gif" loading="lazy" alt="" class="image-3"/>
+            </div>
+            <div class="form-block w-form">
+              <form id="wf-form-Mint-Machine" 
+                    name="wf-form-Mint-Machine"
+                    data-name="Mint Machine"
+                    method="get"
+                    class="form">
+                <!-- mint buttons -->
+                <input type="submit"
+                       value="WL Mint"
+                       data-wait=""
+                       id="wlmint"
+                       class="button-2 mint-utton w-button"/>
+                <input type="submit"
+                       value="Mint"
+                       data-wait=""
+                       id="publicmint"
+                       class="button-2 mint-utton w-button"/>
+              </form>
+              <!-- stats -->
+              <div class="number-of-nfts-minted">
+                <p class="number-minted">0000</p>
+                <p class="divider">/</p>
+                <p class="total-number-of-nfts">10000</p>
+              </div>
+            </div>
+          </div>
+          <p>
+            Mint is free + gas on your chain of choice! </br>
+            Whitelist mint: max 2 / wallet. </br>
+            Public mint: max 10 / wallet (1h after WL).
+          </p>
+          <p>
+            <em>Web3 wizardry by 
+              <a href="https://twitter.com/MaxFlowO2" 
+                 target="_blank" 
+                 rel="noreferrer noopener">MaxFlowO2
+              </a></br>
+              Frontend hatchet-job by 
+              <a href="https://twitter.com/Luciano_NFT"
+                 target="_blank"
+                 rel="noreferrer noopener">LuckyLuciano
+              </a>
+            </em>
+          </p>
+        </div>
+        <!-- for meow <div class="content-wrapper"> -->
+        <!-- second window -->
+        <div id="marketplaces"  class="mac-window centered">
+          <div class="mac-window-title">
+            <span>Traversal</span>
+          </div>
+          <h1>Your TinyDaemons can be traversed cross-chain!</h1>
+          <div class="form-block w-form" margin:auto>
+          <form align: auto
+                id="traversal-form"
+                name="traversal-form"
+                data-name="Traverse"
+                method="get"
+                class="form">
+            <h2 color='black'>
+              <span style="color: white">Traverse TinyDaemon ID #</span>
+              <!-- tokenId input-->
+              <input color='blue'
+                     type="number"
+                     id="tinydaemonid"
+                     name="tentacles"
+                     min="0"
+                      max="9999">
+              <span style="color: white">from</span>
+              <!-- this is a chain selector -->
+              <select id="traversefrom" name="traversefrom">
+                <option Value="ETH">ETH</option>
+                <option Value="FTM">FTM</option>
+                <option Value="AVAX">AVAX</option>
+                <option Value="MATIC">MATIC</option>
+                <option Value="BSC">BSC</option>
+                <option Value="OP">OP</option>
+              </select>
+              <!-- this is the _chainId for traverseChains() -->
+              <span style="color: white">to</span>
+              <select id="traverseto" name="traverseto">
+                <option Value="ETH">ETH</option>
+                <option Value="FTM">FTM</option>
+                <option Value="AVAX">AVAX</option>
+                <option Value="MATIC">MATIC</option>
+                <option Value="BSC">BSC</option>
+                <option Value="OP">OP</option>
+              </select>
+              <!-- why 5 whitespaces?? -->
+              &nbsp &nbsp &nbsp
+            </h2>
+            <input type="submit"
+                   value="Traverse"
+                   data-wait=""
+                   id="traverse"
+                   class="button-2 traverse button w-button"/>
+          </form>
+        </div>
+        <p><img alt="raretiny" src="./images/raretiny.png" width="300" /></p>
+      <!-- killing this end of content wrapper -->
+      <!-- </div>-->
+	<div id="marketplaces"  class="mac-window centered">
+	  <div class="mac-window-title">
+            <span>Marketplace links</span>
+          </div>
+          <h3>We are aiming for Opensea and Rarible (ETH), Paintswap (FTM),
+              Campfire (AVAX/FTM), Joepegs (AVAX), Ebisu's Bay (CRO), Binance
+              Exchange (BSC) and Quixotic (OP).
+          </h3>
+          <h3>This page will be updated with links post-mint, once listings are live.</h3>
+        </div>
+        <div id="lore"  class="mac-window centered">
+          <div class="mac-window-title">
+            <span>Lore</span>
+          </div>
+          <h3>Daemon Science Directorate researchers have long been aware of
+              malignant Daemon code pressing at the fragile boundaries of the
+              Fantom blockchain.
+          </h3>
+          <h3>Understaffed and underfunded in the brutal bear market of 2022,
+              they could do nothing but observe in terror as the Daemonic
+              autonomous entity that arose from the remnant BitDaemon code
+              created a breach and escaped.
+            <!-- added by max so he don't lose his mind--><br>
+              So the wizard known as MaxFlowO2 decided to hit the pico top of
+              Covid-19 and go 5-0 during this, "bear market." Insead of just
+              shorting the market he studied zkSNARKS, and LayerZero. This is
+              not the hero we wanted, but the hero we deserved. A dark knight
+              hell bent on sending BitDaemon code to all the chains, before he
+              designs a real world SkyNet.
+          </h3>
+          <h3>Maximising its chances of success (or pre-emptively evading capture)
+              , it compressed its datastream tendrils to enable it to reach for
+              several neighbouring EVM chains simultaneously. The drone entities
+              that make up this greater artificial hive consciousness have been
+              classified TinyDaemons.
+          </h3>
+        </div>
+      <!-- added by max here to fix the above commment out-->
+      </div>
+    </section>
+  </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script>
  //after window is loaded completely
@@ -305,5 +356,11 @@ $("#chainchoicemint").change(function(){
 });
 
 </script>
-
+  <!-- web3 adds -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/web3modal@1.9.0/dist/index.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/fortmatic@2.0.6/dist/fortmatic.js"></script>
+  <script type="text/javascript" src="js/web3.js"></script>
 </html>
