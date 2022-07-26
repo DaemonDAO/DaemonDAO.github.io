@@ -321,89 +321,45 @@ async function onDisconnect() {
 }
 
 // These set/swap chains immediately... useful later in this plethora of wtf
-async function avaxMain() {
-  // Force ad
-  addNetwork(AVAX_M);
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0xA86A'}]});
+async function swapChain(network, hex) {
+  try {
+    // check if the chain to connect to is installed
+    await window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: hex }], // chainId must be in hexadecimal numbers
+    });
+  } catch (error) {
+    // This error code indicates that the chain has not been added to MetaMask
+    // if it is not, then install it into the user MetaMask
+    if (error.code === 4902) {
+      try {
+        addNetwork(network);
+      } catch (addError) {
+        console.error(addError);
+      }
+    }
+    console.error(error);
   }
 }
 
-async function bnbMain() {
-  // Force ad
-  addNetwork(BNB_M);
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x38'}]});
-  }
-}
-
-async function ftmMain() {
-  // Force ad
-  addNetwork(FTM_M);
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0xfa'}]});
-  }
-}
-
-async function maticMain() {
-  // Force ad
-  addNetwork(MATIC_M);
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x89'}]});
-  }
-}
-
-async function ethMain() {
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x1'}]});
-  }
-}
-
-async function avaxTest() {
-  // Force ad
-  addNetwork(AVAX_T);
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0xA86A'}]});
-  }
-}
-
-async function bnbTest() {
-  // Force ad
-  addNetwork(BNB_T);
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x61'}]});
-  }
-}
-
-async function ftmTest() {
-  // Force ad
-  addNetwork(FTM_T);
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0xfa2'}]});
-  }
-}
-
-async function maticTest() {
-  // Force ad
-  addNetwork(MATIC_T);
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x13881'}]});
-  }
-}
-
-async function ethTest() {
-  // Force switch
-  async () => {
-    await ethereum.request({ method: 'wallet_switchEthereumChain', params:[{chainId: '0x4'}]});
+async function swapToEth(hex) {
+  try {
+    // check if the chain to connect to is installed
+    await window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: hex }], // chainId must be in hexadecimal numbers
+    });
+  } catch (error) {
+    // This error code indicates that the chain has not been added to MetaMask
+    // if it is not, then install it into the user MetaMask
+    if (error.code === 4902) {
+      try {
+        console.log("ETH not installed??");
+      } catch (addError) {
+        console.error(addError);
+      }
+    }
+    console.error(error);
   }
 }
 
@@ -447,6 +403,7 @@ var x = setInterval(function() {
 }, 1000);
 
 //converts dropdown to buttons
+/*
 jQuery(document).ready(function($) {
   function ReplaceSelectWithButtons(selectField) {
     // get the basics
@@ -484,17 +441,55 @@ jQuery(document).ready(function($) {
   // change selects
   ReplaceSelectWithButtons($('#chainchoicemint'));
 });
-
+*/
 //swaps background image depending on chain
-$("#chainchoicemint").change(function(){
-  var imageFileName = $(this).val();
-  $("body").css("background-image", "url(./images/"+imageFileName+"_tbg.png)");
-});
+function changeBG(param) {
+  $("body").css("background-image", "url(./images/"+param+"_tbg.png)");
+}
 
+async function hitETH() {
+  let value = "ETH";
+  //await swapToEth("0x1");
+  await swapToEth("0x4");
+  changeBG(value);
+}
+
+async function hitFTM() {
+  let value = "FTM";
+  //await swapChain(FTM_M, "0xfa");
+  await swapChain(FTM_T, "0xfa2");
+  changeBG(value);
+}
+
+async function hitAVAX() {
+  let value = "AVAX";
+  //await swapChain(AVAX_M, "0xA86A");
+  await swapChain(AVAX_T, "0xA869");
+  changeBG(value);
+}
+
+async function hitMATIC() {
+  let value = "MATIC";
+  //await swapChain(MATIC_M, "0x89");
+  await swapChain(MATIC_T, "0x13881");
+  changeBG(value);
+}
+
+async function hitBNB() {
+  let value = "BSC";
+  //await swapChain(BNB_M, "0x38");
+  await swapChain(BNB_T, "0x61");
+  changeBG(value);
+}
 
 // master event listener... combines all the shit above.
 window.addEventListener('load', async () => {
   init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
+  document.querySelector("#ETH").addEventListener("click", hitETH);
+  document.querySelector("#FTM").addEventListener("click", hitFTM);
+  document.querySelector("#AVAX").addEventListener("click", hitAVAX);
+  document.querySelector("#MATIC").addEventListener("click", hitMATIC);
+  document.querySelector("#BSC").addEventListener("click", hitBNB);
 });
