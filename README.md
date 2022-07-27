@@ -11,6 +11,7 @@ Web3 the mint site
      - [x] Connected block
      - [x] Address shows
    - [ ] (NEW) evm-chain@0.2.0 errors, tossing selectedAccount[0] errors, critical
+     * Found out not affecting selectedAccount[0] in web3 transactions... so who cares?
      - [ ] getChain(number) - fail x3
      - [ ] getChainByChainId(number) - fail x3
      - [ ] getChainByKeyValue("key", "value") - untested
@@ -44,12 +45,12 @@ Web3 the mint site
  - [x] Mint status
    - [x] Show minted on chain
    - [x] Show total you can mint on that chain
- - [ ] Mint capabilities
-   - [ ] Avax Mint
-   - [ ] BSC Mint
-   - [ ] Eth Mint
-   - [ ] FTM Mint
-   - [ ] Matic Mint
+ - [x] Mint capabilities
+   - [x] Avax Mint
+   - [x] BSC Mint
+   - [x] Eth Mint
+   - [x] FTM Mint
+   - [x] Matic Mint
  - [ ] Traverse button via selectors
    - [ ] Avax To:
      - [ ] BSC 
