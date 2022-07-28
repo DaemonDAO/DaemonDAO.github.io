@@ -3,13 +3,13 @@ h3 { max-width: 646px; }
 h2 {
   color: black;
   font-size: 55;
-  max-width: 550px;
+  max-width: 646px;
 }
 
 p { max-width: 646px; }
 
 body {
-  background: url("./images/ETH_tbg.png");
+  background: url("../images/BB06.png");
   background-attachment: fixed;
   margin: 0;
   font-size: 12px;
