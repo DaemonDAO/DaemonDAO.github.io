@@ -3,10 +3,10 @@ Built by Lucky<br>
 Web3'd by MaxFlowO2<br>
 ## Breakdowns
 Web3 the mint site
- - [ ] WC/web3?
+ - [x] WC/web3?
    - [x] init() WC
-   - [ ] web3 Connect
-     - [ ] New Graphics
+   - [x] web3 Connect
+     - [x] New Graphics
      - [x] Prepare block
      - [x] Connected block
      - [x] Address shows
@@ -19,14 +19,14 @@ Web3 the mint site
      - [ ] 0xA369 - Fuji
      - [ ] 0xA36A - Avalanche
      - [ ] 0xFA2 - Fantom Test
- - [ ] Chain swap on button/drop down
+ - [x] Chain swap on button/drop down
    - [x] Set Cases
    - [x] Change chainId()
    - [x] Add Network
    - [x] Background changes
    - [x] Select Chain Event Listener
    - [x] "Select Chain" Buttons
-   - [ ] Traversing Dropdown
+   - [x] Traversing Dropdown
  - [x] Some sort of time hack for the no mint/pre mint/main mint
    - [x] Getters on TimeCop.sol
    - [x] Combine with unix.timestamp();
@@ -51,29 +51,29 @@ Web3 the mint site
    - [x] Eth Mint
    - [x] FTM Mint
    - [x] Matic Mint
- - [ ] Traverse button via selectors
-   - [ ] Avax To:
-     - [ ] BSC 
-     - [ ] Eth 
-     - [ ] FTM 
-     - [ ] Matic 
-   - [ ] BSC To:
-     - [ ] Eth 
-     - [ ] FTM 
-     - [ ] Matic 
-     - [ ] Avax 
-   - [ ] Eth To:
-     - [ ] FTM 
-     - [ ] Matic 
-     - [ ] Avax 
-     - [ ] BSC 
-   - [ ] FTM To:
-     - [ ] Matic 
-     - [ ] Avax 
-     - [ ] BSC 
-     - [ ] Eth 
-   - [ ] Matic To:
-     - [ ] Avax 
-     - [ ] BSC 
-     - [ ] Eth 
-     - [ ] FTM 
+ - [x] Traverse button via selectors
+   - [x] Avax To:
+     - [x] BSC 
+     - [x] Eth 
+     - [x] FTM 
+     - [x] Matic 
+   - [x] BSC To:
+     - [x] Eth 
+     - [x] FTM 
+     - [x] Matic 
+     - [x] Avax 
+   - [x] Eth To:
+     - [x] FTM 
+     - [x] Matic 
+     - [x] Avax 
+     - [x] BSC 
+   - [x] FTM To:
+     - [x] Matic 
+     - [x] Avax 
+     - [x] BSC 
+     - [x] Eth 
+   - [x] Matic To:
+     - [x] Avax 
+     - [x] BSC 
+     - [x] Eth 
+     - [x] FTM 

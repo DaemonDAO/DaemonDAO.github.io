@@ -33,13 +33,13 @@
       <!-- this is the connection icon -->
       <div id="prepare">
         <button id="btn-connect" class="big-icon">
-          <img src="./images/mm_icon2.png" alt="daemondao" />
+          <img src="./images/MMdark.png" alt="daemondao" />
           <span>Connect</span>
         </button>
       </div>
       <div id="connected" style="display: none">
         <button id="btn-disconnect" class="big-icon">
-          <img src="./images/mm_icon2.png" alt="daemondao" />
+          <img src="./images/MMconnected.png" alt="daemondao" />
           <span id="addWallet">Disconnect</span>
         </button>
       </div>      
@@ -182,48 +182,50 @@
           </div>
           <h1>Your TinyDaemons can be traversed cross-chain!</h1>
           <div class="form-block w-form">
-            <form id="traversal-form"
-                  name="traversal-form"
-                  data-name="Traverse"
-                  method="get"
-                  class="form">
-              <h2>
-                <span>Traverse TinyDaemon ID #</span>
-                <!-- tokenId input-->
-                <input type="number"
-                       id="tinydaemonid"
-                       name="tentacles"
-                       min="0"
-                       max="9999">
-                <span>from</span>
-                <!-- this is a chain selector -->
-                <select id="traversefrom" name="traversefrom">
-                  <option Value="ETH">ETH</option>
-                  <option Value="FTM">FTM</option>
-                  <option Value="AVAX">AVAX</option>
-                  <option Value="MATIC">MATIC</option>
-                  <option Value="BSC">BSC</option>
-                  <option Value="OP">OP</option>
-                </select>
-                <!-- this is the _chainId for traverseChains() -->
-                <span style="color: white">to</span>
-                <select id="traverseto" name="traverseto">
-                  <option Value="ETH">ETH</option>
-                  <option Value="FTM">FTM</option>
-                  <option Value="AVAX">AVAX</option>
-                  <option Value="MATIC">MATIC</option>
-                  <option Value="BSC">BSC</option>
-                  <option Value="OP">OP</option>
-                </select>
-                <!-- why 5 whitespaces?? -->
-                &nbsp &nbsp &nbsp
-              </h2><
-              <input type="submit"
-                     value="Traverse"
-                     data-wait=""
-                     id="traverse"
-                     class="button-2 traverse button w-button"/>
-            </form>
+            <h2>
+              <span>Traverse TinyDaemon ID #</span>
+              <!-- tokenId input-->
+              <input type="number"
+                     id="tinydaemonid"
+                     name="tinydaemonid"
+                     min="0"
+                     max="9999">
+              <span>from</span>
+              <!-- this is a chain selector -->
+              <select id="traversefrom" name="traversefrom">
+                <option value="ETH">ETH</option>
+                <option value="FTM">FTM</option>
+                <option value="AVAX">AVAX</option>
+                <option value="MATIC">MATIC</option>
+                <option value="BSC">BSC</option>
+                <!--<option value="OP">OP</option>-->
+              </select>
+              <!-- this is the _chainId for traverseChains() -->
+              <!-- testnet -->
+              <span style="color: white">to</span>
+              <select id="traverseto" name="traverseto">
+                <option value="10001">ETH</option>
+                <option value="10012">FTM</option>
+                <option value="10006">AVAX</option>
+                <option value="10009">MATIC</option>
+                <option value="10002">BSC</option>
+                <!--<option value=10011>OP</option>-->
+              </select>
+              <!-- mainnet commented out for now-->
+              <!--<select id="traverseto" name="traverseto">
+                <option value=1>ETH</option>
+                <option value=12>FTM</option>
+                <option value=6>AVAX</option>
+                <option value=9>MATIC</option>
+                <option value=2>BSC</option>
+                <!--<option value=11>OP</option>-->
+              </select>-->
+              <!-- why 5 whitespaces?? -->
+              &nbsp &nbsp &nbsp
+            </h2><
+            <button id="btn-traverseNFT" class="button-2 traverse button w-button">
+              Traverse
+            </button>
           </div>
           <p><img alt="raretiny" src="./images/raretiny.png" width="300"></p>
         </div>
