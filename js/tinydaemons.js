@@ -11,33 +11,29 @@ const FTM_T = 4002;
 const MATIC_M = 137;
 const MATIC_T = 80001;
 
-// Constants for testnet web3
-const AVAX_ADDRESS = "0x9CBD8Ea530436bbE6Ef581f2156D619479055D41";
-const BNB_ADDRESS = "0x9CBD8Ea530436bbE6Ef581f2156D619479055D41";
-const ETH_ADDRESS = "0xcC0573BB57cf1F789A7c9Be70D81e3Af9DeD1BB8";
-const FTM_ADDRESS = "0x9CBD8Ea530436bbE6Ef581f2156D619479055D41";
-const MATIC_ADDRESS = "0x27746bEfd385661dA4Bb0FfEAa141CfD4E50F616";
-
-/*
-// Constants for mainnet web3
-const AVAX_ADDRESS = "";
-const BNB_ADDRESS = "";
-const ETH_ADDRESS = "";
-const FTM_ADDRESS = "";
-const MATIC_ADDRESS = "";
-*/
+// Constants for web3
+const AVAX_TESTCA = "0x9CBD8Ea530436bbE6Ef581f2156D619479055D41";
+const BNB_TESTCA = "0x9CBD8Ea530436bbE6Ef581f2156D619479055D41";
+const ETH_TESTCA = "0xcC0573BB57cf1F789A7c9Be70D81e3Af9DeD1BB8";
+const FTM_TESTCA = "0x9CBD8Ea530436bbE6Ef581f2156D619479055D41";
+const MATIC_TESTCA = "0x27746bEfd385661dA4Bb0FfEAa141CfD4E50F616";
+const AVAX_MAINCA = "";
+const BNB_MAINCA = "";
+const ETH_MAINCA = "";
+const FTM_MAINCA = "";
+const MATIC_MAINCA = "";
 
 // lz endpoints current as of 27 July 2022
-const AVAX_M_ENDPOINT = "0x3c2269811836af69497E5F486A85D7316753cf62";
-const AVAX_T_ENDPOINT = "0x93f54D755A063cE7bB9e6Ac47Eccc8e33411d706";
-const BNB_M_ENDPOINT = "0x3c2269811836af69497E5F486A85D7316753cf62";
-const BNB_T_ENDPOINT = "0x6Fcb97553D41516Cb228ac03FdC8B9a0a9df04A1";
-const ETH_M_ENDPOINT = "0x3c2269811836af69497E5F486A85D7316753cf62";
-const ETH_T_ENDPOINT = "0x79a63d6d8BBD5c6dfc774dA79bCcD948EAcb53FA";
-const FTM_M_ENDPOINT = "0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7";
-const FTM_T_ENDPOINT = "0x7dcAD72640F835B0FA36EFD3D6d3ec902C7E5acf";
-const MATIC_M_ENDPOINT = "0x3c2269811836af69497E5F486A85D7316753cf62";
-const MATIC_T_ENDPOINT = "0xf69186dfBa60DdB133E91E9A4B5673624293d8F8";
+const AVAX_EPMAIN = "0x3c2269811836af69497E5F486A85D7316753cf62";
+const AVAX_EPTEST = "0x93f54D755A063cE7bB9e6Ac47Eccc8e33411d706";
+const BNB_EPMAIN = "0x3c2269811836af69497E5F486A85D7316753cf62";
+const BNB_EPTEST = "0x6Fcb97553D41516Cb228ac03FdC8B9a0a9df04A1";
+const ETH_EPMAIN = "0x3c2269811836af69497E5F486A85D7316753cf62";
+const ETH_EPTEST = "0x79a63d6d8BBD5c6dfc774dA79bCcD948EAcb53FA";
+const FTM_EPMAIN = "0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7";
+const FTM_EPTEST = "0x7dcAD72640F835B0FA36EFD3D6d3ec902C7E5acf";
+const MATIC_EPMAIN = "0x3c2269811836af69497E5F486A85D7316753cf62";
+const MATIC_EPTEST = "0xf69186dfBa60DdB133E91E9A4B5673624293d8F8";
 
 // the ABI's
 const ABI = [{"inputs":[],"stateMutability":"nonpayable","type":"constructor"},{"inputs":[{"internalType":"string","name":"_reason","type":"string"}],"name":"CountersV2Error","type":"error"},{"inputs":[{"internalType":"string","name":"reason","type":"string"}],"name":"MaxSplaining","type":"error"},{"inputs":[{"internalType":"string","name":"reason","type":"string"}],"name":"MaxSplaining","type":"error"},{"inputs":[{"internalType":"string","name":"_error","type":"string"}],"name":"RolesError","type":"error"},{"inputs":[{"internalType":"uint256","name":"yourTime","type":"uint256"},{"internalType":"uint256","name":"hitTime","type":"uint256"}],"name":"TooLateBoomer","type":"error"},{"inputs":[{"internalType":"uint256","name":"yourTime","type":"uint256"},{"internalType":"uint256","name":"hitTime","type":"uint256"}],"name":"TooSoonJunior","type":"error"},{"inputs":[],"name":"Unauthorized","type":"error"},{"inputs":[],"name":"Unauthorized","type":"error"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"string","name":"_old","type":"string"},{"indexed":false,"internalType":"string","name":"_new","type":"string"}],"name":"ContractURIChange","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint16","name":"_srcChainId","type":"uint16"},{"indexed":false,"internalType":"bytes","name":"_srcAddress","type":"bytes"},{"indexed":false,"internalType":"uint64","name":"_nonce","type":"uint64"},{"indexed":false,"internalType":"bytes","name":"_payload","type":"bytes"}],"name":"MessageFailed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"},{"indexed":false,"internalType":"uint256","name":"shares","type":"uint256"}],"name":"PayeeAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"account","type":"address"},{"indexed":false,"internalType":"uint256","name":"shares","type":"uint256"}],"name":"PayeeRemoved","type":"event"},{"anonymous":false,"inputs":[],"name":"PayeesReset","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"from","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"PaymentReceived","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"to","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"PaymentReleased","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"start","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"length","type":"uint256"}],"name":"PresaleSet","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"numberToMint","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"startingID","type":"uint256"},{"indexed":false,"internalType":"uint256","name":"endingID","type":"uint256"}],"name":"SetStartNumbers","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"address","name":"user","type":"address"},{"indexed":false,"internalType":"uint256","name":"amount","type":"uint256"}],"name":"ThankYou","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint16","name":"_chainId","type":"uint16"},{"indexed":false,"internalType":"bytes","name":"_trustedRemote","type":"bytes"}],"name":"TrustedRemoteSet","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"string","name":"_old","type":"string"},{"indexed":false,"internalType":"string","name":"_new","type":"string"}],"name":"UpdatedBaseURI","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"internalType":"uint256","name":"value","type":"uint256"},{"indexed":false,"internalType":"address","name":"recipient","type":"address"}],"name":"royalatiesSet","type":"event"},{"stateMutability":"payable","type":"fallback"},{"inputs":[],"name":"RevealProvenanceImages","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"RevealProvenanceJSON","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"RevealStartNumber","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"acceptDeveloper","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"acceptOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newSplit","type":"address"},{"internalType":"uint256","name":"newShares","type":"uint256"}],"name":"addSplit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"burn","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"claim","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"clearRoyalties","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"clearSplits","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"contractURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"currentLZGas","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"declineDeveloper","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"declineOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"developer","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"donate","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"permille","type":"uint256"}],"name":"erc2981This","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"","type":"uint16"},{"internalType":"bytes","name":"","type":"bytes"},{"internalType":"uint256","name":"","type":"uint256"}],"name":"failedMessages","outputs":[{"internalType":"uint256","name":"payloadLength","type":"uint256"},{"internalType":"bytes32","name":"payloadHash","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"getBalance","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"isDeveloper","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"isOwner","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint16","name":"_srcChainId","type":"uint16"},{"internalType":"bytes","name":"_srcAddress","type":"bytes"},{"internalType":"uint64","name":"_nonce","type":"uint64"},{"internalType":"bytes","name":"_payload","type":"bytes"}],"name":"lzReceive","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"minterCurrentMints","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minterFees","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minterMaximumCapacity","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minterMaximumTeamMints","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minterMintsRemaining","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minterStatus","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minterTeamMintsCount","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"minterTeamMintsRemaining","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint16","name":"_srcChainId","type":"uint16"},{"internalType":"bytes","name":"_srcAddress","type":"bytes"},{"internalType":"uint64","name":"_nonce","type":"uint64"},{"internalType":"bytes","name":"_payload","type":"bytes"}],"name":"onLzReceive","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"payee","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"quant","type":"uint256"}],"name":"presaleMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"publicMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newDeveloper","type":"address"}],"name":"pushDeveloper","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"pushOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"released","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"remSplit","type":"address"}],"name":"removeSplit","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceDeveloper","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"renounceOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"_srcChainId","type":"uint16"},{"internalType":"bytes","name":"_srcAddress","type":"bytes"},{"internalType":"uint64","name":"_nonce","type":"uint64"},{"internalType":"bytes","name":"_payload","type":"bytes"}],"name":"retryMessage","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint256","name":"_tokenId","type":"uint256"},{"internalType":"uint256","name":"_salePrice","type":"uint256"}],"name":"royaltyInfo","outputs":[{"internalType":"address","name":"receiver","type":"address"},{"internalType":"uint256","name":"royaltyAmount","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"_base","type":"string"}],"name":"setBaseURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"URI","type":"string"}],"name":"setContractURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"setDeveloperDisplay","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"newVal","type":"uint256"}],"name":"setGasForDestinationLzReceive","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"startNumber","type":"uint256"},{"internalType":"uint256","name":"authMint","type":"uint256"},{"internalType":"uint256","name":"teamMints","type":"uint256"},{"internalType":"string","name":"img","type":"string"},{"internalType":"string","name":"json","type":"string"},{"internalType":"address","name":"newAddress","type":"address"}],"name":"setMinter","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"_user","type":"address"}],"name":"setOwnerDisplay","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"time","type":"uint256"},{"internalType":"uint256","name":"duration","type":"uint256"}],"name":"setPresale","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newAddress","type":"address"},{"internalType":"uint256","name":"permille","type":"uint256"}],"name":"setRoyalties","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"_chainId","type":"uint16"},{"internalType":"bytes","name":"_trustedRemote","type":"bytes"}],"name":"setTrustedRemote","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"account","type":"address"}],"name":"shares","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"showPresaleStart","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"showPresaleTimes","outputs":[{"internalType":"uint256","name":"","type":"uint256"},{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"showStart","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"teamMint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalReleased","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalShares","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"newDeveloper","type":"address"}],"name":"transferDeveloper","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwner","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint16","name":"_chainId","type":"uint16"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"traverseChains","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[{"internalType":"uint16","name":"","type":"uint16"}],"name":"trustedRemoteLookup","outputs":[{"internalType":"bytes","name":"","type":"bytes"}],"stateMutability":"view","type":"function"},{"stateMutability":"payable","type":"receive"}];
@@ -250,23 +246,10 @@ async function fetchAccountData() {
   const web3 = new Web3(provider);
   console.log("Web3 instance is", web3);
 
-  // Get connected chain id from Ethereum node
-  const chainId = await web3.eth.getChainId();
-  console.log("Chain ID is", chainId);
-
-  // Load chain information over an HTTP API
-  const chainData = evmChains.getChainByChainId(chainId);
-  console.log("Chain Data is", chainData);
-  // document.querySelector("#network-name").textContent = chainData.name;
-
   // Get list of accounts of the connected wallet
   const accounts = await web3.eth.getAccounts();
-
-  // MetaMask does not give you all accounts, only the selected account
-  console.log("Got accounts", accounts);
   selectedAccount = accounts[0];
   console.log("Selected Account is", selectedAccount);
-  //document.querySelector("#selected-account").textContent = selectedAccount;
 
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
@@ -278,6 +261,8 @@ async function fetchAccountData() {
   var endString = selectedAccount.substring(selectedAccount.length - 3)
   var display = startString+dots+endString;
   document.getElementById("addWallet").innerHTML = display;
+
+  displayTokenName();
 }
 
 /**
@@ -413,7 +398,8 @@ window.onload = function(){
 async function fetchWeb3PSTime() {
   //const web3 = new Web3("https://rpc.ftm.tools");
   const web3 = new Web3("https://rpc.testnet.fantom.network/");
-  let tokenContract = await new web3.eth.Contract(ABI, FTM_ADDRESS);
+  //let tokenContract = await new web3.eth.Contract(ABI, FTM_MAINCA);
+  let tokenContract = await new web3.eth.Contract(ABI, FTM_TESTCA);
   let timeOne = await tokenContract.methods.showPresaleStart().call();
   if(timeOne == 0) return countDownDate;
   return timeOne;
@@ -423,7 +409,8 @@ async function fetchWeb3PSTime() {
 async function fetchWeb3STime() {
   //const web3 = new Web3("https://rpc.ftm.tools");
   const web3 = new Web3("https://rpc.testnet.fantom.network/");
-  let tokenContract = await new web3.eth.Contract(ABI, FTM_ADDRESS);
+  //let tokenContract = await new web3.eth.Contract(ABI, FTM_MAINCA);
+  let tokenContract = await new web3.eth.Contract(ABI, FTM_TESTCA);
   let timeOne = await tokenContract.methods.showStart().call();
   if(timeOne == 0) return countDownDate;
   return timeOne;
@@ -494,7 +481,7 @@ async function queryMinted(contractAddress) {
   const web3 = new Web3(provider);
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
   let value = await tokenContract.methods.minterCurrentMints().call();
-  console.log("Minted is :" + value.toString());
+  console.log(value, "has been minted");
   return value;
 }
 
@@ -503,20 +490,111 @@ async function queryAlloted(contractAddress) {
   const web3 = new Web3(provider);
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
   let value = await tokenContract.methods.minterMaximumCapacity().call();
-  console.log("Alloted is :" + value.toString());
+  console.log(value, "to mint on this chain");
   return value;
 }
 
-// puts the above two together and innerHTML rewrite could go innerTEXT as well
-async function setNumbers(contractAddress) {
+// async to pull CA's
+async function getCA() {
+
+  // set locals
+  let contractAddress;
+
+  // web3
+  const web3 = new Web3(provider);
+
+  // Get account of the connected wallet (refresh)
+  let accounts = await web3.eth.getAccounts();
+  selectedAccount = accounts[0];
+
+  // chainId
+  const chainId = await web3.eth.getChainId();
+
+  // if-else if for chainID's aka to for Addresses
+  if (chainId == 1) {
+    contractAddress = ETH_MAINCA;
+  } else if (chainId == 56) {
+    contractAddress = BNB_MAINCA;
+  } else if (chainId == 43114) {
+    contractAddress = AVAX_MAINCA;
+  } else if (chainId ==  137) {
+    contractAddress = MATIC_MAINCA;
+  } else if (chainId == 250) {
+    contractAddress = FTM_MAINCA;
+  } else if (chainId == 4) {
+    contractAddress = ETH_TESTCA;
+  } else if (chainId == 97) {
+    contractAddress = BNB_TESTCA;
+  } else if (chainId == 43113) {
+    contractAddress = AVAX_TESTCA;
+  } else if (chainId == 80001) {
+    contractAddress = MATIC_TESTCA;
+  } else if (chainId == 4002) {
+    contractAddress = FTM_TESTCA;
+  } else {
+    console.log("The chainID", chainId, "has no CA set");
+  }
+
+  // return the address
+  return contractAddress;
+}
+
+// puts the above together with innerHTML rewrite could go innerTEXT as well
+async function setNumbers() {
+  let contractAddress = await getCA();
   let theCount = await queryMinted(contractAddress);
   let theTotal = await queryAlloted(contractAddress);
   document.getElementById("count").innerHTML = theCount;
   document.getElementById("total").innerHTML = theTotal;
 }
 
+// async to pull EP's
+async function getEP() {
+
+  // set locals
+  let endpointAddress;
+
+  // web3
+  const web3 = new Web3(provider);
+
+  // chainId
+  const chainId = await web3.eth.getChainId();
+
+  // if-else if for chainID's aka to for Addresses
+  if (chainId == 1) {
+    endpointAddress = ETH_EPMAIN;
+  } else if (chainId == 56) {
+    endpointAddress = BNB_EPMAIN;
+  } else if (chainId == 43114) {
+    endpointAddress = AVAX_EPMAIN;
+  } else if (chainId ==  137) {
+    endpointAddress = MATIC_EPMAIN;
+  } else if (chainId == 250) {
+    endpointAddress = FTM_EPMAIN;
+  } else if (chainId == 4) {
+    endpointAddress = ETH_EPTEST;
+  } else if (chainId == 97) {
+    endpointAddress = BNB_EPTEST;
+  } else if (chainId == 43113) {
+    endpointAddress = AVAX_EPTEST;
+  } else if (chainId == 80001) {
+    endpointAddress = MATIC_EPTEST;
+  } else if (chainId == 4002) {
+    endpointAddress = FTM_EPTEST;
+  } else {
+    console.log("The chainID", chainId, "has no endpoint or CA set");
+  }
+
+  // return the address
+  return endpointAddress;
+}
+
 // web3 send() of both mint functions based off time, yes time
-async function mintThis(contractAddress) {
+async function spawnTinyDaemon() {
+
+  // set locals
+  let contractAddress = await getCA();
+
   // web3
   const web3 = new Web3(provider);
 
@@ -551,12 +629,12 @@ async function mintThis(contractAddress) {
 
 // web3 send() of traversing chains
 async function traverseThis(tokenID, to) {
+
   // set locals
-  let contractAddress;
-  let endpointAddress;
+  let contractAddress = await getCA();
+  let endpointAddress = await getEP();
   let tokenContract;
   let endpointContract;
-  let value;
 
   // web3
   const web3 = new Web3(provider);
@@ -564,44 +642,6 @@ async function traverseThis(tokenID, to) {
   // Get account of the connected wallet (refresh)
   let accounts = await web3.eth.getAccounts();
   selectedAccount = accounts[0];
-
-  // chainId
-  const chainId = await web3.eth.getChainId();
-
-  // if-else if for chainID's aka to for Addresses
-  if (chainId == 1) {
-    contractAddress = ETH_ADDRESS;
-    endpointAddress = ETH_M_ENDPOINT;
-  } else if (chainId == 56) {
-    contractAddress = BNB_ADDRESS;
-    endpointAddress = BNB_M_ENDPOINT;
-  } else if (chainId == 43114) {
-    contractAddress = AVAX_ADDRESS;
-    endpointAddress = AVAX_M_ENDPOINT;
-  } else if (chainId ==  137) {
-    contractAddress = MATIC_ADDRESS;
-    endpointAddress = MATIC_M_ENDPOINT;
-  } else if (chainId == 250) {
-    contractAddress = FTM_ADDRESS;
-    endpointAddress = FTM_M_ENDPOINT;
-  } else if (chainId == 4) {
-    contractAddress = ETH_ADDRESS;
-    endpointAddress = ETH_T_ENDPOINT;
-  } else if (chainId == 97) {
-    contractAddress = BNB_ADDRESS;
-    endpointAddress = BNB_T_ENDPOINT;
-  } else if (chainId == 43113) {
-    contractAddress = AVAX_ADDRESS;
-    endpointAddress = AVAX_T_ENDPOINT;
-  } else if (chainId == 80001) {
-    contractAddress = MATIC_ADDRESS;
-    endpointAddress = MATIC_T_ENDPOINT;
-  } else if (chainId == 4002) {
-    contractAddress = FTM_ADDRESS;
-    endpointAddress = FTM_T_ENDPOINT;
-  } else {
-    console.log("The chainID", chainId, "has no endpoint or CA set");
-  }
 
   // set contracts
   endpointContract = await new web3.eth.Contract(ENDPOINT, endpointAddress);
@@ -626,21 +666,42 @@ async function traverseThis(tokenID, to) {
   console.log("Adapter Params is", adapterParams);
 
   // gas estimate call
-  let amountToSend = await endpointContract.methods.estimateFees(to,
-                                                                 contractAddress,
-                                                                 payload,
-                                                                 false,
-                                                                 adapterParams).call();
+  let amountToSend = await endpointContract
+                             .methods
+                             .estimateFees(
+                                to,
+                                contractAddress,
+                                payload,
+                                false,
+                                adapterParams)
+                             .call();
   if (!amountToSend) {
     console.log("estimateFees().call() from", endpointAddress, "failed");
   }
   console.log("Estimates fees are", amountToSend);
 
   // the transaction
-  value = await tokenContract.methods.traverseChains(to, tokenID).send({ from: selectedAccount, value: amountToSend[0] });
+  let value = await tokenContract
+                  .methods
+                  .traverseChains(
+                     to,
+                     tokenID)
+                  .send(
+                     { from: selectedAccount,
+                       value: amountToSend[0] });
   if (!value) {
     console.log("traverseChains().send() from", selectedAccount, "failed");
   }
+}
+
+async function getChainID() {
+  // web3
+  const web3 = new Web3(provider);
+
+  // chainId
+  const chainId = await web3.eth.getChainId();
+
+  return chainId;
 }
 
 // these are the primary swappers comment out main or test nets...
@@ -648,45 +709,54 @@ async function hitETH() {
   let value = "ETH";
   //await swapToEth("0x1");
   await swapToEth("0x4");
-  console.log("The elder");
+  displayTokenName();
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers(ETH_ADDRESS);
+  await setNumbers();
 }
 
 async function hitFTM() {
   let value = "FTM";
   //await swapChain(FTM_M, "0xfa");
   await swapChain(FTM_T, "0xfa2");
-  console.log("The haunted house");
+  displayTokenName();
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers(FTM_ADDRESS);
+  await setNumbers();
 }
 
 async function hitAVAX() {
   let value = "AVAX";
   //await swapChain(AVAX_M, "0xA86A");
   await swapChain(AVAX_T, "0xA869");
-  console.log("A snowy blockchain");
+  displayTokenName();
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers(AVAX_ADDRESS);
+  await setNumbers();
 }
 
 async function hitMATIC() {
   let value = "MATIC";
   //await swapChain(MATIC_M, "0x89");
   await swapChain(MATIC_T, "0x13881");
-  console.log("Muh-muh-MATIC");
+  displayTokenName();
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers(MATIC_ADDRESS);
+  await setNumbers();
 }
 
 async function hitBNB() {
   let value = "BSC";
   //await swapChain(BNB_M, "0x38");
   await swapChain(BNB_T, "0x61");
-  console.log("Scam chain?");
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers(BNB_ADDRESS);
+  await setNumbers();
 }
 
 // JQuery function for #traversefrom
@@ -708,26 +778,6 @@ $(document).ready(async function() {
   });
 });
 
-// the "mint" function
-async function spawnTinyDaemon() {
-  // Get connected chain id from Ethereum node
-  const web3 = new Web3(provider);
-  const chainId = await web3.eth.getChainId();
-  if (chainId == 1 || chainId == 4) {
-    mintThis(ETH_ADDRESS);
-  } else if (chainId == 43114 || chainId == 43113) {
-    mintThis(AVAX_ADDRESS);
-  } else if (chainId == 56 || chainId == 97) {
-    mintThis(BNB_ADDRESS);
-  } else if (chainId == 137 || chainId == 80001) {
-    mintThis(MATIC_ADDRESS);
-  } else if (chainId == 250 || chainId == 4002) {
-    mintThis(FTM_ADDRESS);
-  } else {
-    console.log("We're not in Kansas anymore, Toto. You be on chain", chainId);
-  }
-}
-
 // the traverse function
 async function traverseTinyDaemon() {
   // let's grab the values...
@@ -736,6 +786,52 @@ async function traverseTinyDaemon() {
 
   //what to send
   traverseThis(tokenID, to);
+}
+
+// display proper token names for donate button
+async function displayTokenName() {
+  // locals
+  let chainId = await getChainID();
+  let displayName;
+
+  // display names for the donate span
+  if (chainId == 1 || chainId == 4) {
+    displayName = "ETH";
+  } else if (chainId == 43114 || chainId == 43113) {
+    displayName = "AVAX";
+  } else if (chainId == 56 || chainId == 97) {
+    displayName = "BNB";
+  } else if (chainId == 137 || chainId == 80001) {
+    displayName = "MATIC";
+  } else if (chainId == 250 || chainId == 4002) {
+    displayName = "FTM";
+  } else {
+    displayName = "";
+    console.log("We're not in Kansas anymore, Toto. You be on chain", chainId);
+  }
+  document.getElementById("token").innerHTML = displayName;
+}
+
+// ready your breakfast and eat hardy, for tonight we eat ramen...
+async function ramenIsOnTheMenu() {
+  // locals
+  let amount = $("#donationamount").val(); // in Tokens
+  amount = amount * 10**18; // in Wei
+  console.log("You are sending", amount);
+  const web3 = new Web3(provider);
+  let contractAddress = await getCA();
+  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
+
+  // the transaction
+  let value = await tokenContract
+                      .methods
+                      .donate()
+                      .send(
+                         { from: selectedAccount,
+                           value: amount });
+  if (!value) {
+    console.log("traverseChains().send() from", selectedAccount, "failed");
+  }
 }
 
 // master event listener... combines all the shit above.
@@ -750,4 +846,5 @@ window.addEventListener('load', async () => {
   document.querySelector("#BSC").addEventListener("click", hitBNB);
   document.querySelector("#btn-buyNFT").addEventListener("click", spawnTinyDaemon);
   document.querySelector("#btn-traverseNFT").addEventListener("click", traverseTinyDaemon);
+  document.querySelector("#btn-Donate").addEventListener("click", ramenIsOnTheMenu);
 });
