@@ -111,7 +111,12 @@
             <img alt="TinyDaemons" src="./images/td_header.png"/>
           </p>
           <h3>10K digital sentinels, serving to spread Daemonic corruption across the Omnichain space.</h3>
-          <h1>TinyDaemons mint complete on</h1>
+          <h1><span id="clockText">Mint live in: </span>
+            <!-- clock output -->
+            <p id="demo"></p>
+          </h1>
+          <h3>1) Connect wallet (top right)</h3>
+          <h3>2) Select chain:</h3>
           <!-- chain buttons -->
           <h2>
             <button id="ETH" class="selectbtn">ETH</button>
@@ -121,7 +126,7 @@
             <button id="BSC" class="selectbtn">BSC</button>
             <button id="OP" class="selectbtn">OP</button>
           </h2>
-          <h3>Scroll down for chain traversal and marketplace links!</h3>
+          <h3> 3) Mint your TinyDaemons!</h3>
           <div class="mint-block">
             <div class="gif-block">
               <img src="./images/tinyminter_cropped.gif" loading="lazy" alt="" class="image-3"/>
@@ -133,7 +138,10 @@
                     method="get"
                     class="form">-->
                 <!-- mint buttons -->
-
+                <button id="btn-buyNFT"
+                        class="button-2 mint-utton w-button">
+                  <span id="buttonText">web3 magik</span>
+                </button>
                 <!--
                 <input type="submit"
                        value="Watch This"
@@ -142,9 +150,18 @@
                        class="button-2 mint-utton w-button"/>-->
               <!--</form>-->
               <!-- stats -->
-
+              <div class="number-of-nfts-minted">
+                <p class="number-minted" id="count">0000</p>
+                <p class="divider">/</p>
+                <p class="total-number-of-nfts" id="total">10000</p>
+              </div>
             </div>
           </div>
+          <p>
+            Mint is free + gas on your chain of choice! </br>
+            Whitelist mint: 2 per button smash/ 4 per wallet. </br>
+            Public mint: 1 per button smash / 10 per wallet (1h after WL).
+          </p>
           <p>
             <em>Web3 wizardry by
               <a href="https://twitter.com/MaxFlowO2"
