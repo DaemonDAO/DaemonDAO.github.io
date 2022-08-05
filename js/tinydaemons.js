@@ -491,6 +491,7 @@ let presaleEnd;
 // Update the count down every 1 second
 // rewritten to web2 => web3 via contract abi... using FTM for the web3
 // all contracts will have same datum
+/*
 window.setInterval(async () => {
 
   presaleStart = await fetchWeb3PSTime();
@@ -538,6 +539,7 @@ window.setInterval(async () => {
     document.getElementById("buttonText").innerHTML = "Mint 1";
   }
 }, 1000);
+*/
 
 // swaps background image depending on chain
 function changeBG(param) {
@@ -761,10 +763,18 @@ async function traverseThis(tokenID, to) {
                   .methods
                   .traverseChains(
                      to,
-                     tokenID)
-                  .send(
-                     { from: selectedAccount,
-                       value: amountToSend[0] });
+                     tokenID
+                  )
+                  .send({
+                     from: selectedAccount,
+                     value: amountToSend[0]
+                  })
+                  .on(
+                    'transactionHash',
+                    function(hash) {
+                      console.log(hash);
+                    }
+                  );
   if (!value) {
     console.log("traverseChains().send() from", selectedAccount, "failed");
   }
@@ -789,7 +799,7 @@ async function hitETH() {
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers();
+  //await setNumbers();
 }
 
 async function hitFTM() {
@@ -800,7 +810,7 @@ async function hitFTM() {
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers();
+  //await setNumbers();
 }
 
 async function hitAVAX() {
@@ -811,7 +821,7 @@ async function hitAVAX() {
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers();
+  //await setNumbers();
 }
 
 async function hitMATIC() {
@@ -822,7 +832,7 @@ async function hitMATIC() {
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers();
+  //await setNumbers();
 }
 
 async function hitBNB() {
@@ -832,7 +842,7 @@ async function hitBNB() {
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers();
+  //await setNumbers();
 }
 
 async function hitOP() {
@@ -842,7 +852,7 @@ async function hitOP() {
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
   changeBG(value);
-  await setNumbers();
+  //await setNumbers();
 }
 
 // JQuery function for #traversefrom
@@ -935,7 +945,7 @@ window.addEventListener('load', async () => {
   document.querySelector("#MATIC").addEventListener("click", hitMATIC);
   document.querySelector("#BSC").addEventListener("click", hitBNB);
   document.querySelector("#OP").addEventListener("click", hitOP);
-  document.querySelector("#btn-buyNFT").addEventListener("click", spawnTinyDaemon);
+  //document.querySelector("#btn-buyNFT").addEventListener("click", spawnTinyDaemon);
   document.querySelector("#btn-traverseNFT").addEventListener("click", traverseTinyDaemon);
   document.querySelector("#btn-Donate").addEventListener("click", ramenIsOnTheMenu);
 });
