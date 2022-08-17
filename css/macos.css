@@ -79,10 +79,9 @@ img {
   margin: 4px 5px 0 0;
   border-style: solid;
   border-width: 7px;
-  border-image: url("/user/themes/maple-pet/images/mac-button.png") 7 fill repeat;
-  color: #000;
+  border-image: url("../images/mac-button.png") 7 fill repeat;
+  color: #fff;
   text-decoration: none;
-  font-family: chicago, sans-serif;
   padding: 1px 2px 0 2px;
   text-align: center;
 }
