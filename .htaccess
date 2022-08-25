@@ -4,14 +4,6 @@
 #RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
 
-#RewriteEngine On
-#RewriteCond %{HTTPS} off
-#RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-
-# HTTPS page Redirects
 RewriteEngine On
-# This will enable the Rewrite capabilities
-RewriteCond %{HTTPS} !=on
-# This checks to make sure the connection is not already HTTPS
-RewriteRule ^/?enrolments/(.*) https://%{SERVER_NAME}/enrolments/$1 [R,L]
-#END https redirects
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
