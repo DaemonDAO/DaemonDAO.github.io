@@ -23,6 +23,26 @@
 	margin: 0;
 }
 
+.infobox-small {
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #fff;
+	border-radius: 3px;
+	text-align: center;
+	margin-bottom: 5px
+}
+.infobox-small img {
+	width: 250px;
+	height: 100%;
+}
+.infobox-small p {
+	margin: 0;
+}
+
 .scroll-x {
 	overflow-x: scroll;
 	white-space: nowrap;
