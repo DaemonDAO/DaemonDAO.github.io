@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>dev tools | tiny daemons | MaxFlowO&#x2082 - developer()</title>
+    <!-- im not importing shit -->
+  </head>
+  <body>
+    <div id="prepare">
+      <button id="btn-connect">
+        <span>Connect</span>
+      </button>
+    </div>
+    <div id="connected" style="display: none">
+      <button id="btn-disconnect">
+        <span id="addWallet">Disconnect</span>
+      </button>
+    </div>
+    <div id="user stats">
+      <h3><span id="addy">Connect to see address</span> on chain id of <span id="chainID">number</span></h3>
+      <table>
+        <tr>
+          <th>Network:</th>
+          <th>Avax</th>
+          <th>Binance</th>
+          <th>Ether</th>
+          <th>Fantom</th>
+          <th>Matic</th>
+          <th>Op</th>
+        </tr>
+        <tr>
+          <th>Developer</th>
+          <th id="od6">Maybe?</th>
+          <th id="od2">Maybe?</th>
+          <th id="od1">Maybe?</th>
+          <th id="od12">Maybe?</th>
+          <th id="od9">Maybe?</th>
+          <th id="od10">Maybe?</th>
+        </tr>
+        <tr>
+          <th>Owner</th>
+          <th id="oo6">Maybe?</th>
+          <th id="oo2">Maybe?</th>
+          <th id="oo1">Maybe?</th>
+          <th id="oo12">Maybe?</th>
+          <th id="oo9">Maybe?</th>
+          <th id="oo10">Maybe?</th>
+        </tr>
+        <tr>
+          <th>Claimable</th>
+          <th id="cc6">Maybe?</th>
+          <th id="cc2">Maybe?</th>
+          <th id="cc1">Maybe?</th>
+          <th id="cc12">Maybe?</th>
+          <th id="cc9">Maybe?</th>
+          <th id="cc10">Maybe?</th>
+        </tr>
+      </table>
+      <button id="btn-refreshRoles">Refresh Table</button>
+      <hr>
+    </div>
+    <div id="claimable">
+      <table>
+        <tr>
+          <th></th>
+          <th>Percentage</th>
+          <th>Amount Claimed</th>
+          <th>Amount Can Claim</th>
+        </tr>
+        <tr>
+          <th>Avax</th>
+          <th id="avaxPercentage"></th>
+          <th id="avaxClaimed"></th>
+          <th id="avaxCanClaim"></th>
+        </tr>
+        <tr>
+          <th>Binance</th>
+          <th id="binancePercentage"></th>
+          <th id="binanceClaimed"></th>
+          <th id="binanceCanClaim"></th>
+        </tr>
+        <tr>
+          <th>Ethereum</th>
+          <th id="etherPercentage"></th>
+          <th id="etherClaimed"></th>
+          <th id="etherCanClaim"></th>
+        </tr>
+        <tr>
+          <th>Fantom</th>
+          <th id="fantomPercentage"></th>
+          <th id="fantomClaimed"></th>
+          <th id="fantomCanClaim"></th>
+        </tr>
+        <tr>
+          <th>Matic</th>
+          <th id="maticPercentage"></th>
+          <th id="maticClaimed"></th>
+          <th id="maticCanClaim"></th>
+        </tr>
+        <tr>
+          <th>Op</th>
+          <th id="opPercentage"></th>
+          <th id="opClaimed"></th>
+          <th id="opCanClaim"></th>
+        </tr>
+      </table>
+      <button id="btn-refreshClaims">Refresh Table</button>
+      <button id="btn-claim">Claim on <span class="chain">Null</span></button>
+      <hr>
+    </div>
+    <div>
+      <h2>Program Set States
+        <button id="swapAvax">Avax</button>
+        <button id="swapBinance">Binance</button>
+        <button id="swapEther">Ether</button>
+        <button id="swapFantom">Fantom</button>
+        <button id="swapMatic">Matic</button>
+        <button id="swapOp">Op</button></h2>
+      <hr>
+      <h3>Set Minter()</h3>
+      <p>
+        <label for="startNumber">Starting Number:</label>
+        <input type="text" id="startNumber" name="startNumber"><br>
+        Current value is: <span id="startNumberCurrent">null</span>
+      </p>
+      <p>
+        <label for="authMint">How many on this Chain:</label>
+        <input type="text" id="authMint" name="authMint"><br>
+        Current value is: <span id="authMintCurrent">null</span>
+      </p>
+      <p>
+        <label for="teamMints">How many team mints:</label>
+        <input type="text" id="teamMints" name="teamMints"><br>
+        Current value is: <span id="teamMintCurrent">null</span>
+      </p>
+      <p>
+        <label for="imgHash">Image Provenance hash:</label>
+        <input type="text" id="imgHash" name="imgHash"><br>
+        Current value is: <span id="imgHashCurrent">null</span>
+      </p>
+      <p>
+        <label for="jsonHash">JSON Provnance Hash:</label>
+       <input type="text" id="jsonHash" name="jsonHash"><br>
+        Current value is: <span id="jsonHashCurrent">null</span>
+      </p>
+      <p>
+        <button id="btn-setMinter">Submit on <span class="chain">Null</span></button>
+      </p>
+      <hr>
+      <h3>Set Presale()</h3>
+      <p>
+        <label for="startTime">Starting Presale Time in unit.timestamp():</label>
+        <input type="text" id="startTime" name="startTime"><br>
+        Current value is: <span id="startTimeCurrent">null</span><br>
+        Readable: <span id="startTimeReadable">null</span>
+      </p>
+      <p>
+        <label for="duration">Duration in seconds:</label>
+        <input type="text" id="duration" name="duration">
+      </p>
+      <p>
+        <button id="btn-setPresale">Submit on <span class="chain">Null</span></button>
+      </p>
+      <hr>
+      <h3>Set Trusted Remote()</h3>
+      <p>
+        <button id="swapOp">Op</button>
+      </p>
+      <p>
+        <label for="chainAvax">Avax:</label>
+        <input type="text" id="chainAvax" name="chainAvax">
+        <button id="btn-setAvax">Submit on <span class="chain">Null</span></button><br>
+        Current value is: <span id="chainAvaxCurrent">null</span>
+      </p>
+      <p>
+        <label for="chainBinance">Binance:</label>
+        <input type="text" id="chainBinance" name="chainBinance">
+        <button id="btn-setBinance">Submit on <span class="chain">Null</span></button><br>
+        Current value is: <span id="chainBinanceCurrent">null</span>
+      </p>
+      <p>
+        <label for="chainEther">Ether:</label>
+        <input type="text" id="chainEther" name="chainEther">
+        <button id="btn-setEther">Submit on <span class="chain">Null</span></button><br>
+        Current value is: <span id="chainEtherCurrent">null</span>
+      </p>
+      <p>
+        <label for="chainFantom">Fantom:</label>
+        <input type="text" id="chainFantom" name="chainFantom">
+        <button id="btn-setFantom">Submit on <span class="chain">Null</span></button><br>
+        Current value is: <span id="chainFantomCurrent">null</span>
+      </p>
+      <p>
+        <label for="chainMatic">Matic:</label>
+        <input type="text" id="chainMatic" name="chainMatic">
+        <button id="btn-setMatic">Submit on <span class="chain">Null</span></button><br>
+        Current value is: <span id="chainMaticCurrent">null</span>
+      </p>
+      <p>
+        <label for="chainOp">Op:</label>
+        <input type="text" id="chainOp" name="chainOp">
+        <button id="btn-setOp">Submit on <span class="chain">Null</span></button><br>
+        Current value is: <span id="chainOPCurrent">null</span>
+      </p>
+      <hr>
+      <h3>Set Contract URI()</h3>
+      <p>
+        <label for="contractURI">URL to Contract URI:</label>
+        <input type="text" id="contractURI" name="contractURI"><br>
+        Current value is: <span id="contractURICurrent">null</span>
+      </p>
+      <p>
+        <button id="btn-setContractURI">Submit on <span class="chain">Null</span></button>
+      </p>
+      <hr>
+      <h3>Set Base URI()</h3>
+      <p>
+        <label for="baseURI">URL to Base URI:</label>
+        <input type="text" id="baseURI" name="baseURI">
+      </p>
+      <p>
+        <button id="btn-setBaseURI">Submit on <span class="chain">Null</span></button>
+      </p>
+      <hr>
+      <h3>Add Split()</h3>
+      <p>
+        <label for="splitAddress">Address:</label>
+        <input type="text" id="splitAddress" name="splitAddress">
+        <button id="btn-checkSplitAddress">Check this on <span class="chain">Null</span></button>
+      </p>
+      <p>
+        <label for="splitShares">Shares:</label>
+        <input type="text" id="splitShares" name="splitShares">
+        Current value is: <span id="splitSharesCurrent">null</span>
+      </p>
+      <p>
+        <button id="btn-setAddSplit">Submit on <span class="chain">Null</span></button>
+      </p>
+      <hr>
+      <h3>ERC 2981 This()</h3>
+      <p>
+        <label for="erc2981ThisPermille">Permille (25.5% is 255):</label>
+        <input type="text" id="erc2981ThisPermille" name="erc2981ThisPermille">
+      </p>
+      <p>
+        <button id="btn-setERC2981This">Submit on <span class="chain">Null</span></button>
+      </p>
+      <hr>
+      <h3>Set Royalties()</h3>
+      <p>
+        <label for="setRoyaltiesAddress">Address:</label>
+        <input type="text" id="setRoyaltiesAddress" name="setRoyaltiesAddress">
+      </p>
+      <p>
+        <label for="setRoyaltiesPermille">Permille (25.5% is 255):</label>
+        <input type="text" id="setRoyaltiesPermille" name="setRoyaltiesPermille">
+      </p>
+      <p>
+        <button id="btn-setRoyalties">Submit on <span class="chain">Null</span></button>
+      </p>
+      <hr>
+      <h3>Set Gas For Destination LZ Receive()</h3>
+      <p>
+        <label for="setGasValue">Value:</label>
+        <input type="text" id="setGasValue" name="setGasValue"><br>
+        Current value is: <span id="setGasValueCurrent">null</span>
+      </p>
+      <p>
+        <button id="btn-setGas">Submit on <span class="chain">Null</span></button>
+      </p>
+      <hr>
+    </div>
+    <div>
+      <h2>Program Admin
+        <button id="swapAvax">Avax</button>
+        <button id="swapBinance">Binance</button>
+        <button id="swapEther">Ether</button>
+        <button id="swapFantom">Fantom</button>
+        <button id="swapMatic">Matic</button>
+        <button id="swapOp">Op</button></h2>
+      <hr>
+      <h3>Team Mint</h3>
+      <p>
+        <button id="btn-teamMint">Mint on <span class="chain">Null</span></button>
+      </p>
+      <hr>
+      <h3>onlyDev() Role</h3>
+      <p>
+        <h4>Push Method</h4>
+        <label for="pushDevAddress">Address:</label>
+        <input type="text" id="pushDevAddress" name="pushDevAddress">
+        <button id="btn-pushDev">Submit on <span class="chain">Null</span></button><br>
+        <button id="btn-checkDev">Check Address on <span class="chain">Null</span></button>
+        Is a developer: <span id="checkDev">null</span>
+      </p>
+      <p>
+        <h4>Push-Pull Method</h4>
+        <label for="transferDevAddress">Address:</label>
+        <input type="text" id="transferDevAddress" name="transferDevAddress">
+        <button id="btn-transferDev">Submit on <span class="chain">Null</span></button><br>
+        <button id="btn-checkDev2">Check Address on <span class="chain">Null</span></button>
+        Is a developer: <span id="checkDev2">null</span>
+      </p>
+      <hr>
+      <h3>onlyOwner() Role</h3>
+      <p>
+        <h4>Push Method</h4>
+        <label for="pushOwnerAddress">Address:</label>
+        <input type="text" id="pushOwnerAddress" name="pushOwnerAddress">
+        <button id="btn-pushOwner">Submit on <span class="chain">Null</span></button><br>
+        <button id="btn-checkOwner">Check Address on <span class="chain">Null</span></button>
+        Is a owner: <span id="checkOwner">null</span>
+      </p>
+      <p>
+        <h4>Push-Pull Method</h4>
+        <label for="transferOwnerAddress">Address:</label>
+        <input type="text" id="transferOwnerAddress" name="transferOwnerAddress">
+        <button id="btn-transferOwner">Submit on <span class="chain">Null</span></button><br>
+        <button id="btn-checkOwner2">Check Address on <span class="chain">Null</span></button>
+        Is a owner: <span id="checkOwner2">null</span>
+      </p>
+      <hr>
+    </div>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- web3 adds -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3modal@1.9.0/dist/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fortmatic@2.0.6/dist/fortmatic.js"></script>
+  <script src="./js/td-devtools.js"></script>
+</html>
