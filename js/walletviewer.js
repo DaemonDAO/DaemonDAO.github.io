@@ -71,6 +71,196 @@ let web3Modal
 // Chosen wallet provider given by the dialog window
 let provider;
 
+// Add's networks to metamask
+async function addNetwork(id) {
+  let networkData;
+  switch (id) {
+    // OP Test-G
+    case 420:
+      networkData = [
+        {
+          chainId: "0x1A4",
+          chainName: "Optimism Goerli",
+          rpcUrls: ["https://goerli.optimism.io"],
+          nativeCurrency: {
+            name: "Optimism ETH",
+            symbol: "oETH",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://blockscout.com/optimism/goerli"],
+        },
+      ];
+      break;
+    // OP Test-K
+    case 69:
+      networkData = [
+        {
+          chainId: "0x45",
+          chainName: "Optimism Kovan",
+          rpcUrls: ["https://kovan.optimism.io"],
+          nativeCurrency: {
+            name: "Optimism ETH",
+            symbol: "oETH",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://kovan-optimistic.etherscan.io"],
+        },
+      ];
+      break;
+    // OP main
+    case 10:
+      networkData = [
+        {
+          chainId: "0xA",
+          chainName: "Optimism",
+          rpcUrls: ["https://mainnet.optimism.io"],
+          nativeCurrency: {
+            name: "Optimism ETH",
+            symbol: "oETH",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://optimistic.etherscan.io/"],
+        },
+      ];
+      break;
+    //AVAX-C
+    case 43114:
+      networkData = [
+        {
+          chainId: "0xA86A",
+          chainName: "Avalanche C-Chain",
+          rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
+          nativeCurrency: {
+            name: "Avalanche",
+            symbol: "AVAX",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://snowtrace.io"],
+        },
+      ];
+      break;
+    //AVAX-C-testnet
+    case 43113:
+      networkData = [
+        {
+          chainId: "0xA869",
+          chainName: "FUJI (Avalanche)",
+          rpcUrls: ["https://api.avax-test.network/ext/bc/C/rpc"],
+          nativeCurrency: {
+            name: "Avalanche",
+            symbol: "AVAX",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://testnet.snowtrace.io"],
+        },
+      ];
+      break;
+    //BNB
+    case 56:
+      networkData = [
+        {
+          chainId: "0x38",
+          chainName: "Binance Scam Chain",
+          rpcUrls: ["https://bsc-dataseed.binance.org/"],
+          nativeCurrency: {
+            name: "Binance",
+            symbol: "BNB",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://bscscan.com"],
+        },
+      ];
+      break;
+    //BNB Testnet
+    case 97:
+      networkData = [
+        {
+          chainId: "0x61",
+          chainName: "Binance Scam Chain Testnet",
+          rpcUrls: ["https://data-seed-prebsc-1-s1.binance.org:8545/"],
+          nativeCurrency: {
+            name: "Binance",
+            symbol: "BNB",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://testnet.bscscan.com"],
+        },
+      ];
+      break;
+   //Matic Mainnet
+    case 137:
+      networkData = [
+        {
+          chainId: "0x89",
+          chainName: "Polygon",
+          rpcUrls: ["https://polygon-rpc.com/"],
+          nativeCurrency: {
+            name: "MATIC",
+            symbol: "MATIC",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://polygonscan.com/"],
+        },
+      ];
+      break;
+   //Matic Mumbai
+    case 80001:
+      networkData = [
+        {
+          chainId: "0x13881",
+          chainName: "Mumbai (Polygon)",
+          rpcUrls: ["https://rpc-mumbai.maticvigil.com/"],
+          nativeCurrency: {
+            name: "MATIC",
+            symbol: "MATIC",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://mumbai.polygonscan.com/"],
+        },
+      ];
+      break;
+    //Fantom
+    case 250:
+      networkData = [
+        {
+          chainId: "0xfa",
+          chainName: "Fantom",
+          rpcUrls: ["https://rpc.ftm.tools"],
+          nativeCurrency: {
+            name: "Fantom",
+            symbol: "FTM",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://ftmscan.com/"],
+        },
+      ];
+      break;
+    //Fantom Testnet
+    case 4002:
+      networkData = [
+        {
+          chainId: "0xfa2",
+          chainName: "Fantom Testnet",
+          rpcUrls: ["https://rpc.testnet.fantom.network/"],
+          nativeCurrency: {
+            name: "Fantom",
+            symbol: "FTM",
+            decimals: 18,
+          },
+          blockExplorerUrls: ["https://testnet.ftmscan.com/"],
+        },
+      ];
+      break;
+    default:
+      break;
+  }
+
+  // add these
+  return window.ethereum.request({
+    method: "wallet_addEthereumChain",
+    params: networkData,
+  });
+}
 
 // Address of the selected account
 let selectedAccount;
@@ -424,6 +614,13 @@ async function getCA() {
 }
 
 // puts the above together with innerHTML rewrite could go innerTEXT as well
+async function setNumbers() {
+  let contractAddress = await getCA();
+  let theCount = await queryMinted(contractAddress);
+  let theTotal = await queryAlloted(contractAddress);
+  document.getElementById("count").innerHTML = theCount;
+  document.getElementById("total").innerHTML = theTotal;
+}
 
 // async to pull EP's
 async function getEP() {
@@ -594,9 +791,228 @@ async function getChainID() {
 }
 
 // these are the primary swappers comment out main or test nets...
-
+async function hitETH() {
+  let value = "ETH";
+  await swapToEth("0x1");
+  //await swapToEth("0x4");
+  displayTokenName();
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
+  changeBG(value);
+  //await setNumbers();
 }
 
+async function hitFTM() {
+  let value = "FTM";
+  await swapChain(FTM_M, "0xfa");
+  //await swapChain(FTM_T, "0xfa2");
+  displayTokenName();
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
+  changeBG(value);
+  //await setNumbers();
+}
+
+async function hitAVAX() {
+  let value = "AVAX";
+  await swapChain(AVAX_M, "0xA86A");
+  //await swapChain(AVAX_T, "0xA869");
+  displayTokenName();
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
+  changeBG(value);
+  //await setNumbers();
+}
+
+async function hitMATIC() {
+  let value = "MATIC";
+  await swapChain(MATIC_M, "0x89");
+  //await swapChain(MATIC_T, "0x13881");
+  displayTokenName();
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
+  changeBG(value);
+  //await setNumbers();
+}
+
+async function hitBNB() {
+  let value = "BSC";
+  await swapChain(BNB_M, "0x38");
+  //await swapChain(BNB_T, "0x61");
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
+  changeBG(value);
+  //await setNumbers();
+}
+
+async function hitOP() {
+  let value = "OP";
+  await swapChain(BNB_M, "0xA");
+  //await swapChain(BNB_T, "0x45");
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
+  changeBG(value);
+  //await setNumbers();
+}
+
+// JQuery function for #traversefrom
+$(document).ready(async function() {
+  $('#traversefrom').change(async function() {
+     var value = $(this).val();
+     // if-else if for swapping chains
+     if (value == "ETH") {
+       hitETH();
+     } else if (value == "FTM") {
+       hitFTM();
+     } else if (value == "AVAX") {
+       hitAVAX();
+     } else if (value == "MATIC") {
+       hitMATIC();
+     } else if (value == "BSC") {
+       hitBNB();
+     } else if (value == "OP") {
+       hitOP();
+     }
+  });
+});
+
+// the traverse function
+async function traverseTinyDaemon() {
+  // let's grab the values...
+  let to = $('#traverseto').val();
+  let tokenID = $('#tinydaemonid').val();
+
+  //what to send
+  traverseThis(tokenID, to);
+}
+
+// display proper token names for donate button
+async function displayTokenName() {
+  // locals
+  let chainId = await getChainID();
+  let displayName;
+
+  // display names for the donate span
+  if (chainId == 1 || chainId == 4) {
+    displayName = "ETH";
+  } else if (chainId == 43114 || chainId == 43113) {
+    displayName = "AVAX";
+  } else if (chainId == 56 || chainId == 97) {
+    displayName = "BNB";
+  } else if (chainId == 137 || chainId == 80001) {
+    displayName = "MATIC";
+  } else if (chainId == 250 || chainId == 4002) {
+    displayName = "FTM";
+  } else if (chainId == 10 || chainId == 69) {
+    displayName = "OP";
+  } else {
+    displayName = "";
+    console.log("We're not in Kansas anymore, Toto. You be on chain", chainId);
+  }
+  document.getElementById("token").innerHTML = displayName;
+}
+
+// ready your breakfast and eat hardy, for tonight we eat ramen...
+async function ramenIsOnTheMenu() {
+  // locals
+  let amount = $("#donationamount").val(); // in Tokens
+  amount = amount * 10**18; // in Wei
+  console.log("You are sending", amount);
+  const web3 = new Web3(provider);
+  let contractAddress = await getCA();
+  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
+
+  // the transaction
+  let value = await tokenContract
+                      .methods
+                      .donate()
+                      .send(
+                         { from: selectedAccount,
+                           value: amount });
+  if (!value) {
+    console.log("traverseChains().send() from", selectedAccount, "failed");
+  }
+}
+
+async function refreshNFTs() {
+  const web3 = new Web3(provider);
+  const accounts = await web3.eth.getAccounts();
+  selectedAccount = accounts[0];
+  await populateNFTs(selectedAccount);
+}
+
+async function populateNFTs(address) {
+  const token_address = NFT_ADDRESS
+  const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
+  // TODO: in the future, to see all NFTs, modify contractCreation and use 0
+  let startBlock = contractCreation
+  const ftmscan_query = `https://api.ftmscan.com/api?module=account&action=tokennfttx`
+  + `&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc&apikey=${FTMSCAN_API_KEY}`
+  // console.log(ftmscan_query)
+
+  const result = await axios.get(ftmscan_query)
+  .then(response => {
+    // console.log('Axios got a response...');console.log(response);
+    return response.data.result
+  })
+  .catch(error => {
+    console.log(error)
+  })
+
+  // console.log(result)
+
+  let dictionary = {}
+  for (let t of result) {
+    // Only filter where t.to is this address (t.from sends it away)
+    if (t.contractAddress == token_address) {
+      const key = `${t.contractAddress}_${t.tokenID}`
+      let data = {}
+      data.owned = (t.to.toLowerCase() == address.toLowerCase()) // t.from is the address = transferred out
+      data.token_id = t.tokenID
+      data.collection_name = t.tokenName
+      data.collection_symbol = t.tokenSymbol
+      data.collection_address = t.contractAddress
+      data.hash = `https://ftmscan.com/tx/${t.hash}`
+      if (!(key in dictionary) && data.owned) {
+        // Only the 1st incoming transfer is kept (in most cases: the initial purchase)
+        dictionary[key] = data
+      }
+      if (key in dictionary) {
+        // If the NFT was purchased, then transferred out/sold, owned is set to false
+        dictionary[key].owned = data.owned
+      }
+    }
+  }
+
+  const token_trx = Object.values(dictionary)
+  // console.log(token_trx)
+  const token_ids = token_trx.filter(t => t.owned).map(t => t.token_id)
+  if (token_ids.length > 0) {
+    // console.log(token_ids)
+    const ids = token_ids.join(',')
+    // console.log(ids)
+    const punks_by_id_query = `${document.location.origin}/punks-by-id.php?ids=${ids}`
+    // console.log(punks_by_id_query)
+    const nfts = await axios.get(punks_by_id_query)
+    .then(response => {
+      // console.log('Axios got a response...');console.log(response);
+      return response.data
+    })
+    .catch(error => {
+      console.log(error)
+    })
+
+    // console.log(nfts)
+
+    nftsViewModel = new NftsViewModel(nfts)
+    document.querySelector("#nftsGallery").classList.remove('d-none')
+    ko.applyBindings(nftsViewModel)
+  }
+  // console.log(`\nThere are ${result.length} past transfers of ERC721 tokens for ${address}`)
+  console.log(`${address} owns ${Object.keys(dictionary).length} binary punks`)
+}
+
+let timeRequested = 0;
 
 
 // master event listener... combines all the shit above.
@@ -604,4 +1020,14 @@ window.addEventListener('load', async () => {
   init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
+  document.querySelector("#ETH").addEventListener("click", hitETH);
+  document.querySelector("#FTM").addEventListener("click", hitFTM);
+  document.querySelector("#AVAX").addEventListener("click", hitAVAX);
+  document.querySelector("#MATIC").addEventListener("click", hitMATIC);
+  document.querySelector("#BSC").addEventListener("click", hitBNB);
+  document.querySelector("#OP").addEventListener("click", hitOP);
+  //document.querySelector("#btn-buyNFT").addEventListener("click", spawnTinyDaemon);
+  document.querySelector("#btn-traverseNFT").addEventListener("click", traverseTinyDaemon);
+  document.querySelector("#btn-Donate").addEventListener("click", ramenIsOnTheMenu);
+  document.querySelector("#btn-refreshNFTs").addEventListener("click", refreshNFTs);
 });
