@@ -384,6 +384,8 @@ async function onConnect() {
   provider.on("networkChanged", (networkId) => {
     fetchAccountData();
   });
+  const element = document.getElementById('helloplsconnect');
+  element.remove();
 }
 
 // "disconnect button"
