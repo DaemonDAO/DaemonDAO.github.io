@@ -955,4 +955,3 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-traverseNFT").addEventListener("click", traverseTinyDaemon);
   //document.querySelector("#btn-Donate").addEventListener("click", ramenIsOnTheMenu);
 });
-populateNFTs(selectedAccount, '0xbea7c3f2d91a9c6fd7f5aa9c803d4c31c1db8db9');
