@@ -1023,6 +1023,7 @@ window.addEventListener('load', async () => {
   init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
+  document.querySelector("#btn-refreshNFTs").addEventListener("click", refreshNFTs);
   document.querySelector("#ETH").addEventListener("click", hitETH);
   document.querySelector("#FTM").addEventListener("click", hitFTM);
   document.querySelector("#AVAX").addEventListener("click", hitAVAX);
@@ -1031,6 +1032,6 @@ window.addEventListener('load', async () => {
   document.querySelector("#OP").addEventListener("click", hitOP);
   //document.querySelector("#btn-buyNFT").addEventListener("click", spawnTinyDaemon);
   document.querySelector("#btn-traverseNFT").addEventListener("click", traverseTinyDaemon);
-  document.querySelector("#btn-Donate").addEventListener("click", ramenIsOnTheMenu);
-  document.querySelector("#btn-refreshNFTs").addEventListener("click", refreshNFTs);
+  //document.querySelector("#btn-Donate").addEventListener("click", ramenIsOnTheMenu);
+
 });
