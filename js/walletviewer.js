@@ -895,6 +895,51 @@ async function displayTokenName() {
 }
 
 
+
+async function populateNFTs(address, contractAddress) {
+  const token_address = contractAddress
+  const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
+  // TODO: in the future, to see all NFTs, modify contractCreation and use 0
+  let startBlock = contractCreation
+  const ftmscan_query = `https://api.ftmscan.com/api?module=account&action=tokennfttx`
+  + `&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc&apikey=${FTMSCAN_API_KEY}`
+  // console.log(ftmscan_query)
+
+  const result = await axios.get(ftmscan_query)
+  .then(response => {
+    // console.log('Axios got a response...');console.log(response);
+    return response.data.result
+  })
+  .catch(error => {
+    console.log(error)
+  })
+
+  // console.log(result)
+
+  let dictionary = {}
+  for (let t of result) {
+    // Only filter where t.to is this address (t.from sends it away)
+    if (t.contractAddress == token_address) {
+      const key = `${t.contractAddress}_${t.tokenID}`
+      let data = {}
+      data.owned = (t.to.toLowerCase() == address.toLowerCase()) // t.from is the address = transferred out
+      data.token_id = t.tokenID
+      data.collection_name = t.tokenName
+      data.collection_symbol = t.tokenSymbol
+      data.collection_address = t.contractAddress
+      data.hash = `https://ftmscan.com/tx/${t.hash}`
+      if (!(key in dictionary) && data.owned) {
+        // Only the 1st incoming transfer is kept (in most cases: the initial purchase)
+        dictionary[key] = data
+      }
+      if (key in dictionary) {
+        // If the NFT was purchased, then transferred out/sold, owned is set to false
+        dictionary[key].owned = data.owned
+      }
+    }
+  }
+
+
 // master event listener... combines all the shit above.
 window.addEventListener('load', async () => {
   init();
@@ -910,3 +955,4 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-traverseNFT").addEventListener("click", traverseTinyDaemon);
   //document.querySelector("#btn-Donate").addEventListener("click", ramenIsOnTheMenu);
 });
+populateNFTs(selectedAccount, '0xbea7c3f2d91a9c6fd7f5aa9c803d4c31c1db8db9');
