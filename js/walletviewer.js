@@ -944,7 +944,7 @@ async function refreshNFTs() {
 }
 
 async function populateNFTs(address) {
-  const token_address = NFT_ADDRESS
+  const token_address = '0xBEa7c3F2D91a9c6fD7F5aA9c803d4C31C1dB8db9'
   const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
   let startBlock = contractCreation
@@ -983,6 +983,7 @@ async function populateNFTs(address) {
         // If the NFT was purchased, then transferred out/sold, owned is set to false
         dictionary[key].owned = data.owned
       }
+      console.log(dictionary)
     }
   }
 
