@@ -46,7 +46,7 @@ const AVAX_EPMAIN = "0x3c2269811836af69497E5F486A85D7316753cf62";
 const AVAX_EPTEST = "0x93f54D755A063cE7bB9e6Ac47Eccc8e33411d706";
 const BNB_EPMAIN = "0x3c2269811836af69497E5F486A85D7316753cf62";
 const BNB_EPTEST = "0x6Fcb97553D41516Cb228ac03FdC8B9a0a9df04A1";
-const ETH_EPMAIN = "0x3c2269811836af69497E5F486A85D7316753cf62";
+const ETH_EPMAIN = "0x66A71Dcef29A0fFBDBE3c6a460a3B5BC225Cd675";
 const ETH_EPTEST = "0x79a63d6d8BBD5c6dfc774dA79bCcD948EAcb53FA";
 const FTM_EPMAIN = "0xb6319cC6c8c27A8F5dAF0dD3DF91EA35C4720dd7";
 const FTM_EPTEST = "0x7dcAD72640F835B0FA36EFD3D6d3ec902C7E5acf";
@@ -542,9 +542,27 @@ window.setInterval(async () => {
 */
 
 // swaps background image depending on chain
+function changeBG(param) {
+  $("body").css("background-image", "url(./images/"+param+"_tbg.png)");
+}
 
+// web3 call() for how many have minted on that contract
+async function queryMinted(contractAddress) {
+  const web3 = new Web3(provider);
+  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
+  let value = await tokenContract.methods.minterCurrentMints().call();
+  console.log(value, "has been minted");
+  return value;
+}
 
-
+// web3 call() for how many allowed to mint on that contract
+async function queryAlloted(contractAddress) {
+  const web3 = new Web3(provider);
+  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
+  let value = await tokenContract.methods.minterMaximumCapacity().call();
+  console.log(value, "to mint on this chain");
+  return value;
+}
 
 // async to pull CA's
 async function getCA() {
@@ -894,51 +912,27 @@ async function displayTokenName() {
   document.getElementById("token").innerHTML = displayName;
 }
 
+// ready your breakfast and eat hardy, for tonight we eat ramen...
+async function ramenIsOnTheMenu() {
+  // locals
+  let amount = $("#donationamount").val(); // in Tokens
+  amount = amount * 10**18; // in Wei
+  console.log("You are sending", amount);
+  const web3 = new Web3(provider);
+  let contractAddress = await getCA();
+  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
 
-
-async function populateNFTs(address, contractAddress) {
-  const token_address = contractAddress
-  const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
-  // TODO: in the future, to see all NFTs, modify contractCreation and use 0
-  let startBlock = contractCreation
-  const ftmscan_query = `https://api.ftmscan.com/api?module=account&action=tokennfttx`
-  + `&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc&apikey=${FTMSCAN_API_KEY}`
-  // console.log(ftmscan_query)
-
-  const result = await axios.get(ftmscan_query)
-  .then(response => {
-    // console.log('Axios got a response...');console.log(response);
-    return response.data.result
-  })
-  .catch(error => {
-    console.log(error)
-  })
-
-  // console.log(result)
-
-  let dictionary = {}
-  for (let t of result) {
-    // Only filter where t.to is this address (t.from sends it away)
-    if (t.contractAddress == token_address) {
-      const key = `${t.contractAddress}_${t.tokenID}`
-      let data = {}
-      data.owned = (t.to.toLowerCase() == address.toLowerCase()) // t.from is the address = transferred out
-      data.token_id = t.tokenID
-      data.collection_name = t.tokenName
-      data.collection_symbol = t.tokenSymbol
-      data.collection_address = t.contractAddress
-      data.hash = `https://ftmscan.com/tx/${t.hash}`
-      if (!(key in dictionary) && data.owned) {
-        // Only the 1st incoming transfer is kept (in most cases: the initial purchase)
-        dictionary[key] = data
-      }
-      if (key in dictionary) {
-        // If the NFT was purchased, then transferred out/sold, owned is set to false
-        dictionary[key].owned = data.owned
-      }
-    }
+  // the transaction
+  let value = await tokenContract
+                      .methods
+                      .donate()
+                      .send(
+                         { from: selectedAccount,
+                           value: amount });
+  if (!value) {
+    console.log("traverseChains().send() from", selectedAccount, "failed");
   }
-
+}
 
 // master event listener... combines all the shit above.
 window.addEventListener('load', async () => {
@@ -953,5 +947,5 @@ window.addEventListener('load', async () => {
   document.querySelector("#OP").addEventListener("click", hitOP);
   //document.querySelector("#btn-buyNFT").addEventListener("click", spawnTinyDaemon);
   document.querySelector("#btn-traverseNFT").addEventListener("click", traverseTinyDaemon);
-  //document.querySelector("#btn-Donate").addEventListener("click", ramenIsOnTheMenu);
+  document.querySelector("#btn-Donate").addEventListener("click", ramenIsOnTheMenu);
 });
