@@ -800,7 +800,7 @@ async function hitETH() {
   displayTokenName();
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
-  changeBG(value);
+  //changeBG(value);
   //await setNumbers();
 }
 
@@ -811,7 +811,7 @@ async function hitFTM() {
   displayTokenName();
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
-  changeBG(value);
+  //changeBG(value);
   //await setNumbers();
 }
 
@@ -822,7 +822,7 @@ async function hitAVAX() {
   displayTokenName();
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
-  changeBG(value);
+  //changeBG(value);
   //await setNumbers();
 }
 
@@ -833,7 +833,7 @@ async function hitMATIC() {
   displayTokenName();
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
-  changeBG(value);
+  //changeBG(value);
   //await setNumbers();
 }
 
@@ -843,7 +843,7 @@ async function hitBNB() {
   //await swapChain(BNB_T, "0x61");
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
-  changeBG(value);
+  //changeBG(value);
   //await setNumbers();
 }
 
@@ -853,7 +853,7 @@ async function hitOP() {
   //await swapChain(BNB_T, "0x45");
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
-  changeBG(value);
+  //changeBG(value);
   //await setNumbers();
 }
 
@@ -911,7 +911,7 @@ async function displayTokenName() {
     displayName = "";
     console.log("We're not in Kansas anymore, Toto. You be on chain", chainId);
   }
-  document.getElementById("token").innerHTML = displayName;
+  //document.getElementById("token").innerHTML = displayName;
 }
 
 // ready your breakfast and eat hardy, for tonight we eat ramen...
