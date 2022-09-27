@@ -983,6 +983,7 @@ async function populateNFTs(address) {
   if (tokenList.length > 0) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
+    bdgallery.id = "galleryBD";
     document.getElementById('content').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
@@ -1038,6 +1039,7 @@ async function populateDPs(address) {
   if (tokenList.length > 0) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
+    bdgallery.id = "galleryDP";
     document.getElementById('content').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>DaemonPunks</span></div>`;
@@ -1095,6 +1097,7 @@ async function populateDOFOs(address) {
   if (tokenList.length > 0) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
+    bdgallery.id = "galleryDOFO";
     document.getElementById('content').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>Daemons of Fantom Opera</span></div>`;
