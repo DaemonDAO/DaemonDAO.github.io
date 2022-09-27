@@ -975,8 +975,9 @@ async function populateNFTs(address) {
       if (index > -1) {tokenList.splice(index, 1)}}} //remove token ID if outgoing
 
 
-  const token_trx = Object.values(dictionary)
+  //const token_trx = Object.values(dictionary)
   console.log(tokenList)
+  console.log(`${address} owns ${tokenList.length} BitDaemons`)
   const token_ids = token_trx.filter(t => t.owned).map(t => t.token_id)
   if (token_ids.length > 0) {
     console.log(token_ids)
@@ -1000,7 +1001,7 @@ async function populateNFTs(address) {
     ko.applyBindings(nftsViewModel)
   }
   // console.log(`\nThere are ${result.length} past transfers of ERC721 tokens for ${address}`)
-  console.log(`${address} owns ${Object.keys(dictionary).length} binary punks`)
+  //console.log(`${address} owns ${Object.keys(dictionary).length} binary punks`)
 }
 
 let timeRequested = 0;
