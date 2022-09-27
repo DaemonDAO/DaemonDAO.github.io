@@ -946,6 +946,9 @@ async function refreshNFTs() {
 }
 
 async function populateNFTs(address) {
+  const web3 = new Web3(provider);
+  const accounts = await web3.eth.getAccounts();
+  selectedAccount = accounts[0];
   const token_address = '0xBEa7c3F2D91a9c6fD7F5aA9c803d4C31C1dB8db9'
   const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
@@ -1047,7 +1050,8 @@ async function populateDPs(address) {
       <div id="bd-${tokenList[i]}" class="infobox">
         <p><img alt="DMNPUNK_${tokenList[i]}" src="./images/DaemonPunks/DMNPUNK_${tokenList[i]}.png" /></p>
         <h3>DaemonPunk #${tokenList[i]}</h3>
-        <p><a href="https://paintswap.finance/marketplace/assets/${token_address}/${tokenList[i]}" target="_blank" class="mac-button">MRKT</a></p>
+        <p><a href="https://paintswap.finance/marketplace/assets/${token_address}/${tokenList[i]}" target="_blank" class="mac-button">MRKT (PS)</a>
+        <a href="https://nftkey.app/collections/daemonpunks/token-details/?tokenId=${tokenList[i]}" target="_blank" class="mac-button">MRKT (NFTKey)</a></p>
       </div>
       `;
      }
