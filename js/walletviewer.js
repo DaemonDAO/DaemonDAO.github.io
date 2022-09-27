@@ -986,11 +986,11 @@ async function populateNFTs(address) {
     galleryCode = `<h1>You own ${tokenList.length} BitDaemons</h1>`
     for(i in tokenList){
       galleryCode += `
-      <div id="bd-${i}" class="info-box">
-       <div class="nft-card-id HVCenter">NFT ID: ${i}</div>
-       <div class="nft-card-img-holder HVCenter">
-        <img src="${tokenUris[i]}"></div>
-       <div class="nft-card-owner">Owner:&nbsp;${tokenOwners[i]}</div>
+      <div id="bd-${i}" class="infobox">
+        <p><img alt="" src="https://media-nft.paintswap.finance/250_${token_address}_${i}.png" /></p>
+        <h3>BitDaemon #${i}</h3>
+        <p><a href="walletviewer.html" class="mac-button">TRNSFR</a>
+        <a href="https://paintswap.finance/marketplace/assets/${token_address}/${i}" target="_blank" class="mac-button">MRKT</a></p>
       </div>
       `;
      }
