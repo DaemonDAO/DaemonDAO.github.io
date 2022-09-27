@@ -976,29 +976,10 @@ async function populateNFTs(address) {
 
 
   //const token_trx = Object.values(dictionary)
-  console.log(tokenList)
+  //console.log(tokenList)
   console.log(`${address} owns ${tokenList.length} BitDaemons`)
-  const token_ids = token_trx.filter(t => t.owned).map(t => t.token_id)
   if (token_ids.length > 0) {
-    console.log(token_ids)
-    const ids = token_ids.join(',')
-    // console.log(ids)
-    const punks_by_id_query = `${document.location.origin}/punks-by-id.php?ids=${ids}`
-    // console.log(punks_by_id_query)
-    const nfts = await axios.get(punks_by_id_query)
-    .then(response => {
-      // console.log('Axios got a response...');console.log(response);
-      return response.data
-    })
-    .catch(error => {
-      console.log(error)
-    })
-
-    // console.log(nfts)
-
-    nftsViewModel = new NftsViewModel(nfts)
-    document.querySelector("#nftsGallery").classList.remove('d-none')
-    ko.applyBindings(nftsViewModel)
+    //create BitDaemons div
   }
   // console.log(`\nThere are ${result.length} past transfers of ERC721 tokens for ${address}`)
   //console.log(`${address} owns ${Object.keys(dictionary).length} binary punks`)
