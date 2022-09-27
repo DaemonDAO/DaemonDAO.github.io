@@ -947,9 +947,6 @@ async function refreshNFTs() {
 }
 
 async function populateNFTs(address) {
-  const web3 = new Web3(provider);
-  const accounts = await web3.eth.getAccounts();
-  selectedAccount = accounts[0];
   const token_address = '0xBEa7c3F2D91a9c6fD7F5aA9c803d4C31C1dB8db9'
   const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
