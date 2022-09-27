@@ -320,6 +320,7 @@ async function fetchAccountData() {
   console.log("Selected Account is", selectedAccount);
   await populateNFTs(selectedAccount);
   await populateDPs(selectedAccount);
+  await populateDOFOs(selectedAccount);
 
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
@@ -1059,7 +1060,66 @@ async function populateDPs(address) {
   }
 }
 
+async function populateDOFOs(address) {
+  const token_address = '0xa5da68f1bc0c8eb048862b07c6b1e740e8401a20'
+  const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
+  // TODO: in the future, to see all NFTs, modify contractCreation and use 0
+  let startBlock = 18530962 //just before minting
+  //https://api.ftmscan.com/api?module=account&action=tokennfttx&contractaddress=0xBEa7c3F2D91a9c6fD7F5aA9c803d4C31C1dB8db9&address=0x27e9531d81E0D89CE04394E233d406256d66d36a&startblock=0&endblock=99999999&page=1&offset=100&sort=asc&apikey=J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE
+  const ftmscan_query = `https://api.ftmscan.com/api?module=account&action=tokennfttx`
+  + `&contractaddress=${token_address}&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc&apikey=${FTMSCAN_API_KEY}`
+  // console.log(ftmscan_query)
+  const result = await axios.get(ftmscan_query)
+  .then(response => {
+    // console.log('Axios got a response...');console.log(response);
+    return response.data.result
+  })
+  .catch(error => {
+    console.log(error)
+  })
 
+  // console.log(result)
+  console.log(result) //need to check!
+  //let dictionary = {}
+  let tokenList = []
+  for (let t of result) {
+    // Only filter where t.to is this address (t.from sends it away)
+    if (t.to.toLowerCase() == address.toLowerCase()) {
+      tokenList.push(t.tokenID)} //add token ID if incoming
+    if (t.from.toLowerCase() == address.toLowerCase()) {
+      const index = tokenList.indexOf(t.tokenID);
+      if (index > -1) {tokenList.splice(index, 1)}}} //remove token ID if outgoing
+
+
+  //const token_trx = Object.values(dictionary)
+  console.log(tokenList)
+  console.log(`${address} owns ${tokenList.length} BitDaemons`)
+  if (tokenList.length > 0) {
+    var bdgallery = document.createElement('div')
+    bdgallery.classList.add("mac-window", "centered")
+    document.getElementById('content').appendChild(bdgallery)
+
+    var galleryCode = `<div class="mac-window-title"><span>Daemons of Fantom Opera</span></div>`;
+    galleryCode += `<h1>You own ${tokenList.length} Daemons of Fantom Opera</h1>`;
+    //let i = 0;
+    for(let i = 0; i < tokenList.length; i++){
+      if ([4, 5, 6, 7, 8, 9, 10, 11, 13, 22, 23].includes(tokenList[i])){
+        var filename = `${tokenList[i]}.gif`
+      }
+      else {
+        var filename = `${tokenList[i]}.png`
+      }
+      galleryCode += `
+      <div id="bd-${tokenList[i]}" class="infobox">
+        <p><img alt="DMN_${tokenList[i]}" src="./images/dofo/DOFO_${filename}" /></p>
+        <h3>DoFO #${tokenList[i]}</h3>
+        <p><a href="https://paintswap.finance/marketplace/assets/${token_address}/${tokenList[i]}" target="_blank" class="mac-button">MRKT</a></p>
+      </div>
+      `;
+     }
+     bdgallery.innerHTML = galleryCode
+  }
+}
 
 
 let timeRequested = 0;
