@@ -998,8 +998,6 @@ async function populateNFTs(address) {
      bdgallery.innerHTML = galleryCode
      document.body.appendChild(bdgallery)
 
-
-
     //create BitDaemons div
   }
   // console.log(`\nThere are ${result.length} past transfers of ERC721 tokens for ${address}`)
