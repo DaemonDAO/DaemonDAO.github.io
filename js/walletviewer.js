@@ -951,9 +951,8 @@ async function populateNFTs(address) {
   let startBlock = 25639393 //just before minting
   //https://api.ftmscan.com/api?module=account&action=tokennfttx&contractaddress=0xBEa7c3F2D91a9c6fD7F5aA9c803d4C31C1dB8db9&address=0x27e9531d81E0D89CE04394E233d406256d66d36a&startblock=0&endblock=99999999&page=1&offset=100&sort=asc&apikey=J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE
   const ftmscan_query = `https://api.ftmscan.com/api?module=account&action=tokennfttx`
-  + `&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc&apikey=${FTMSCAN_API_KEY}`
+  + `&contractaddress=${token_address}&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc&apikey=${FTMSCAN_API_KEY}`
   // console.log(ftmscan_query)
-  console.log(ftmscan_query) //need to check!
   const result = await axios.get(ftmscan_query)
   .then(response => {
     // console.log('Axios got a response...');console.log(response);
@@ -964,7 +963,7 @@ async function populateNFTs(address) {
   })
 
   // console.log(result)
-
+  console.log(result) //need to check!
   let dictionary = {}
   for (let t of result) {
     // Only filter where t.to is this address (t.from sends it away)
