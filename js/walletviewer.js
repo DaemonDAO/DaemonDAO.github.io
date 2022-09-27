@@ -984,7 +984,7 @@ async function populateNFTs(address) {
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
     galleryCode += `<h1>You own ${tokenList.length} BitDaemons</h1>`;
-    var i = 0;
+    let i = 0;
     for(i in tokenList){
       galleryCode += `
       <div id="bd-${i}" class="infobox">
