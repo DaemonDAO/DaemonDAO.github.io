@@ -979,6 +979,26 @@ async function populateNFTs(address) {
   //console.log(tokenList)
   console.log(`${address} owns ${tokenList.length} BitDaemons`)
   if (tokenList.length > 0) {
+    bdgallery = document.createElement('div')
+    bdgallery.classList.add("mac-window centered")
+
+    galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`
+    galleryCode = `<h1>You own ${tokenList.length} BitDaemons</h1>`
+    for(i in tokenList){
+      galleryCode += `
+      <div id="bd-${i}" class="info-box">
+       <div class="nft-card-id HVCenter">NFT ID: ${i}</div>
+       <div class="nft-card-img-holder HVCenter">
+        <img src="${tokenUris[i]}"></div>
+       <div class="nft-card-owner">Owner:&nbsp;${tokenOwners[i]}</div>
+      </div>
+      `;
+     }
+     bdgallery.innerHTML = galleryCode
+     document.body.insert(bdgallery)
+
+
+
     //create BitDaemons div
   }
   // console.log(`\nThere are ${result.length} past transfers of ERC721 tokens for ${address}`)
