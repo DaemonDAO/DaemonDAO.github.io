@@ -1104,19 +1104,10 @@ async function populateDOFOs(address) {
     galleryCode += `<h1>You own ${tokenList.length} Daemons of Fantom Opera</h1>`;
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
-      console.log(tokenList[i]);
-      const gifsDOFO = [4, 5, 6, 7, 8, 9, 10, 11, 13, 22, 23];
-      if (gifsDOFO.indexOf(tokenList[i])) {
-        var filename = `${tokenList[i]}.gif`;
-        console.log('gif');
-      }
-      else {
-        var filename = `${tokenList[i]}.png`;
-        console.log('png');
-      }
+
       galleryCode += `
       <div id="bd-${tokenList[i]}" class="infobox">
-        <p><img alt="DMN_${tokenList[i]}" src="./images/dofo/DOFO_${filename}" /></p>
+        <p><img alt="DMN_${tokenList[i]}" src="./images/dofo/DOFO_${tokenList[i]}.png" /></p>
         <h3>DoFO #${tokenList[i]}</h3>
         <p><a href="https://paintswap.finance/marketplace/assets/${token_address}/${tokenList[i]}" target="_blank" class="mac-button">MRKT</a></p>
       </div>
