@@ -980,7 +980,7 @@ async function populateNFTs(address) {
   console.log(`${address} owns ${tokenList.length} BitDaemons`)
   if (tokenList.length > 0) {
     var bdgallery = document.createElement('div')
-    bdgallery.classList.add("mac-window centered")
+    bdgallery.classList.add("mac-window", "centered")
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
     galleryCode += `<h1>You own ${tokenList.length} BitDaemons</h1>`;
