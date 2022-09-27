@@ -976,7 +976,7 @@ async function populateNFTs(address) {
 
 
   //const token_trx = Object.values(dictionary)
-  //console.log(tokenList)
+  console.log(tokenList)
   console.log(`${address} owns ${tokenList.length} BitDaemons`)
   if (tokenList.length > 0) {
     var bdgallery = document.createElement('div')
@@ -996,7 +996,7 @@ async function populateNFTs(address) {
       `;
      }
      bdgallery.innerHTML = galleryCode
-     document.body.insert(bdgallery)
+     document.body.appendChild(bdgallery)
 
 
 
