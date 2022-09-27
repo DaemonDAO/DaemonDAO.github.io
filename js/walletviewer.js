@@ -969,10 +969,10 @@ async function populateNFTs(address) {
   for (let t of result) {
     // Only filter where t.to is this address (t.from sends it away)
     if (t.to.toLowerCase() == address.toLowerCase()) {
-      tokenList.push(t.tokenID)}
+      tokenList.push(t.tokenID)} //add token ID if incoming
     if (t.from.toLowerCase() == address.toLowerCase()) {
       const index = tokenList.indexOf(t.tokenID);
-      if (index > -1) {tokenList.splice(index, 1)}}}
+      if (index > -1) {tokenList.splice(index, 1)}}} //remove token ID if outgoing
 
 
   const token_trx = Object.values(dictionary)
