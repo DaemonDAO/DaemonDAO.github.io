@@ -981,6 +981,7 @@ async function populateNFTs(address) {
   if (tokenList.length > 0) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
+    document.getElementById('content').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
     galleryCode += `<h1>You own ${tokenList.length} BitDaemons</h1>`;
@@ -996,7 +997,7 @@ async function populateNFTs(address) {
       `;
      }
      bdgallery.innerHTML = galleryCode
-     document.body.appendChild(bdgallery)
+     //document.getElementById('content').appendChild(bdgallery)
 
     //create BitDaemons div
   }
