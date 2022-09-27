@@ -948,7 +948,7 @@ async function populateNFTs(address) {
   const token_address = '0xBEa7c3F2D91a9c6fD7F5aA9c803d4C31C1dB8db9'
   const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
-  let startBlock = contractCreation
+  let startBlock = 25639393 //just before minting
   const ftmscan_query = `https://api.ftmscan.com/api?module=account&action=tokennfttx`
   + `&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc&apikey=${FTMSCAN_API_KEY}`
   // console.log(ftmscan_query)
