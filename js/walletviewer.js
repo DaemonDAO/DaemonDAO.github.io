@@ -1105,7 +1105,8 @@ async function populateDOFOs(address) {
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
       console.log(tokenList[i]);
-      if ([4, 5, 6, 7, 8, 9, 10, 11, 13, 22, 23].includes(tokenList[i])){
+      const gifsDOFO = [4, 5, 6, 7, 8, 9, 10, 11, 13, 22, 23];
+      if (gifsDOFO.indexOf(tokenList[i])) {
         var filename = `${tokenList[i]}.gif`;
         console.log('gif');
       }
