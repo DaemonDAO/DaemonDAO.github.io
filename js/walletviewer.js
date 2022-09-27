@@ -978,7 +978,7 @@ async function populateNFTs(address) {
   //const token_trx = Object.values(dictionary)
   //console.log(tokenList)
   console.log(`${address} owns ${tokenList.length} BitDaemons`)
-  if (token_ids.length > 0) {
+  if (tokenList.length > 0) {
     //create BitDaemons div
   }
   // console.log(`\nThere are ${result.length} past transfers of ERC721 tokens for ${address}`)
