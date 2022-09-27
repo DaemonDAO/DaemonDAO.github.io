@@ -318,6 +318,7 @@ async function fetchAccountData() {
   const accounts = await web3.eth.getAccounts();
   selectedAccount = accounts[0];
   console.log("Selected Account is", selectedAccount);
+  await populateNFTs(selectedAccount);
 
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
@@ -1023,7 +1024,7 @@ window.addEventListener('load', async () => {
   init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
-  document.querySelector("#btn-refreshNFTs").addEventListener("click", refreshNFTs);
+  //document.querySelector("#btn-refreshNFTs").addEventListener("click", refreshNFTs);
   document.querySelector("#ETH").addEventListener("click", hitETH);
   document.querySelector("#FTM").addEventListener("click", hitFTM);
   document.querySelector("#AVAX").addEventListener("click", hitAVAX);
