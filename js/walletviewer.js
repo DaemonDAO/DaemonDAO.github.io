@@ -968,6 +968,7 @@ async function populateNFTs(address) {
   for (let t of result) {
     // Only filter where t.to is this address (t.from sends it away)
     if (t.contractAddress == token_address) {
+      console.log(`${t.to}_${t.tokenID}`);
       const key = `${t.contractAddress}_${t.tokenID}`
       let data = {}
       data.owned = (t.to.toLowerCase() == address.toLowerCase()) // t.from is the address = transferred out
@@ -984,15 +985,15 @@ async function populateNFTs(address) {
         // If the NFT was purchased, then transferred out/sold, owned is set to false
         dictionary[key].owned = data.owned
       }
-      console.log(dictionary)
     }
   }
+
 
   const token_trx = Object.values(dictionary)
   // console.log(token_trx)
   const token_ids = token_trx.filter(t => t.owned).map(t => t.token_id)
   if (token_ids.length > 0) {
-    // console.log(token_ids)
+    console.log(token_ids)
     const ids = token_ids.join(',')
     // console.log(ids)
     const punks_by_id_query = `${document.location.origin}/punks-by-id.php?ids=${ids}`
