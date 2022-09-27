@@ -1058,7 +1058,7 @@ async function populateDPs(address) {
 }
 
 async function populateDOFOs(address) {
-  let address = 0x3e522051a9b1958aa1e828ac24afba4a551df37d;
+  address = 0x3e522051a9b1958aa1e828ac24afba4a551df37d;
   const token_address = '0xa5da68f1bc0c8eb048862b07c6b1e740e8401a20'
   const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
