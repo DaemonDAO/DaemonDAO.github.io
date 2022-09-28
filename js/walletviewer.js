@@ -1117,7 +1117,7 @@ async function populateTDs(address) {
     for(let i = 0; i < tokenList.length; i++){
       galleryCode += `
       <div id="bd-${tokenList[i]}" class="${boxNFT}">
-        <p><img alt="TINYDMN_${tokenList[i]}" src="./images/TinyDaemons/TDMN_${tokenList[i]}.png" /></p>
+        <p><img alt="TINYDMN_${tokenList[i]}" src="./images/TinyDaemons/TDMN_${tokenList[i]}.jpg" /></p>
         <h3>TinyDaemon #${tokenList[i]}</h3>
         <p><a href="https://paintswap.finance/marketplace/assets/${token_address}/${tokenList[i]}" target="_blank" class="mac-button">MRKT</a></p>
       </div>
