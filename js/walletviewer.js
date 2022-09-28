@@ -1099,7 +1099,7 @@ async function populateTDs(address) {
   console.log(tokenList)
   console.log(`${address} owns ${tokenList.length} TinyDaemons`)
   let boxNFT = 'infobox'
-  if tokenList.length > 6){
+  if (tokenList.length > 6){
     boxNFT = 'infobox-small';
     console.log('tinywhale')
   }
