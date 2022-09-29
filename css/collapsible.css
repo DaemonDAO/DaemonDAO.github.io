@@ -34,16 +34,6 @@
 }
 
 .example-left {
-  white-space: nowrap;
-  position: relative;
-  overflow: hidden;
-  text-transform: uppercase;
-}
-
-.example-left {
-  -webkit-animation: mymove 8s linear infinite; /* Safari 4.0 - 8.0 */
-  white-space: nowrap;
-  animation: mymove 8s linear infinite alternate;
 }
 
 /* Safari 4.0 - 8.0 */

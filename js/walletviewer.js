@@ -1008,7 +1008,8 @@ async function populateNFTs(address) {
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
     galleryCode += `  <button class="collapsible">You own ${tokenList.length} BitDaemons</button>`;
     galleryCode += `<div class='content' id="bdboxes">`;
-    galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
+    //galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
+    galleryCode +=  `<p>👹 The OG interstellar interlopers 👹</p>`
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
       galleryCode += `
@@ -1069,7 +1070,8 @@ async function populateDPs(address) {
     var galleryCode = `<div class="mac-window-title"><span>DaemonPunks</span></div>`;
     galleryCode += `  <button class="collapsible">You own ${tokenList.length} DaemonPunks</button>`;
     galleryCode += `<div class='content' id="dpboxes">`;
-    galleryCode += `<p class="example-left">👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘</p>`;
+    //galleryCode += `<p class="example-left">👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘 The first corrupted 👹🤘</p>`;
+    galleryCode += `<p>👹🤘 The first corrupted 👹🤘</p>`
 
     for(let i = 0; i < tokenList.length; i++){
       galleryCode += `
@@ -1137,7 +1139,8 @@ async function populateTDs(address) {
     var galleryCode = `<div class="mac-window-title"><span>TinyDaemons</span></div>`;
     galleryCode += `  <button class="collapsible">You own ${tokenList.length} TinyDaemons</button>`;
     galleryCode += `<div class='content' id="tdboxes">`;
-    galleryCode += `<p class="example-left">👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏</p>`;
+    //galleryCode += `<p class="example-left">👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏 The omnichain sentinels 👹🤏</p>`;
+    galleryCode += `<p>👹🤏 The omnichain sentinels 👹🤏</p>`
 
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
@@ -1198,7 +1201,8 @@ async function populateDOFOs(address) {
     var galleryCode = `<div class="mac-window-title"><span>Daemons of Fantom Opera</span></div>`;
     galleryCode += `  <button class="collapsible">You own ${tokenList.length} Daemons of Fantom Opera</button>`;
     galleryCode += `<div class='content' id="dofoboxes">`;
-    galleryCode += `<p class="example-left">👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖</p>`;
+    //galleryCode += `<p class="example-left">👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖</p>`;
+    galleryCode += `<p>👹📖 The lore archive 👹📖</p>`
 
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
