@@ -35,7 +35,7 @@
 
 .example-left {
   white-space: nowrap;
-  position: absolute;
+  position: relative;
   text-transform: uppercase;
 }
 
