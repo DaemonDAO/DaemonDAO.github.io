@@ -1070,7 +1070,7 @@ async function populateDPs(address) {
     galleryCode += `  <button class="collapsible">You own ${tokenList.length} DaemonPunks</button>`;
     galleryCode += `<div class='content' id="dpboxes">`;
     galleryCode += `<p>The first corrupted</p>`;
-    
+
     for(let i = 0; i < tokenList.length; i++){
       galleryCode += `
       <div id="bd-${tokenList[i]}" class="infobox">
@@ -1135,7 +1135,10 @@ async function populateTDs(address) {
     document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>TinyDaemons</span></div>`;
-    galleryCode += `<h1>You own ${tokenList.length} TinyDaemons</h1>`;
+    galleryCode += `  <button class="collapsible">You own ${tokenList.length} TinyDaemons</button>`;
+    galleryCode += `<div class='content' id="tdboxes">`;
+    galleryCode += `<p>The omnichain sentinels</p>`;
+
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
       galleryCode += `
@@ -1193,7 +1196,10 @@ async function populateDOFOs(address) {
     document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>Daemons of Fantom Opera</span></div>`;
-    galleryCode += `<h1>You own ${tokenList.length} Daemons of Fantom Opera</h1>`;
+    galleryCode += `  <button class="collapsible">You own ${tokenList.length} Daemons of Fantom Opera</button>`;
+    galleryCode += `<div class='content' id="dofoboxes">`;
+    galleryCode += `<p>The eclectic lore collection</p>`;
+
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
 
