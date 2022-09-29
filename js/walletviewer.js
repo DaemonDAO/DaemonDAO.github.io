@@ -1198,7 +1198,7 @@ async function populateDOFOs(address) {
     var galleryCode = `<div class="mac-window-title"><span>Daemons of Fantom Opera</span></div>`;
     galleryCode += `  <button class="collapsible">You own ${tokenList.length} Daemons of Fantom Opera</button>`;
     galleryCode += `<div class='content' id="dofoboxes">`;
-    galleryCode += `<p>The eclectic lore collection</p>`;
+    galleryCode += `<p class="example-left">👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖</p>`;
 
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
