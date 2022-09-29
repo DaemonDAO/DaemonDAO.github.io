@@ -1002,8 +1002,8 @@ async function populateNFTs(address) {
       </div>
       `;
      }
-     galleryCode += `</div>`;
-     console.log(galleryCode);
+     //galleryCode += `</div>`;
+     //console.log(galleryCode);
      bdgallery.innerHTML = galleryCode
   }
 }
@@ -1047,7 +1047,7 @@ async function populateDPs(address) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
     bdgallery.id = "galleryDP";
-    document.getElementById('content').appendChild(bdgallery)
+    document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>DaemonPunks</span></div>`;
     galleryCode += `<h1>You own ${tokenList.length} DaemonPunks</h1>`;
@@ -1113,7 +1113,7 @@ async function populateTDs(address) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
     bdgallery.id = "galleryDP";
-    document.getElementById('content').appendChild(bdgallery)
+    document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>TinyDaemons</span></div>`;
     galleryCode += `<h1>You own ${tokenList.length} TinyDaemons</h1>`;
@@ -1171,7 +1171,7 @@ async function populateDOFOs(address) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
     bdgallery.id = "galleryDOFO";
-    document.getElementById('content').appendChild(bdgallery)
+    document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>Daemons of Fantom Opera</span></div>`;
     galleryCode += `<h1>You own ${tokenList.length} Daemons of Fantom Opera</h1>`;
