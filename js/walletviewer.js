@@ -986,7 +986,7 @@ async function populateNFTs(address) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
     bdgallery.id = "galleryBD";
-    document.getElementById('content').appendChild(bdgallery)
+    document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
     galleryCode += `  <button class="collapsible">You own 4 BitDaemons</button>`;
@@ -1204,7 +1204,6 @@ for (i = 0; i < coll.length; i++) {
 }
 
 let timeRequested = 0;
-
 
 // master event listener... combines all the shit above.
 window.addEventListener('load', async () => {
