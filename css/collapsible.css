@@ -32,3 +32,34 @@
   overflow: hidden;
   transition: max-height 0.5s ease-out;
 }
+
+.example-left {
+  white-space: nowrap;
+  position: absolute;
+  text-transform: uppercase;
+}
+
+.example-left {
+  -webkit-animation: mymove 8s linear infinite; /* Safari 4.0 - 8.0 */
+  white-space: nowrap;
+  animation: mymove 8s linear infinite alternate;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes mymove {
+  from {
+    left: 0;
+  }
+  to {
+    left: -140px;
+  }
+}
+
+@keyframes mymove {
+  from {
+    left: 0;
+  }
+  to {
+    left: -140px;
+  }
+}
