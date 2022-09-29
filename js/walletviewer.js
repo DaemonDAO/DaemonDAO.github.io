@@ -335,6 +335,7 @@ async function fetchAccountData() {
   document.getElementById("addWallet").innerHTML = display;
 
   displayTokenName();
+  //collapsible divs
   var coll = document.getElementsByClassName("collapsible");
   console.log(coll);
   var i;
@@ -350,6 +351,7 @@ async function fetchAccountData() {
       }
     });
   }
+  //end collapsible
 }
 
 /**
@@ -1004,7 +1006,7 @@ async function populateNFTs(address) {
     document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
-    galleryCode += `  <button class="collapsible">You own 4 BitDaemons</button>`;
+    galleryCode += `  <button class="collapsible">You own ${tokenList.length} BitDaemons</button>`;
     galleryCode += `<div class='content' id="bdboxes">`;
     galleryCode += `<p>The OG interstellar interlopers</p>`;
     //let i = 0;
@@ -1065,8 +1067,10 @@ async function populateDPs(address) {
     document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>DaemonPunks</span></div>`;
-    galleryCode += `<h1>You own ${tokenList.length} DaemonPunks</h1>`;
-    //let i = 0;
+    galleryCode += `  <button class="collapsible">You own ${tokenList.length} DaemonPunks</button>`;
+    galleryCode += `<div class='content' id="dpboxes">`;
+    galleryCode += `<p>The first corrupted</p>`;
+    
     for(let i = 0; i < tokenList.length; i++){
       galleryCode += `
       <div id="bd-${tokenList[i]}" class="infobox">
