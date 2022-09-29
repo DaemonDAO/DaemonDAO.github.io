@@ -1002,7 +1002,7 @@ async function populateNFTs(address) {
       </div>
       `;
      }
-     gallerycode += `</div>`;
+     galleryCode += `</div>`;
      bdgallery.innerHTML = galleryCode
   }
 }
