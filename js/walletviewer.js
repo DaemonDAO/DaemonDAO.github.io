@@ -989,7 +989,9 @@ async function populateNFTs(address) {
     document.getElementById('content').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
-    galleryCode += `<h1>You own ${tokenList.length} BitDaemons</h1>`;
+    galleryCode += `  <button class="collapsible">You own 4 BitDaemons</button>`;
+    galleryCode += `<div class='content' id="bdboxes">`;
+    galleryCode += `<p>The OG interstellar interlopers</p>`;
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
       galleryCode += `
@@ -1000,6 +1002,8 @@ async function populateNFTs(address) {
       </div>
       `;
      }
+
+     gallerycode += `</div>`
      bdgallery.innerHTML = galleryCode
   }
 }

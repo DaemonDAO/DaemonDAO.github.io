@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TinyDaemons | BitDaemons NFT Project</title>
+
+    <!-- meta tags -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Wallet Viewer | Daemon Research" />
+    <meta property="og:type" content="website" />
+    <meta property="og:description" content="View my Daemon NFTs" />
+    <meta property="og:url" content="index.html" />
+    <meta property="og:image:secure_url" content="./images/daemon_favicon.png" />
+    <meta name="generator" content="GravCMS" />
+    <meta name="description" content="View my Daemon NFTs" />
+
+    <!-- links favicons/css -->
+    <link rel="icon" type="image/png" href="./images/daemon_favicon.png" />
+    <link rel="canonical" href="index.html" />
+    <link href="./css/minter.css" type="text/css" rel="stylesheet">
+    <link href="./css/macos.css" type="text/css" rel="stylesheet">
+    <link href="./css/custom.css" type="text/css" rel="stylesheet">
+    <link href="./css/crt.css" type="text/css" rel="stylesheet">
+    <link href="./css/walletviewer.css" type="text/css" rel="stylesheet">
+    <link href="./css/collapsible.css" type="text/css" rel="stylesheet">
+  </head>
+  <body id="top" class="crt">
+    <!-- why two classes here? - from Max -->
+
+    <div class="preloader" style="display:flex" class="pre-load">
+      <img src="./images/taraload.gif" loading="lazy" height="400" alt="tarakudo loading icon"/>
+    </div>
+    <div class="mac-icons">
+      <!-- this is the connection icon -->
+      <div id="prepare">
+        <button id="btn-connect" class="big-icon">
+          <img src="./images/MMdark.png" alt="daemondao" />
+          <span>Connect</span>
+        </button>
+      </div>
+      <div id="connected" style="display: none">
+        <button id="btn-disconnect" class="big-icon">
+          <img src="./images/MMconnected.png" alt="daemondao" />
+          <span id="addWallet">Disconnect</span>
+        </button>
+      </div>
+      <a class="big-icon" href="index.html">
+        <img src="./images/home_icon.png" alt="home" />
+        <span>Home</span>
+      </a>
+      <a class="big-icon" href="daemondao.html">
+        <img src="./images/dao_icon.png" alt="daemondao" />
+        <span>DaemonDAO</span>
+      </a>
+      <a class="big-icon" href="bitdaemons.html">
+        <img src="./images/bitdaemon_icon.png" alt="bitdaemons" />
+        <span>BitDaemons</span>
+      </a>
+      <a class="big-icon" href="daemonpunks.html">
+        <img src="./images/punk_icon.png" alt="daemonpunks" />
+        <span>DaemonPunks</span>
+      </a>
+      <a class="big-icon" href="tinydaemons.html">
+        <img src="./images/tinydaemon_icon.png"§ alt="tinydaemons" />
+        <span>TinyDaemons</span>
+      </a>
+
+      <!--<a class="big-icon" href="index.html">
+        <img src="./images/digidaemon_icon.png"§ alt="digidaemons" />
+        <span>DigiDaemons</span>
+      </a>-->
+      <a class="big-icon" href="avatars.html">
+        <img src="./images/avatar_icon.png" alt="avatars" />
+        <span>Avatars</span>
+      </a>
+      <a class="big-icon" href="team.html">
+        <img src="./images/team_icon.png" alt="team" />
+        <span>Team</span>
+      </a>
+      <a class="big-icon" href="charity.html">
+        <img src="./images/charity_icon.png" alt="charity" />
+        <span>Charity</span>
+      </a>
+      <a class="big-icon" href="collab.html">
+        <img src="./images/collab_icon.png" alt="collab" />
+        <span>Collabs</span>
+      </a>
+      <a class="big-icon" href="https://discord.com/invite/h2wEqVgpBD" target="_blank" rel="noreferrer noopener">
+        <img src="./images/discord_icon.png" alt="discord" />
+        <span>Discord</span>
+      </a>
+      <a class="big-icon" href="https://twitter.com/bitdaemons" target="_blank" rel="noreferrer noopener">
+        <img src="./images/twitter_icon.png" alt="twitter" />
+        <span>Twitter</span>
+      </a>
+      <a class="big-icon" href="https://bitdaemons.medium.com" target="_blank" rel="noreferrer noopener">
+        <img src="./images/medium_icon.png" alt="medium" />
+        <span>Medium</span>
+      </a>
+    </div>
+    <section id="body" class="body-section">
+      <div id="content" class="content-wrapper">
+        <!-- first window -->
+
+        <div id='helloplsconnect' class="mac-window centered">
+          <div class="mac-window-title">
+            <span>Wallet Viewer</span>
+          </div>
+          <h1>Connect your wallet to view your Daemons!</h1>
+
+        </div>
+
+
+    </section>
+  </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- web3 adds -->
+  <script src="https://cdn.jsdelivr.net/npm/web3@latest/dist/web3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/web3modal@1.9.0/dist/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/evm-chains@0.2.0/dist/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@walletconnect/web3-provider@1.2.1/dist/umd/index.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/fortmatic@2.0.6/dist/fortmatic.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.5.0/knockout-min.js"></script>
+  <!-- the custom script -->
+  <script src="./js/walletviewer.js"></script>
+</html>
