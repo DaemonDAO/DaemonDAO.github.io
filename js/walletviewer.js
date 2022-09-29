@@ -318,10 +318,7 @@ async function fetchAccountData() {
   const accounts = await web3.eth.getAccounts();
   selectedAccount = accounts[0];
   console.log("Selected Account is", selectedAccount);
-  await populateNFTs(selectedAccount);
-  await populateDPs(selectedAccount);
-  await populateTDs(selectedAccount);
-  await populateDOFOs(selectedAccount);
+
 
   // Display fully loaded UI for wallet data
   document.querySelector("#prepare").style.display = "none";
@@ -333,7 +330,11 @@ async function fetchAccountData() {
   var endString = selectedAccount.substring(selectedAccount.length - 3)
   var display = startString+dots+endString;
   document.getElementById("addWallet").innerHTML = display;
-
+  //populate NFTs
+  await populateNFTs(selectedAccount);
+  await populateDPs(selectedAccount);
+  await populateTDs(selectedAccount);
+  await populateDOFOs(selectedAccount);
   displayTokenName();
   //collapsible divs
   var coll = document.getElementsByClassName("collapsible");
