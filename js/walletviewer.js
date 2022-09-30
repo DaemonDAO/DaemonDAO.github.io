@@ -12,8 +12,8 @@
  * @notice: web3.js file for tinydaemons.html
  */
 
-import TravellerTokenABI from "../traveller_token.js"
-import DualityTokenABI from "../duality_token.js"
+import TravellerTokenABI from "../abi/traveller_token.js"
+import DualityTokenABI from "../abi/duality_token.js"
 
 "use strict";
 // Constants used for JS/web3 crap later
