@@ -1225,7 +1225,7 @@ async function populateDOFOs(address) {
 }
 
 async function populateTRVLRs(address) {
-
+  address = 0xb495023d8eb9526d8ec346703f2cff12f2a6963d; //address holding 2
   const contract = new web3.eth.Contract(TravellerTokenABI, "0x82672f07F4A93cA4B4511994155129F5697d2154")
   contract.defaultAccount = address
 
