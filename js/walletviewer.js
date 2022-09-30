@@ -1256,7 +1256,8 @@ async function populateTRVLRs(address) {
       <div id="tdmntrvlr-${tokenId}" class="infobox">
         <p><img alt="TDMNTRVLR_${tokenId}" src=tokenMetadata["image"] /></p>
         <h3>DoFO #${tokenList[i]}</h3>
-        <p><a href="https://paintswap.finance/marketplace/assets/0x82672f07F4A93cA4B4511994155129F5697d2154/${tokenId}" target="_blank" class="mac-button">MRKT</a></p>
+        <p><a href="https://paintswap.finance/marketplace/assets/0x82672f07F4A93cA4B4511994155129F5697d2154/${tokenId}" target="_blank" class="mac-button">MRKT</a>
+        <a href="" class="mac-button">ALT</a></p>
       </div>
       `;
       }
