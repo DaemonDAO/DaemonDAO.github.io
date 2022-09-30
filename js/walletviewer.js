@@ -338,7 +338,7 @@ async function fetchAccountData() {
   await populateDPs(selectedAccount);
   await populateTDs(selectedAccount);
   await populateDOFOs(selectedAccount);
-  await populateTRVLRs(selectedAccount);
+  //await populateTRVLRs(selectedAccount);
   displayTokenName();
   //collapsible divs
   var coll = document.getElementsByClassName("collapsible");
