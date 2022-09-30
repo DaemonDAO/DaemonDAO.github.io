@@ -12,6 +12,9 @@
  * @notice: web3.js file for tinydaemons.html
  */
 
+import TravellerTokenABI from "./traveller_token.js"
+import DualityTokenABI from "./duality_token.js"
+
 "use strict";
 // Constants used for JS/web3 crap later
 const AVAX_M = 43114;
@@ -335,6 +338,7 @@ async function fetchAccountData() {
   await populateDPs(selectedAccount);
   await populateTDs(selectedAccount);
   await populateDOFOs(selectedAccount);
+  await populateTRVLRs(selectedAccount);
   displayTokenName();
   //collapsible divs
   var coll = document.getElementsByClassName("collapsible");
@@ -1220,6 +1224,45 @@ async function populateDOFOs(address) {
   }
 }
 
+async function populateTRVLRs(address) {
+
+  const contract = new web3.eth.Contract(TravellerTokenABI, "0x82672f07F4A93cA4B4511994155129F5697d2154")
+  contract.defaultAccount = address
+
+  const DaemonBalance = await contract.methods.balanceOf(walletAddress).call()
+
+  if (DaemonBalance > 0){
+    var bdgallery = document.createElement('div')
+    bdgallery.classList.add("mac-window", "centered")
+    bdgallery.id = "galleryTRVLRS";
+    document.getElementById('content-wrapper').appendChild(bdgallery)
+
+    var galleryCode = `<div class="mac-window-title"><span>TinyDaemonTravellers</span></div>`;
+    galleryCode += `  <button class="collapsible">You own ${DaemonBalance} TinyDaemonTravellers</button>`;
+    galleryCode += `<div class='content' id="trvlrboxes">`;
+    //galleryCode += `<p class="example-left">👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖 The lore archive 👹📖</p>`;
+    galleryCode += `<p>👹🧭 The unshackled 👹🧭</p>`
+
+    for(let i = 0; i < DaemonBalance; i++) {
+      const tokenId = await contract.methods.tokenOfOwnerByIndex(address, i).call()
+      let tokenMetadataURI = await contract.methods.tokenURI(tokenId).call()
+
+      if (tokenMetadataURI.startsWith("ipfs://")) {
+        tokenMetadataURI = `https://daemon.mypinata.cloud/ipfs/${tokenMetadataURI.split("ipfs://")[1]}`
+      }
+      const tokenMetadata = await fetch(tokenMetadataURI).then((response) => response.json())
+
+      galleryCode += `
+      <div id="tdmntrvlr-${tokenId}" class="infobox">
+        <p><img alt="TDMNTRVLR_${tokenId}" src=tokenMetadata["image"] /></p>
+        <h3>DoFO #${tokenList[i]}</h3>
+        <p><a href="https://paintswap.finance/marketplace/assets/0x82672f07F4A93cA4B4511994155129F5697d2154/${tokenId}" target="_blank" class="mac-button">MRKT</a></p>
+      </div>
+      `;
+      }
+      bdgallery.innerHTML = galleryCode
+    }
+}
 
 
 let timeRequested = 0;
