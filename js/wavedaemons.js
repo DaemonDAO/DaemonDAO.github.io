@@ -910,7 +910,7 @@ async function displayTokenName() {
     displayName = "";
     console.log("We're not in Kansas anymore, Toto. You be on chain", chainId);
   }
-  document.getElementById("token").innerHTML = displayName;
+  //document.getElementById("token").innerHTML = displayName;
 }
 
 // ready your breakfast and eat hardy, for tonight we eat ramen...
