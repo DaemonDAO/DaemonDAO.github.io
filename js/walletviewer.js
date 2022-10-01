@@ -973,7 +973,7 @@ async function refreshNFTs() {
 async function populateNFTs(address) {
   //if the div already exists, remove it (for wallet switching)
   if (document.contains(document.getElementById("galleryBD"))) {
-            document.getElementById("galleryBD").remove();
+            document.getElementById("galleryBD").remove();}
 
   const token_address = '0xBEa7c3F2D91a9c6fD7F5aA9c803d4C31C1dB8db9'
   const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
@@ -1039,7 +1039,7 @@ async function populateNFTs(address) {
 async function populateDPs(address) {
   //if the div already exists, remove it (for wallet switching)
   if (document.contains(document.getElementById("galleryDP"))) {
-            document.getElementById("galleryDP").remove();
+            document.getElementById("galleryDP").remove();}
   const token_address = '0x22dea64a0e9ecbb13d2b0dd2d95a91a06dacb23b'
   const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
@@ -1104,7 +1104,7 @@ async function populateDPs(address) {
 async function populateTDs(address) {
   //if the div already exists, remove it (for wallet switching)
   if (document.contains(document.getElementById("galleryTD"))) {
-            document.getElementById("galleryTD").remove();
+            document.getElementById("galleryTD").remove();}
   const token_address = '0x8bb765ae3e2320fd9447889d10b9dc7ce4970da5'
   const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
@@ -1175,7 +1175,7 @@ async function populateTDs(address) {
 async function populateDOFOs(address) {
   //if the div already exists, remove it (for wallet switching)
   if (document.contains(document.getElementById("galleryDOFO"))) {
-            document.getElementById("galleryDOFO").remove();
+            document.getElementById("galleryDOFO").remove();}
   //address = '0x3e522051a9b1958aa1e828ac24afba4a551df37d';
   const token_address = '0xa5da68f1bc0c8eb048862b07c6b1e740e8401a20'
   const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
@@ -1240,7 +1240,7 @@ async function populateDOFOs(address) {
 async function populateTRVLRs(address) {
   //if the div already exists, remove it (for wallet switching)
   if (document.contains(document.getElementById("galleryTRVLR"))) {
-            document.getElementById("galleryTRVLR").remove();
+            document.getElementById("galleryTRVLR").remove();}
   let web3 = new Web3(window.ethereum)
   address = 0xb495023d8eb9526d8ec346703f2cff12f2a6963d; //address holding 2
   const contract = new web3.eth.Contract(TravellerTokenABI, "0x82672f07F4A93cA4B4511994155129F5697d2154")
