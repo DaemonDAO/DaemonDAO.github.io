@@ -980,7 +980,7 @@ async function populateTDs(address) {
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
       galleryCode += `
-      <div id="bd-${tokenList[i]}" class="${boxNFT}">
+      <div id="td-${tokenList[i]}" class="${boxNFT}">
         <p><img alt="TINYDMN_${tokenList[i]}" src="./images/TinyDaemons/TDMN_${tokenList[i]}.jpg" /></p>
         <h3>TinyDaemon #${tokenList[i]}</h3>
       </div>
