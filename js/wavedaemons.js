@@ -969,12 +969,8 @@ async function populateTDs(address) {
   //const token_trx = Object.values(dictionary)
   console.log(tokenList)
   console.log(`${address} owns ${tokenList.length} TinyDaemons`)
-  let boxNFT = 'infobox'
+  let boxNFT = 'info-selector'
   //trouble below
-  if (tokenList.length > 6){
-    boxNFT = 'infobox-small';
-    console.log('tinywhale')
-  }
 
   if (tokenList.length > 0) {
 
@@ -987,7 +983,6 @@ async function populateTDs(address) {
       <div id="bd-${tokenList[i]}" class="${boxNFT}">
         <p><img alt="TINYDMN_${tokenList[i]}" src="./images/TinyDaemons/TDMN_${tokenList[i]}.jpg" /></p>
         <h3>TinyDaemon #${tokenList[i]}</h3>
-        <p><a href="https://paintswap.finance/marketplace/assets/${token_address}/${tokenList[i]}" target="_blank" class="mac-button">SELECT</a></p>
       </div>
       `;
      }

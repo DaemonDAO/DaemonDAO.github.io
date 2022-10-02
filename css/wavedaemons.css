@@ -19,3 +19,30 @@ body {
 #tinydiv {
   max-width:646px;
 }
+
+.info-selector {
+	width: 100px;
+	text-align: center;
+	display: inline-block;
+	vertical-align: top;
+	border-style: solid;
+	border-width: 3px;
+	border-color: #fff;
+	border-radius: 3px;
+	text-align: center;
+	margin-bottom: 5px
+}
+.info-selector img {
+	width: 250px;
+	height: 100%;
+}
+.info-selector p {
+	margin: 0;
+}
+
+.info-selector:hover{
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
+}
