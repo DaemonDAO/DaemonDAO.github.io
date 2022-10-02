@@ -990,7 +990,7 @@ async function populateTDs(address) {
   }
   //select Tinys
   $(".info-selector").on("click", function() {
-    $(this).toggleClass('selected');
+    $(this).toggleClass('info-selected');
     var selectedIds = $('.info-selected').map(function() {
     	return this.id;
     }).get();
