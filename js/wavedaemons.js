@@ -988,19 +988,20 @@ async function populateTDs(address) {
      }
      tinyDiv.innerHTML = galleryCode
   }
-  //select Tinys
 
+  //select Tinys
+  $(".info-selector").on("click", function() {
+    $(this).toggleClass('info-selected');
+    var selectedIds = $('.info-selected').map(function() {
+      return this.id;
+    }).get();
+    console.log(selectedIds);
+    document.getElementById("tinycount").innerHTML = `1) Select 5 TinyDaemons (${selectedIds.length}/5)`
+  });
 
 
 }
-$(".info-selector").on("click", function() {
-  $(this).toggleClass('info-selected');
-  var selectedIds = $('.info-selected').map(function() {
-    return this.id;
-  }).get();
-  console.log(selectedIds);
-  document.getElementById("tinycount").innerHTML = `1) Select 5 TinyDaemons (${selectedIds.length}/5)`
-});
+
 
 
 // master event listener... combines all the shit above.
