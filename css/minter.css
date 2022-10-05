@@ -315,6 +315,11 @@ html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:1
   align: auto;
 }
 
+.button-2.traverse-button:disabled {
+  color: rgba(102, 102, 102, 0.5);
+  cursor: not-allowed;
+}
+
 .div-block {
   display: -webkit-box;
   display: -webkit-flex;

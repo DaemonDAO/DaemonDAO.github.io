@@ -997,11 +997,17 @@ async function populateTDs(address) {
     }).get();
     console.log(selectedIds);
     document.getElementById("tinycount").innerHTML = `1) Select 5 TinyDaemons (${selectedIds.length}/5)`
+
+    if (selectedIds.length == 5){
+      document.getElementById("burn2mint").disabled = true;
+    }
+    else{
+      document.getElementById("burn2mint").disabled = false;
+    }
   });
 
 
 }
-
 
 
 // master event listener... combines all the shit above.
