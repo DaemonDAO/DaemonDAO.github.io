@@ -531,7 +531,7 @@ async function mintNFT() {
 
   if (timeMeow >= saleStart) {
     const web3 = new Web3(provider);
-    let tdContract = await new web3.eth.Contract(TD_ABI, TD_CA);
+    let tdContract = await new web3.eth.Contract(ABI, CA);
     let mintIt = tdContract
                    .methods
                    .publicMint(quant)
