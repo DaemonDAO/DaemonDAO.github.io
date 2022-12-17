@@ -54,18 +54,12 @@ const RPCOP = "https://kovan.optimism.io/";
 */
 
 // mainnet contracts
-const CAAVAX = "0xB73C7F43DA35B6a678567e88a993a3a553b31858";
-const CABNB = "0xB73C7F43DA35B6a678567e88a993a3a553b31858";
-const CAETH = "0xB73C7F43DA35B6a678567e88a993a3a553b31858";
-const CAFTM = "0xB73C7F43DA35B6a678567e88a993a3a553b31858";
-const CAMATIC = "0xB73C7F43DA35B6a678567e88a993a3a553b31858";
-const CAOP = "0xB73C7F43DA35B6a678567e88a993a3a553b31858";
-//const CAAVAX = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
-//const CABNB = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
-//const CAETH = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
-//const CAFTM = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
-//const CAMATIC = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
-//const CAOP = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
+const CAAVAX = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
+const CABNB = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
+const CAETH = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
+const CAFTM = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
+const CAMATIC = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
+const CAOP = "0x8bb765AE3e2320fd9447889D10b9DC7CE4970DA5";
 const EPARB = "0x3c2269811836af69497E5F486A85D7316753cf62";
 const EPAVAX = "0x3c2269811836af69497E5F486A85D7316753cf62";
 const EPBNB = "0x3c2269811836af69497E5F486A85D7316753cf62";
@@ -1002,7 +996,7 @@ async function sendSetAvax() {
   await getAddress();
 
   // chain ID's
-  let ID = 6;
+  let ID = 106;
   //let ID = 10006;
 
   // now pull the text boxes
@@ -1014,12 +1008,19 @@ async function sendSetAvax() {
   // web3
   const web3 = new Web3(provider);
   console.log(`sending .setTrustedRemote(${ID}, ${chainAvax})`);
+
+  // v2 LZ shit... let's see if this works...
+  let params = web3.utils.encodePacked(
+                        {value: chainAvax, type: 'address'},
+                        {value: contractAddress, type: 'address'}
+                      );
+
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
   let value = await tokenContract
                       .methods
                       .setTrustedRemote(
                         ID,
-                        chainAvax)
+                        params)
                       .send(
                         { from: selectedAccount }
                       );
@@ -1035,7 +1036,7 @@ async function sendSetBinance() {
   await getAddress();
 
   // chain ID's
-  let ID = 2;
+  let ID = 102;
   //let ID = 10002;
 
   // now pull the text boxes
@@ -1047,15 +1048,23 @@ async function sendSetBinance() {
   // web3
   const web3 = new Web3(provider);
   console.log(`sending .setTrustedRemote(${ID}, ${chainBinance})`);
+
+  // v2 LZ shit... let's see if this works...
+  let params = web3.utils.encodePacked(
+                        {value: chainBinance, type: 'address'},
+                        {value: contractAddress, type: 'address'}
+                      );
+
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
   let value = await tokenContract
                       .methods
                       .setTrustedRemote(
                         ID,
-                        chainBinance)
+                        params)
                       .send(
                         { from: selectedAccount }
                       );
+
   if (!value) {
     console.log(`.setTrustedRemote(${ID}, ${chainBinance}) failed`);
   }
@@ -1068,7 +1077,7 @@ async function sendSetEther() {
   await getAddress();
 
   // chain ID's
-  let ID = 1;
+  let ID = 101;
   //let ID = 10001;
 
   // now pull the text boxes
@@ -1080,15 +1089,23 @@ async function sendSetEther() {
   // web3
   const web3 = new Web3(provider);
   console.log(`sending .setTrustedRemote(${ID}, ${chainEther})`);
+
+  // v2 LZ shit... let's see if this works...
+  let params = web3.utils.encodePacked(
+                        {value: chainEther, type: 'address'},
+                        {value: contractAddress, type: 'address'}
+                      );
+
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
   let value = await tokenContract
                       .methods
                       .setTrustedRemote(
                         ID,
-                        chainEther)
+                        params)
                       .send(
                         { from: selectedAccount }
                       );
+
   if (!value) {
     console.log(`.setTrustedRemote(${ID}, ${chainEther}) failed`);
   }
@@ -1101,7 +1118,7 @@ async function sendSetFantom() {
   await getAddress();
 
   // chain ID's
-  let ID = 12;
+  let ID = 112;
   //let ID = 10012;
 
   // now pull the text boxes
@@ -1113,15 +1130,23 @@ async function sendSetFantom() {
   // web3
   const web3 = new Web3(provider);
   console.log(`sending .setTrustedRemote(${ID}, ${chainFantom})`);
+
+  // v2 LZ shit... let's see if this works...
+  let params = web3.utils.encodePacked(
+                        {value: chainFantom, type: 'address'},
+                        {value: contractAddress, type: 'address'}
+                      );
+
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
   let value = await tokenContract
                       .methods
                       .setTrustedRemote(
                         ID,
-                        chainFantom)
+                        params)
                       .send(
                         { from: selectedAccount }
                       );
+
   if (!value) {
     console.log(`.setTrustedRemote(${ID}, ${chainFantom}) failed`);
   }
@@ -1134,7 +1159,7 @@ async function sendSetMatic() {
   await getAddress();
 
   // chain ID's
-  let ID = 9;
+  let ID = 109;
   //let ID = 10009;
 
   // now pull the text boxes
@@ -1146,7 +1171,25 @@ async function sendSetMatic() {
   // web3
   const web3 = new Web3(provider);
   console.log(`sending .setTrustedRemote(${ID}, ${chainMatic})`);
+
+  // v2 LZ shit... let's see if this works...
+  let params = web3.utils.encodePacked(
+                        {value: chainMatic, type: 'address'},
+                        {value: contractAddress, type: 'address'}
+                      );
+
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
+  let value = await tokenContract
+                      .methods
+                      .setTrustedRemote(
+                        ID,
+                        params)
+                      .send(
+                        { from: selectedAccount }
+                      );
+
+
+/*  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
   let value = await tokenContract
                       .methods
                       .setTrustedRemote(
@@ -1154,7 +1197,7 @@ async function sendSetMatic() {
                         chainMatic)
                       .send(
                         { from: selectedAccount }
-                      );
+                      );*/
   if (!value) {
     console.log(`.setTrustedRemote(${ID}, ${chainMatic}) failed`);
   }
@@ -1167,7 +1210,7 @@ async function sendSetOp() {
   await getAddress();
 
   // chain ID's
-  let ID = 11;
+  let ID = 111;
   //let ID = 10011;
 
   // now pull the text boxes
@@ -1179,15 +1222,23 @@ async function sendSetOp() {
   // web3
   const web3 = new Web3(provider);
   console.log(`sending .setTrustedRemote(${ID}, ${chainOp})`);
+
+  // v2 LZ shit... let's see if this works...
+  let params = web3.utils.encodePacked(
+                        {value: chainOp, type: 'address'},
+                        {value: contractAddress, type: 'address'}
+                      );
+
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
   let value = await tokenContract
                       .methods
                       .setTrustedRemote(
                         ID,
-                        chainOp)
+                        params)
                       .send(
                         { from: selectedAccount }
                       );
+
   if (!value) {
     console.log(`.setTrustedRemote(${ID}, ${chainOp}) failed`);
   }

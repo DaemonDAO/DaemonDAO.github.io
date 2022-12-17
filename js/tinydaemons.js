@@ -881,7 +881,8 @@ async function traverseTinyDaemon() {
   // let's grab the values...
   let to = $('#traverseto').val();
   let tokenID = $('#tinydaemonid').val();
-
+  console.log("sending to chainID ",to);
+  console.log("tokenID to send is ",tokenID);
   //what to send
   traverseThis(tokenID, to);
 }

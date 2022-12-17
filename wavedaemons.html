@@ -137,23 +137,17 @@
               <img src="./images/wave_mint.gif" loading="lazy" alt="" class="image-3"/>
             </div>
             <div class="form-block w-form">
-              <!--<form id="wf-form-Mint-Machine"
-                    name="wf-form-Mint-Machine"
-                    data-name="Mint Machine"
-                    method="get"
-                    class="form">-->
-                <!-- mint buttons -->
-                <button id="btn-buyNFT"
-                        class="button-2 mint-utton w-button">
-                  <span id="buttonText">web3 magik</span>
-                </button>
-                <!--
-                <input type="submit"
-                       value="Watch This"
-                       data-wait=""
-                       id="btn-buyNFT"
-                       class="button-2 mint-utton w-button"/>-->
-              <!--</form>-->
+              <!-- mint buttons -->
+              <input type="number"
+                     id="quantNFT"
+                     name="quantNFT"
+                     min="1"
+                     max="10"
+                     class="button-2 mint-utton w-button">
+              <button id="btn-buyNFT"
+                      class="button-2 mint-utton w-button">
+                <span id="buttonText">web3 magik</span>
+              </button>
               <!-- stats -->
               <div class="number-of-nfts-minted">
                 <p class="number-minted" id="count">0000</p>
@@ -163,7 +157,7 @@
             </div>
           </div>
           <p>
-            Mint costs 60 $FTM + gas. Max. 10 per txn</br>
+            Mint costs <span id="price">X</span> FTM + gas. Max. 10 per txn</br>
           </p>
           <p>
             <em>Web3 wizardry by
@@ -185,12 +179,21 @@
           <div class="mac-window-title">
             <span>Burn-to-Mint</span>
           </div>
-          <h1>1) <button id="approve" class="button-2 traverse button w-button">Approve</button> contract</h1>
-          <h1 id="tinycount">2) Select 5 TinyDaemons (0/5)</h1>
-          <h1>3) Click <button id="burn2mint" class="button-2 traverse button w-button">
-                        🔥🔥BURN🔥🔥
-                      </button></h1>
-
+          <!--<h1>
+            <button id="approve" class="button-2 traverse button w-button">
+              Approve
+            </button> contract</h1>-->
+          <h1>For every 5 TinyDaemons you burn</h1>
+          <h1>get 1 WaveDaemon</h1>
+          <h1 id="tinycount">0 selected</h1>
+          <h1>
+            <button id="btn-burnNFT" class="button-2 traverse button w-button">
+               <span id="burn2mint">🔥🔥BURN🔥🔥</span>
+            </button>
+            <button id="btn-revoke" class="button-2 traverse button w-button">
+               <span id="revText">Revoke Approval</span>
+            </button>
+          </h1>
           <h3>Be careful, no backsies 👹</h3>
           <div id="tinydiv"></div>
 
