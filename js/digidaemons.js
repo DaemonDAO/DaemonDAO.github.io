@@ -92,12 +92,12 @@ function init() {
   console.log("Fortmatic is", Fortmatic);
   console.log("window.web3 is", window.web3, "window.ethereum is", window.ethereum);
 
-  if(location.protocol !== 'https:') {
-    const alert = document.querySelector("#alert-error-https");
+  //if(location.protocol !== 'https:') {
+    //const alert = document.querySelector("#alert-error-https");
     //alert.style.display = "block";
-    document.querySelector("#btn-connect").setAttribute("disabled", "disabled")
-    return;
-  }
+    //document.querySelector("#btn-connect").setAttribute("disabled", "disabled")
+    //return;
+  //}
   // Tell Web3modal what providers we have available.
   // Built-in web browser provider (only one can exist as a time)
   // like MetaMask, Brave or Opera is added automatically by Web3modal
