@@ -55,18 +55,18 @@ async function addNetwork(id) {
   let networkData;
   switch (id) {
     //Fantom
-    case 250:
+    case 7700:
       networkData = [
         {
-          chainId: "0xfa",
-          chainName: "Fantom",
-          rpcUrls: ["https://rpc.ftm.tools"],
+          chainId: "0x1e14",
+          chainName: "Canto",
+          rpcUrls: ["https://canto.slingshot.finance"],
           nativeCurrency: {
-            name: "Fantom",
-            symbol: "FTM",
+            name: "Canto",
+            symbol: "CANTO",
             decimals: 18,
           },
-          blockExplorerUrls: ["https://ftmscan.com/"],
+          blockExplorerUrls: ["https://tuber.build/"],
         },
       ];
       break;
