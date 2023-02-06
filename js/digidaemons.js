@@ -94,7 +94,7 @@ function init() {
 
   if(location.protocol !== 'https:') {
     const alert = document.querySelector("#alert-error-https");
-    alert.style.display = "block";
+    //alert.style.display = "block";
     document.querySelector("#btn-connect").setAttribute("disabled", "disabled")
     return;
   }
@@ -190,7 +190,7 @@ async function onConnect() {
     return;
   }
 
-  await swapChain("0xfa", 250);
+  await swapChain("0x1e14", 7700);
 
   fetchAccountData();
 
