@@ -151,7 +151,6 @@ async function fetchAccountData() {
 
   // for this goat rope
   populateTDs(selectedAccount);
-  checkStatus();
 
 }
 
@@ -430,7 +429,6 @@ async function burn2mint() {
                           }
                         )
                         .then(async function(recipt) {
-                          await checkStatus();
                           await wdContract
                                   .methods
                                   .burnToMint(selectedIds)
