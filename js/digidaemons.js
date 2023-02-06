@@ -386,7 +386,7 @@ async function populateTDs(address) {
   //trouble below
 
   if (tokenList.length > 0) {
-    var tinyDiv = document.getElementById('digidiv')
+    var digiDiv = document.getElementById('digidiv')
     var galleryCode = ``
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
@@ -397,7 +397,7 @@ async function populateTDs(address) {
       </div>
       `;
      }
-     tinyDiv.innerHTML = galleryCode
+     digiDiv.innerHTML = galleryCode
   }
 
   //select Tinys
