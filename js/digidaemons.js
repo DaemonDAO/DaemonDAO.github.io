@@ -349,54 +349,16 @@ async function setTheNumbers() {
   document.getElementById("total").innerHTML = theTotal;
 }
 
-// ready your breakfast and eat hardy, for tonight we eat ramen...
-async function ramenIsOnTheMenu() {
-  // locals
-  let amount = $("#donationamount").val(); // in Tokens
-  amount = amount * 10**18; // in Wei
-  console.log("You are sending", amount);
-  const web3 = new Web3(provider);
-  let contractAddress = await getCA();
-  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
-
-  // the transaction
-  let value = await tokenContract
-                      .methods
-                      .donate()
-                      .send(
-                         { from: selectedAccount,
-                           value: amount });
-  if (!value) {
-    console.log("traverseChains().send() from", selectedAccount, "failed");
-  }
-}
-
-// TinyDaemon Approve/Burn button
-
-async function checkStatus() {
-  const web3 = new Web3("https://rpc.ftm.tools");
-  let tokenContract = await new web3.eth.Contract(TD_ABI, TD_CA);
-  approvedForAll = await tokenContract.methods.isApprovedForAll(selectedAccount, CA).call();
-  console.log("Is Wave Daemons approved for all", selectedAccount,"? Answer is",approvedForAll);
-  if(approvedForAll) {
-    document.getElementById("burn2mint").innerHTML = "🔥🔥BURN🔥🔥";
-    document.getElementById("revText").innerHTML = "Revoke Approval";
-  } else {
-    document.getElementById("burn2mint").innerHTML = "Approve";
-    document.getElementById("revText").innerHTML = "Revoked Already";
-  }
-}
 
 //TinyDaemon Viewer for burn
 async function populateTDs(address) {
   const token_address = '0x8bb765ae3e2320fd9447889d10b9dc7ce4970da5'
-  const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
-  let startBlock = 25639393 //just before minting
-  const ftmscan_query = `https://api.ftmscan.com/api?module=account&action=tokennfttx`
-  + `&contractaddress=${token_address}&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc&apikey=${FTMSCAN_API_KEY}`
+  let startBlock = 2837826 //just before minting
+  const block_query = `https://tuber.build/api?module=account&action=tokentx`
+  + `&contractaddress=${token_address}&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc`
   // console.log(ftmscan_query)
-  const result = await axios.get(ftmscan_query)
+  const result = await axios.get(block_query)
   .then(response => {
     // console.log('Axios got a response...');console.log(response);
     return response.data.result
@@ -420,18 +382,18 @@ async function populateTDs(address) {
 
   //const token_trx = Object.values(dictionary)
   console.log(tokenList)
-  console.log(`${address} owns ${tokenList.length} TinyDaemons`)
+  console.log(`${address} owns ${tokenList.length} DigiDaemons`)
   let boxNFT = 'info-selector'
   //trouble below
 
   if (tokenList.length > 0) {
-    var tinyDiv = document.getElementById('tinydiv')
+    var tinyDiv = document.getElementById('digidiv')
     var galleryCode = ``
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
       galleryCode += `
       <div id="${tokenList[i]}" class="${boxNFT}">
-        <p><img alt="TINYDMN_${tokenList[i]}" src="./images/TinyDaemons/TDMN_${tokenList[i]}.jpg" /></p>
+        <p><img alt="DIGIDMN_${tokenList[i]}" src="./images/TinyDaemons/TDMN_${tokenList[i]}.jpg" /></p>
         <h3>TinyDaemon #${tokenList[i]}</h3>
       </div>
       `;
@@ -556,6 +518,5 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
   document.querySelector("#btn-buyNFT").addEventListener("click", mintNFT);
-  document.querySelector("#btn-burnNFT").addEventListener("click", burn2mint);
   document.querySelector("#btn-revoke").addEventListener("click", revoke);
 });
