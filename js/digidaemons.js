@@ -351,7 +351,7 @@ async function setTheNumbers() {
 
 //TinyDaemon Viewer for burn
 async function populateTDs(address) {
-  const token_address = '0x8bb765ae3e2320fd9447889d10b9dc7ce4970da5'
+  const token_address = '0xC0C73CcFEE66eb400acCee23Fe70369186e4D3C9' //Longnecks
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
   let startBlock = 2837826 //just before minting
   const block_query = `https://tuber.build/api?module=account&action=tokentx`
