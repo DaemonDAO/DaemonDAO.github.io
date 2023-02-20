@@ -145,10 +145,6 @@ async function fetchAccountData() {
   var endString = selectedAccount.substring(selectedAccount.length - 3)
   var display = startString+dots+endString;
   document.getElementById("addWallet").innerHTML = display;
-
-  // for this goat rope
-  populateTDs(selectedAccount);
-
 }
 
 /**
