@@ -21,6 +21,7 @@ const ABI = [{"type":"constructor","stateMutability":"nonpayable","inputs":[]},{
 // Useful for later you'll see
 let saleStart;
 let mintFees;
+const rpc = 'https://canto.slingshot.finance/';
 
 // after window is loaded completely (load screen)
 window.onload = function(){
@@ -250,7 +251,7 @@ async function swapChain(network, number) {
 
 // fetch times from contract
 async function fetchStartTime() {
-  const web3 = new Web3("https://evm.explorer.canto.io/api");
+  const web3 = new Web3(rpc);
   let tokenContract = await new web3.eth.Contract(ABI, CA);
   saleStart = await tokenContract.methods.showStart().call();
 }
