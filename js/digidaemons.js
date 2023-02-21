@@ -303,7 +303,7 @@ window.setInterval(async () => {
 
 // web3 call() for how many have minted on that contract
 async function queryMinted() {
-  const web3 = new Web3("https://evm.explorer.canto.io/api");
+  const web3 = new Web3(rpc);
   let tokenContract = await new web3.eth.Contract(ABI, CA);
   let value = await tokenContract.methods.minterMinted().call();
   console.log(value, "has been minted");
@@ -312,7 +312,7 @@ async function queryMinted() {
 
 // web3 call() for how many allowed to mint on that contract
 async function queryAlloted() {
-  const web3 = new Web3("https://evm.explorer.canto.io/api");
+  const web3 = new Web3(rpc);
   let tokenContract = await new web3.eth.Contract(ABI, CA);
   let value = await tokenContract.methods.minterCapacity().call();
   console.log(value, "to mint on this chain");
@@ -321,7 +321,7 @@ async function queryAlloted() {
 
 // cost per mint in ETH
 async function fetchMintFee(){
-  const web3 = new Web3("https://evm.explorer.canto.io/api");
+  const web3 = new Web3(rpc);
   let NFTContract = await new web3.eth.Contract(ABI, CA);
   let value = await NFTContract.methods.minterFees().call();
   if(!value){
