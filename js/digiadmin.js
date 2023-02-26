@@ -976,7 +976,9 @@ async function populateNFTs(address) {
 
     var galleryCode = `<div class="mac-window-title"><span>Your Turnstile NFTs</span></div>`;
     galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList}.</h3>`;
-    galleryCode +=`<select id="CSR_ID" name="CSR_IDs" class="button-2">`
+    galleryCode +=`<button id="btn-claimCSR" class="button-2">
+      CLAIM CSR
+    </button> on Turnstile NFT <select id="CSR_ID" name="CSR_IDs" class="button-2">`
     for(let i = 0; i < tokenList.length; i++){
       if (tokenList[i] == tokenList[-1]){
         galleryCode +=`
