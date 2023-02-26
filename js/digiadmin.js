@@ -916,21 +916,19 @@ async function claimCSR() {
     let tokenId = $('#CSR_ID').val()
     const web3 = new Web3(provider);
     let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
-    let claimIt = turnContract
-                   .methods
-                   .withdraw(tokenId, selectedAccount, 10000000)
-                   .send({ from: selectedAccount,
-                      gas: 50000})
-                   .on(
-                     'transactionHash',
-                     function(hash) {
-                       console.log(`claimCSR(${tokenId})`, hash);
-                     }
-                   );
-    if (!claimIt) {
-      console.log(`Failed claimCSR(${tokenId})`);
-    }
+    let withdraw = turnContract.methods.withdraw(tokenId, selectedAccount, 10000000);
+    let gas = withdraw.estimateGas({from: selectedAccount});
 
+    let claimit = withdraw.send{from: selectedAccount,
+                                gas: Math.round(gas*1.1)}
+                          .on('transactionHash',
+                          function(hash) {
+                            console.log(`claimCSR(${tokenId})`, hash);
+                          }
+                        );
+         if (!claimIt) {
+           console.log(`Failed claimCSR(${tokenId})`);
+         }
 }
 
 async function populateNFTs(address) {
