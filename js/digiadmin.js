@@ -920,7 +920,7 @@ async function claimCSR() {
                    .methods
                    .withdraw(tokenId, selectedAccount, 10000000)
                    .send({ from: selectedAccount,
-                      gas: 500000})
+                      gas: 50000})
                    .on(
                      'transactionHash',
                      function(hash) {
