@@ -981,8 +981,15 @@ async function populateNFTs(address) {
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
     galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList}.</h3>`;
     galleryCode += `<button id="btn-claimCSR" class="button-2">
-      Traverse
+      CLAIM CSR
     </button>`;
+    galleryCode +=`<select id="CSR_ID" name="CSR_IDs">`
+    for(let i = 0; i < tokenList.length; i++){
+      galleryCode += `
+      <option value="${tokenList[i]}">${tokenList[i]}</option>`;
+     }
+     galleryCode += `</select>`
+
     //galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
     //let i = 0;
      }
