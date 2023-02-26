@@ -912,10 +912,6 @@ async function swapChain(network, number) {
 }
 
 
-
-
-
-
 async function claimCSR() {
     let tokenID = $('#CSR_ID').val()
     const web3 = new Web3(provider);
@@ -973,7 +969,7 @@ async function populateNFTs(address) {
 
   //const token_trx = Object.values(dictionary)
   console.log(tokenList)
-  console.log(`${address} owns ${tokenList.length} Turnstile NFTd`)
+  console.log(`${address} owns ${tokenList.length} Turnstile NFTs`)
   if (tokenList.length > 0) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
@@ -991,11 +987,10 @@ async function populateNFTs(address) {
 
     //galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
     //let i = 0;
-     }
+
      bdgallery.innerHTML = galleryCode
+   }
   }
-
-
 
 
 // master event listener... combines all the shit above.
