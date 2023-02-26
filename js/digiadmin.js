@@ -992,11 +992,13 @@ async function populateNFTs(address) {
 
     //galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
     //let i = 0;
-     bdgallery.innerHTML = galleryCode
-     window.addEventListener('load' async() =>{
-       init();
-       document.querySelector("#btn-claimCSR").addEventListener("click", claimCSR);
-     });
+     bdgallery.innerHTML = galleryCode;
+     document.querySelector("#btn-claimCSR").addEventListener("click", claimCSR);
+   }
+   else {
+     var galleryCode = `<div class="mac-window-title"><span>Your Turnstile NFTs</span></div>`;
+     galleryCode += `  <h3>You own no Turnstile NFTs 😭</h3>`;
+     bdgallery.innerHTML = galleryCode;
    }
   }
 
