@@ -913,7 +913,7 @@ async function swapChain(network, number) {
 
 
 async function claimCSR() {
-    let tokenID = $('#CSR_ID').val()
+    let tokenId = $('#CSR_ID').val()
     const web3 = new Web3(provider);
     let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
     let claimIt = turnContract
@@ -978,10 +978,15 @@ async function populateNFTs(address) {
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
     galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList}.</h3>`;
-    galleryCode +=`<select id="CSR_ID" name="CSR_IDs">`
+    galleryCode +=`<select id="CSR_ID" name="CSR_IDs" class="button-2">`
     for(let i = 0; i < tokenList.length; i++){
+      if (tokenList[i] == tokenList[-1]){
+        galleryCode +=`
+        <option selected="selected" value="${tokenList[i]}">${tokenList[i]}</option>`;
+      }
+      else {
       galleryCode += `
-      <option value="${tokenList[i]}">${tokenList[i]}</option>`;
+      <option value="${tokenList[i]}">${tokenList[i]}</option>`;}
      }
      galleryCode += `</select>`
 
