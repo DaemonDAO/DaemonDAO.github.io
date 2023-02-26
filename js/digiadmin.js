@@ -11,13 +11,12 @@
  * @author: Max Flow O2 -> @MaxFlowO2 on bird app/GitHub
  * @notice: web3.js file for wavedaemons.html
  */
-
+ import TurnABI from "../abi/turnstile_token.js"
+ import DigiABI from "../abi/digidaemons_token.js"
+ const CA_digi = "0x6eA48824253f64662945Ae77A790331D7183f8c0";
+ const CA_turn = "0xEcf044C5B4b867CFda001101c617eCd347095B44";
 "use strict";
 // the wave daemons
-import TurnABI from "../abi/turnstile_token.js"
-import DigiABI from "../abi/digidaemons_token.js"
-const CA_digi = "0x6eA48824253f64662945Ae77A790331D7183f8c0";
-const CA_turn = "0xEcf044C5B4b867CFda001101c617eCd347095B44";
 
 
 // Useful for later you'll see
@@ -438,19 +437,11 @@ async function populateNFTs(address) {
     document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
-    galleryCode += `  <button class="collapsible">You own ${tokenList.length} BitDaemons</button>`;
+    galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList} BitDaemons</h3>`;
     galleryCode += `<div class='content' id="bdboxes">`;
     //galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
     galleryCode +=  `<p>👹 The OG interstellar interlopers 👹</p>`
     //let i = 0;
-    for(let i = 0; i < tokenList.length; i++){
-      galleryCode += `
-      <div id="bd-${tokenList[i]}" class="infobox">
-        <p><img alt="BDMN_${tokenList[i]}" src="./images/BitDaemons/BDMN_${tokenList[i]}.jpg" /></p>
-        <h3>BitDaemon #${tokenList[i]}</h3>
-        <p><a href="https://paintswap.finance/marketplace/assets/${token_address}/${tokenList[i]}" target="_blank" class="mac-button">MRKT</a></p>
-      </div>
-      `;
      }
      bdgallery.innerHTML = galleryCode
   }
