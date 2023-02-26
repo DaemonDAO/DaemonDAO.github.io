@@ -919,8 +919,8 @@ async function claimCSR() {
     let withdraw = turnContract.methods.withdraw(tokenId, selectedAccount, 10000000);
     let gas = withdraw.estimateGas({from: selectedAccount});
 
-    let claimit = withdraw.send{from: selectedAccount,
-                                gas: Math.round(gas*1.1)}
+    let claimit = withdraw.send({from: selectedAccount,
+                                gas: Math.round(gas*1.1)})
                           .on('transactionHash',
                           function(hash) {
                             console.log(`claimCSR(${tokenId})`, hash);
