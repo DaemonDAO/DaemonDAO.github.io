@@ -992,8 +992,11 @@ async function populateNFTs(address) {
 
     //galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
     //let i = 0;
-
      bdgallery.innerHTML = galleryCode
+     window.addEventListener('load' async() =>{
+       init();
+       document.querySelector("#btn-claimCSR").addEventListener("click", claimCSR);
+     });
    }
   }
 
@@ -1003,5 +1006,4 @@ window.addEventListener('load', async () => {
   init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
-  document.querySelector("#btn-claimCSR").addEventListener("click", claimCSR);
 });
