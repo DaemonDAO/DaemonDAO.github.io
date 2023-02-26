@@ -805,6 +805,8 @@ async function fetchAccountData() {
   var display = startString+dots+endString;
   document.getElementById("addWallet").innerHTML = display;
   populateNFTs(selectedAccount);
+  const rmelement = document.getElementById('hiplsconnect');
+  rmelement.remove();
 }
 
 /**
