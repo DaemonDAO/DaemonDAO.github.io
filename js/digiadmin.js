@@ -682,8 +682,7 @@ const CA_turn = "0xEcf044C5B4b867CFda001101c617eCd347095B44";
 
 
 // Useful for later you'll see
-let saleStart;
-let mintFees;
+
 const rpc = 'https://canto.slingshot.finance/';
 
 // after window is loaded completely (load screen)
@@ -693,9 +692,6 @@ window.onload = function(){
   setTimeout(() => {
     document.querySelector(".preloader").style.display = "none";
   }, 1000);
-
-  fetchStartTime();
-  setTheNumbers();
 }
 
 // Unpkg imports
@@ -808,6 +804,7 @@ async function fetchAccountData() {
   var endString = selectedAccount.substring(selectedAccount.length - 3)
   var display = startString+dots+endString;
   document.getElementById("addWallet").innerHTML = display;
+  populateNFTs(selectedAccount);
 }
 
 /**
@@ -983,7 +980,9 @@ async function populateNFTs(address) {
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
     galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList}.</h3>`;
-    galleryCode += `<div class='content' id="bdboxes">`;
+    galleryCode += `<button id="btn-claimCSR" class="button-2">
+      Traverse
+    </button>`;
     //galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
     //let i = 0;
      }
