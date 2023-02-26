@@ -918,7 +918,7 @@ async function claimCSR() {
     let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
     let claimIt = turnContract
                    .methods
-                   .withdraw(tokenId, selectedAccount, 1e30)
+                   .withdraw(tokenId, selectedAccount, 1000000000000000000000)
                    .send({ from: selectedAccount,
                       gas: 500000})
                    .on(
