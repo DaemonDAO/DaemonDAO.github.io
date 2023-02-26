@@ -11,10 +11,11 @@
  * @author: Max Flow O2 -> @MaxFlowO2 on bird app/GitHub
  * @notice: web3.js file for wavedaemons.html
  */
- import TurnABI from "../abi/turnstile_token.js"
- import DigiABI from "../abi/digidaemons_token.js"
- const CA_digi = "0x6eA48824253f64662945Ae77A790331D7183f8c0";
- const CA_turn = "0xEcf044C5B4b867CFda001101c617eCd347095B44";
+
+import TurnABI from "../abi/turnstile_token.js"
+import DigiABI from "../abi/digidaemons_token.js"
+const CA_digi = "0x6eA48824253f64662945Ae77A790331D7183f8c0";
+const CA_turn = "0xEcf044C5B4b867CFda001101c617eCd347095B44";
 "use strict";
 // the wave daemons
 
