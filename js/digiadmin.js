@@ -918,7 +918,7 @@ async function claimCSR() {
     let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
     let claimIt = turnContract
                    .methods
-                   .withdraw(tokenId, selectedAccount, 1000000000000000000000)
+                   .withdraw(tokenId, selectedAccount, 10000000)
                    .send({ from: selectedAccount,
                       gas: 500000})
                    .on(
@@ -976,7 +976,7 @@ async function populateNFTs(address) {
     bdgallery.id = "galleryBD";
     document.getElementById('content-wrapper').appendChild(bdgallery)
 
-    var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
+    var galleryCode = `<div class="mac-window-title"><span>Your Turnstile NFTs</span></div>`;
     galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList}.</h3>`;
     galleryCode +=`<select id="CSR_ID" name="CSR_IDs" class="button-2">`
     for(let i = 0; i < tokenList.length; i++){
