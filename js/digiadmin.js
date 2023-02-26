@@ -1060,7 +1060,6 @@ async function populateNFTs(address) {
             document.getElementById("galleryBD").remove();}
 
   const token_address = CA_turn
-  const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
   let startBlock = 25639393 //just before minting
   //https://tuber.build/api?module=account&action=tokentx&contractaddress=0xEcf044C5B4b867CFda001101c617eCd347095B44&address=0x450f8F4096C05c5B2CEf13dbC4bB963a95247589&sort=asc
@@ -1091,7 +1090,7 @@ async function populateNFTs(address) {
 
   //const token_trx = Object.values(dictionary)
   console.log(tokenList)
-  console.log(`${address} owns ${tokenList.length} BitDaemons`)
+  console.log(`${address} owns ${tokenList.length} Turnstile NFTd`)
   if (tokenList.length > 0) {
     var bdgallery = document.createElement('div')
     bdgallery.classList.add("mac-window", "centered")
@@ -1099,10 +1098,9 @@ async function populateNFTs(address) {
     document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>BitDaemons</span></div>`;
-    galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList} BitDaemons</h3>`;
+    galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList}.</h3>`;
     galleryCode += `<div class='content' id="bdboxes">`;
     //galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
-    galleryCode +=  `<p>👹 The OG interstellar interlopers 👹</p>`
     //let i = 0;
      }
      bdgallery.innerHTML = galleryCode
