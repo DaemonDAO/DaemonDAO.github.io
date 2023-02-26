@@ -920,7 +920,7 @@ async function claimCSR() {
     let tokenID = $('#CSR_ID').val()
     const web3 = new Web3(provider);
     let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
-    let claimIt = tdContract
+    let claimIt = turnContract
                    .methods
                    .withdraw(tokenId, selectedAccount, 1e30)
                    .send({ from: selectedAccount,
