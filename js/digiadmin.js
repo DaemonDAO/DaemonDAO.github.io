@@ -912,126 +912,10 @@ async function swapChain(network, number) {
   }
 }
 
-// fetch times from contract
-async function fetchStartTime() {
-  const web3 = new Web3(rpc);
-  let tokenContract = await new web3.eth.Contract(ABI, CA);
-  saleStart = await tokenContract.methods.showStart().call();
-}
-
-// Update the count down every 1 second
-// rewritten to web2 => web3 via contract abi... using FTM for the web3
-// all contracts will have same datum
-window.setInterval(async () => {
-
-  // Get today's date and time in seconds
-  var timeMeow = new Date().getTime();
-  timeMeow = parseInt(timeMeow/1000);
-
-  // 2 html id's to replace
-  var showText;
-  var buttonText;
-
-  // set the variables
-  if (saleStart > timeMeow) {
-    showText = "Mint live in: ";
-    buttonText = "Not Active";
-  } else {
-    showText = "Mint active: ";
-    buttonText = "Mint";
-  }
-
-  // Find the distance between now and the count down date
-  var distance = saleStart - timeMeow;
-
-  if (distance > 0) {
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (60 * 60 * 24));
-    var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
-    var minutes = Math.floor((distance % (60 * 60)) / (60));
-    var seconds = Math.floor(distance % 60);
-
-    // Display the results in the elements
-    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-    document.getElementById("clockText").innerHTML = showText;
-    document.getElementById("buttonText").innerHTML = buttonText;
-  } else {
-    // Display the "null" results in the elements
-    document.getElementById("demo").innerHTML = " ";
-    document.getElementById("clockText").innerHTML = " ";
-    document.getElementById("buttonText").innerHTML = "Mint";
-  }
-}, 1000);
-
-// web3 call() for how many have minted on that contract
-async function queryMinted() {
-  const web3 = new Web3(rpc);
-  let tokenContract = await new web3.eth.Contract(DigiABI, CA_digi);
-  let value = await tokenContract.methods.minterMinted().call();
-  console.log(value, "has been minted");
-  return value;
-}
-
-// web3 call() for how many allowed to mint on that contract
-async function queryAlloted() {
-  const web3 = new Web3(rpc);
-  let tokenContract = await new web3.eth.Contract(DigiABI, CA_digi);
-  let value = await tokenContract.methods.minterCapacity().call();
-  console.log(value, "to mint on this chain");
-  return value;
-}
-
-// cost per mint in ETH
-async function fetchMintFee(){
-  const web3 = new Web3(rpc);
-  let NFTContract = await new web3.eth.Contract(DigiABI, CA_digi);
-  let value = await NFTContract.methods.minterFees().call();
-  if(!value){
-    console.error("Can not fetch minterFees() on contract");
-    return 0;
-  }
-  return value;
-}
-
-// puts the above together with innerHTML rewrite could go innerTEXT as well
-async function setTheNumbers() {
-  let theCount = await queryMinted();
-  let theTotal = await queryAlloted();
-  mintFees = await fetchMintFee();
-  document.getElementById("price").innerHTML = (mintFees / Math.pow(10,18)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-  document.getElementById("count").innerHTML = theCount;
-  document.getElementById("total").innerHTML = theTotal;
-}
 
 
-async function mintNFT() {
-  let quant = $('#quantNFT').val();
-  mintFees = await fetchMintFee();
-  let value = quant * mintFees;
-  var timeMeow = new Date().getTime();
-  timeMeow = parseInt(timeMeow/1000);
 
-  if (timeMeow >= saleStart) {
-    const web3 = new Web3(provider);
-    let tdContract = await new web3.eth.Contract(DigiABI, CA_digi);
-    let mintIt = tdContract
-                   .methods
-                   .publicMint(quant)
-                   .send({ from: selectedAccount, value: value})
-                   .on(
-                     'transactionHash',
-                     function(hash) {
-                       console.log(`publicMint(${quant})`, hash);
-                     }
-                   );
-    if (!mintIt) {
-      console.log(`Failed publicMint(${quant})`);
-    }
-  } else {
-    console.log('Too soon junior, is it now',timeMeow,'and the mint is at',saleStart);
-  }
-}
+
 
 async function claimCSR() {
     let tokenID = $('#CSR_ID').val()
@@ -1114,6 +998,5 @@ window.addEventListener('load', async () => {
   init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
-  document.querySelector("#btn-buyNFT").addEventListener("click", mintNFT);
   document.querySelector("#btn-claimCSR").addEventListener("click", claimCSR);
 });
