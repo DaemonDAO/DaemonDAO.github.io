@@ -926,7 +926,7 @@ async function claimCSR() {
     let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
     let balance = turnContract.methods.balances(tokenId);
     //console.log(`There is ${(Math.round(balance * 100) / 100).toFixed(4)} $CANTO to claim on Turnstile NFT #${tokenId}`);
-    let withdraw = turnContract.methods.withdraw(tokenId, selectedAccount, balance/1e18);
+    let withdraw = turnContract.methods.withdraw(tokenId, selectedAccount, balance);
     let gas = withdraw.estimateGas({from: selectedAccount});
 
     let claimIt = withdraw.send({from: selectedAccount,
