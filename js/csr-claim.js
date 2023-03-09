@@ -910,7 +910,14 @@ async function swapChain(network, number) {
     console.error(error);
   }
 }
-
+async function checkCSRBalance(){
+  let tokenId = $('#CSR_ID').val()
+  const web3 = new Web3(provider);
+  let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
+  let balance = turnContract.methods.balances(tokenId);
+  console.log(`There is ${balance} $CANTO to claim on Turnstile NFT #${tokenId}`);
+  return
+}
 
 async function claimCSR() {
     let tokenId = $('#CSR_ID').val()
@@ -978,9 +985,13 @@ async function populateNFTs(address) {
 
     var galleryCode = `<div class="mac-window-title"><span>Your Turnstile NFTs</span></div>`;
     galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList}.</h3>`;
+    galleryCode +=
     galleryCode +=`<button id="btn-claimCSR" class="button-2">
       CLAIM CSR
+    </button> or <button id="btn-checkCSR" class="button-2">
+      Check Balance
     </button> on Turnstile NFT <select id="CSR_ID" name="CSR_IDs" class="button-2">`
+    galleryCode += `<p>Balance: ⋐${balance}</p>`
     for(let i = 0; i < tokenList.length; i++){
       if (tokenList[i] == tokenList[-1]){
         galleryCode +=`
@@ -996,6 +1007,7 @@ async function populateNFTs(address) {
     //let i = 0;
      bdgallery.innerHTML = galleryCode;
      document.querySelector("#btn-claimCSR").addEventListener("click", claimCSR);
+     document.querySelector("#btn-checkCSR").addEventListener("click", checkCSRBalance);
    }
    else {
      var galleryCode = `<div class="mac-window-title"><span>Your Turnstile NFTs</span></div>`;
