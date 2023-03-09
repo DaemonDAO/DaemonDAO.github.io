@@ -916,7 +916,7 @@ async function checkCSRBalance(){
   let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
   let balance = await turnContract.methods.balances(tokenId).call();
   console.log(`There is ${balance} $CANTO to claim on Turnstile NFT #${tokenId}`);
-  let bal = getElementById("blnc");
+  let bal = document.getElementById("blnc");
   bal.innerHTML = `Balance: ⋐${balance}`;
 }
 
