@@ -916,6 +916,7 @@ async function checkCSRBalance(){
   let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
   let balance = turnContract.methods.balances(tokenId);
   console.log(`There is ${balance} $CANTO to claim on Turnstile NFT #${tokenId}`);
+  return balance;
 }
 
 async function claimCSR() {
@@ -989,7 +990,8 @@ async function populateNFTs(address) {
       CLAIM CSR
     </button> or <button id="btn-checkCSR" class="button-2">
       Check Balance
-    </button> on Turnstile NFT <select id="CSR_ID" name="CSR_IDs" class="button-2">`
+    </button> on Turnstile NFT <select id="CSR_ID" name="CSR_IDs" class="button-2">`;
+    let balance = 0;
     galleryCode += `<p>Balance: ⋐${balance}</p>`
     for(let i = 0; i < tokenList.length; i++){
       if (tokenList[i] == tokenList[-1]){
