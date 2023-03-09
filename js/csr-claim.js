@@ -914,7 +914,7 @@ async function checkCSRBalance(){
   let tokenId = $('#CSR_ID').val()
   const web3 = new Web3(provider);
   let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
-  let balance = turnContract.methods.balances(tokenId);
+  let balance = await turnContract.methods.balances(tokenId).call();
   console.log(`There is ${balance} $CANTO to claim on Turnstile NFT #${tokenId}`);
   let bal = getElementById("blnc");
   bal.innerHTML = `Balance: ⋐${balance}`;
@@ -1004,8 +1004,7 @@ async function populateNFTs(address) {
 
     //galleryCode += `<p class="example-left">👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹 The OG interstellar interlopers 👹</p>`;
     //let i = 0;
-     let balance = '????';
-     galleryCode += `<p id="blnc">Balance: ⋐${balance}</p>`
+     galleryCode += `<p id="blnc">Balance: ⋐???</p>`
      bdgallery.innerHTML = galleryCode;
      document.querySelector("#btn-claimCSR").addEventListener("click", claimCSR);
      document.querySelector("#btn-checkCSR").addEventListener("click", checkCSRBalance);
