@@ -978,7 +978,7 @@ async function populateNFTs(address) {
     document.getElementById('content-wrapper').appendChild(bdgallery)
 
     var galleryCode = `<div class="mac-window-title"><span>Your Turnstile NFTs</span></div>`;
-    galleryCode += `<h3><img src="./images/DSD6.png" alt="cheers"/></h3>`;
+    galleryCode += `<h3><img src="./images/dancers.gif" alt="cheers"/></h3>`;
     galleryCode += `  <h3>You own the following Turnstile NFTs: ${tokenList}.</h3>`;
     galleryCode +=`<button id="btn-claimCSR" class="button-2">
       CLAIM CSR
