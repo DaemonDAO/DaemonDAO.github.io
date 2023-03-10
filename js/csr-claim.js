@@ -748,16 +748,7 @@ function init() {
   console.log("Fortmatic is", Fortmatic);
   console.log("window.web3 is", window.web3, "window.ethereum is", window.ethereum);
 
-  //if(location.protocol !== 'https:') {
-    //const alert = document.querySelector("#alert-error-https");
-    //alert.style.display = "block";
-    //document.querySelector("#btn-connect").setAttribute("disabled", "disabled")
-    //return;
-  //}
-  // Tell Web3modal what providers we have available.
-  // Built-in web browser provider (only one can exist as a time)
-  // like MetaMask, Brave or Opera is added automatically by Web3modal
-  const providerOptions = {
+const providerOptions = {
     walletconnect: {
       package: WalletConnectProvider,
       options: {
@@ -926,7 +917,7 @@ async function claimCSR() {
     const web3 = new Web3(provider);
     let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
     let balance = turnContract.methods.balances(tokenId);
-    let balance_wei = new BigNumber(balance).shiftedBy(18).toString();
+    let balance_wei = new BigNumber(balance).toString();
     let withdraw = turnContract.methods.withdraw(tokenId, selectedAccount, balance_wei);
     let gas = withdraw.estimateGas({from: selectedAccount});
 
