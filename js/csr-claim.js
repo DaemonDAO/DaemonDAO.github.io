@@ -926,7 +926,8 @@ async function claimCSR() {
     const web3 = new Web3(provider);
     let turnContract = await new web3.eth.Contract(TurnABI, CA_turn);
     let balance = turnContract.methods.balances(tokenId);
-    let withdraw = turnContract.methods.withdraw(tokenId, selectedAccount, balance.toString());
+    let balance_wei = new BigNumber(balance).shiftedBy(18).toString();
+    let withdraw = turnContract.methods.withdraw(tokenId, selectedAccount, balance_wei);
     let gas = withdraw.estimateGas({from: selectedAccount});
 
     let claimIt = withdraw.send({from: selectedAccount,
