@@ -298,155 +298,25 @@ window.onload = function(){
   }, 1000);
 }
 
-// fetch times from contract
-async function fetchWeb3PSTime() {
-  const web3 = new Web3("https://rpc.ftm.tools");
-  //const web3 = new Web3("https://rpc.testnet.fantom.network/");
-  let tokenContract = await new web3.eth.Contract(ABI, FTM_MAINCA);
-  //let tokenContract = await new web3.eth.Contract(ABI, FTM_TESTCA);
-  let timeOne = await tokenContract.methods.showPresaleStart().call();
-  if(timeOne == 0) return countDownDate;
-  return timeOne;
-}
 
-// fetch times from contract
-async function fetchWeb3STime() {
-  const web3 = new Web3("https://rpc.ftm.tools");
-  //const web3 = new Web3("https://rpc.testnet.fantom.network/");
-  let tokenContract = await new web3.eth.Contract(ABI, FTM_MAINCA);
-  //let tokenContract = await new web3.eth.Contract(ABI, FTM_TESTCA);
-  let timeOne = await tokenContract.methods.showStart().call();
-  if(timeOne == 0) return countDownDate;
-  return timeOne;
-}
 
-// Useful for later you'll see
-let presaleStart;
-let presaleEnd;
 
-// Update the count down every 1 second
-// rewritten to web2 => web3 via contract abi... using FTM for the web3
-// all contracts will have same datum
-/*
-window.setInterval(async () => {
-
-  presaleStart = await fetchWeb3PSTime();
-  presaleEnd = await fetchWeb3STime();
-
-  // Get today's date and time in seconds
-  var timeMeow = new Date().getTime();
-  timeMeow = parseInt(timeMeow/1000);
-
-  // 3 html id's to replace
-  var showTime;
-  var showText;
-  var buttonText;
-
-  // set the variables
-  if (presaleStart > timeMeow) {
-    showTime = presaleStart;
-    showText = "Presale Mint live in: ";
-    buttonText = "Not Active";
-  } else if (presaleEnd > timeMeow && timeMeow > presaleStart) {
-    showTime = presaleEnd;
-    showText = "WL Mint active, Mint live in: ";
-    buttonText = "Mint 2";
-  }
-
-  // Find the distance between now and the count down date
-  var distance = showTime - timeMeow;
-
-  if (distance > 0) {
-    // Time calculations for days, hours, minutes and seconds
-    var days = Math.floor(distance / (60 * 60 * 24));
-    var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
-    var minutes = Math.floor((distance % (60 * 60)) / (60));
-    var seconds = Math.floor(distance % 60);
-
-    // Display the results in the elements
-    document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-    document.getElementById("clockText").innerHTML = showText;
-    document.getElementById("buttonText").innerHTML = buttonText;
-  } else {
-    // Display the "null" results in the elements
-    document.getElementById("demo").innerHTML = " ";
-    document.getElementById("clockText").innerHTML = " ";
-    document.getElementById("buttonText").innerHTML = "Mint 1";
-  }
-}, 1000);
-*/
-
-// swaps background image depending on chain
-function changeBG(param) {
-  $("body").css("background-image", "url(./images/"+param+"_tbg.png)");
-}
-
-// web3 call() for how many have minted on that contract
-async function queryMinted(contractAddress) {
+// web3 call() for how many Digis have been staked in a contract
+async function getTotalStakedBalance(contractAddress, ABI) {
   const web3 = new Web3(provider);
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
-  let value = await tokenContract.methods.minterCurrentMints().call();
-  console.log(value, "has been minted");
+  let value = await tokenContract.methods.totalStaked().call();
+  console.log(value, " total DigiDaemons staked");
   return value;
 }
 
-// web3 call() for how many allowed to mint on that contract
-async function queryAlloted(contractAddress) {
+// get selectedAccount's staked balance
+async function getMyStakedIds(contractAddress, ABI) {
   const web3 = new Web3(provider);
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
-  let value = await tokenContract.methods.minterMaximumCapacity().call();
-  console.log(value, "to mint on this chain");
+  let value = await tokenContract.methods.getOwnedTokenIDs(selectedAccount).call();
+  console.log('my staked tokens: ', value);
   return value;
-}
-
-// async to pull CA's
-async function getCA() {
-
-  // set locals
-  let contractAddress;
-
-  // web3
-  const web3 = new Web3(provider);
-
-  // Get account of the connected wallet (refresh)
-  let accounts = await web3.eth.getAccounts();
-  selectedAccount = accounts[0];
-
-  // chainId
-  const chainId = await web3.eth.getChainId();
-
-  // if-else if for chainID's aka to for Addresses
-  if (chainId == 1) {
-    contractAddress = ETH_MAINCA;
-  } else if (chainId == 56) {
-    contractAddress = BNB_MAINCA;
-  } else if (chainId == 43114) {
-    contractAddress = AVAX_MAINCA;
-  } else if (chainId ==  137) {
-    contractAddress = MATIC_MAINCA;
-  } else if (chainId == 250) {
-    contractAddress = FTM_MAINCA;
-  } else if (chainId == 4) {
-    contractAddress = ETH_TESTCA;
-  } else if (chainId == 97) {
-    contractAddress = BNB_TESTCA;
-  } else if (chainId == 43113) {
-    contractAddress = AVAX_TESTCA;
-  } else if (chainId == 80001) {
-    contractAddress = MATIC_TESTCA;
-  } else if (chainId == 4002) {
-    contractAddress = FTM_TESTCA;
-  } else if (chainId == 10) {
-    contractAddress = OP_MAINCA;
-  } else if (chainId == 69) {
-    contractAddress = OP_TESTCA;
-  } else {
-    console.log("The chainID", chainId, "has no CA set");
-  }
-
-  // return the address
-  return contractAddress;
 }
 
 async function getChainID() {
@@ -480,7 +350,6 @@ async function populateNFTs(address) {
   .catch(error => {
     console.log(error)
   })
-
   // console.log(result)
   console.log(result) //need to check!
   //let dictionary = {}
@@ -493,15 +362,15 @@ async function populateNFTs(address) {
       const index = tokenList.indexOf(t.tokenID);
       if (index > -1) {tokenList.splice(index, 1)}}} //remove token ID if outgoing
 
-
+  document.getElementById("rye-hold-statement").innerHTML = `You hold ${tokenList.length} DigiDaemons`
   //const token_trx = Object.values(dictionary)
-  console.log(tokenList)
-  console.log(`${address} owns ${tokenList.length} DigiDaemons`)
+  console.log(tokenList);
+  console.log(`${address} owns ${tokenList.length} DigiDaemons`);
   let boxNFT = 'info-selector'
   //trouble below
 
   if (tokenList.length > 0) {
-    var ryeHeldContainer = document.getElementById('rye-held-container')
+    var ryeHeldContainer = document.getElementById('rye-held-container');
     var galleryCode = ``
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
@@ -520,6 +389,30 @@ async function populateNFTs(address) {
      ryeHeldContainer.innerHTML = galleryCode
   }
 
+  let stakedList = await getMyStakedIds(DigiDistilleryCA, DigiDistilleryABI);
+
+  document.getElementById("rye-hold-statement").innerHTML = `You have ${stakedList.length} staked DigiDaemons`
+
+  if (stakedList.length > 0) {
+    var ryeStakedContainer = document.getElementById('rye-staked-container')
+    var galleryCode = ``
+    //let i = 0;
+    for(let i = 0; i < stakedList.length; i++){
+
+      let tokenMetadataURI = `https://gateway.maxflowo2.com/ipfs/QmNdDwKB6kfUo33i4dvDZEi2QzdFPEozMRxzG8sVVuq1k6/${tokenList[i]}.json`;
+      const tokenMetadata = await fetch(tokenMetadataURI).then((response) => response.json());
+
+      galleryCode += `
+      <div id="${stakedList[i]}" class="${boxNFT}">
+        <p><img alt="DIGIDMN_${stakedList[i]}" src=${tokenMetadata["image"]} /></p>
+        <h3>DIGIDMN #${stakedList[i]}</h3>
+        <h3>${tokenMetadata["name"]}</h3>
+      </div>
+      `;
+     }
+     ryeStakedContainer.innerHTML = galleryCode
+  }
+
   //select Tinys
   $(".info-selector").on("click", function() {
     $(this).toggleClass('info-selected');
@@ -527,14 +420,10 @@ async function populateNFTs(address) {
       return this.id;
     }).get();
     console.log(selectedIds);
-    document.getElementById("tinycount").innerHTML = `${selectedIds.length} Selected`
+    document.getElementById("held-count").innerHTML = `${selectedIds.length} Selected`
 
   });
 }
-
-
-
-
 
 // master event listener... combines all the shit above.
 window.addEventListener('load', async () => {

@@ -35,6 +35,10 @@ body {
 .info-selector img {
 	width: 250px;
 	height: 100%;
+  border-style: solid;
+	border-width: 3px;
+	border-color: #fff;
+	border-radius: 3px;
 }
 .info-selector p {
 	margin: 0;
