@@ -216,8 +216,8 @@ async function onConnect() {
   provider.on("networkChanged", (networkId) => {
     fetchAccountData();
   });
-  const element = document.getElementById('helloplsconnect');
-  element.remove();
+  //const element = document.getElementById('helloplsconnect');
+  //element.remove();
 }
 
 // "disconnect button"
@@ -467,15 +467,12 @@ async function refreshNFTs() {
 }
 
 //Token loader
-async function populateTDs(address) {
-  const token_address = '0x8bb765ae3e2320fd9447889d10b9dc7ce4970da5'
-  const FTMSCAN_API_KEY = 'J75A2G6SIAQ8FUBXN4D7ECIWGQTPCPU2KE'
+async function populateNFTs(address) {
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
-  let startBlock = 25639393 //just before minting
-  const ftmscan_query = `https://api.ftmscan.com/api?module=account&action=tokennfttx`
-  + `&contractaddress=${token_address}&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc&apikey=${FTMSCAN_API_KEY}`
-  // console.log(ftmscan_query)
-  const result = await axios.get(ftmscan_query)
+  let startBlock = 3039938 //just before minting
+  const query = `https://tuber.build/api?module=account&action=tokentx`
+  + `&contractaddress=${DigiTokenCA}&address=${address}&startblock=${startBlock}&endblock=999999999&sort=asc`
+  const result = await axios.get(query)
   .then(response => {
     // console.log('Axios got a response...');console.log(response);
     return response.data.result
@@ -499,7 +496,7 @@ async function populateTDs(address) {
 
   //const token_trx = Object.values(dictionary)
   console.log(tokenList)
-  console.log(`${address} owns ${tokenList.length} TinyDaemons`)
+  console.log(`${address} owns ${tokenList.length} DigiDaemons`)
   let boxNFT = 'info-selector'
   //trouble below
 
