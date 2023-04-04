@@ -314,7 +314,7 @@ async function getTotalStakedBalance(contractAddress, ABI) {
 async function getMyStakedIds(contractAddress, ABI) {
   const web3 = new Web3(provider);
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
-  let value = await tokenContract.methods.getOwnedTokenIDs(selectedAccount).call();
+  let value = await tokenContract.methods.getOwnedTokenIds(selectedAccount).call();
   console.log('my staked tokens: ', value);
   return value;
 }
