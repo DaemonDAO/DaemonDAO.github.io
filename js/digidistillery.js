@@ -511,7 +511,7 @@ async function populateNFTs(address) {
 
       galleryCode += `
       <div id="${tokenList[i]}" class="${boxNFT}">
-        <p><img alt="DIGIDMN_${tokenList[i]}" src=tokenMetadata["image"] /></p>
+        <p><img alt="DIGIDMN_${tokenList[i]}" src=${tokenMetadata["image"]} /></p>
         <h3>DIGIDMN #${tokenList[i]}</h3>
         <h3>${tokenMetadata["name"]}</h3>
       </div>
