@@ -336,6 +336,23 @@ async function refreshNFTs() {
   await populateNFTs(selectedAccount);
 }
 
+// TinyDaemon Approve/Burn button
+
+async function checkApprovalStatus() {
+  const web3 = new Web3(rpc);
+  let tokenContract = await new web3.eth.Contract(DigiTokenABI, DigiTokenCA);
+  approvedForAll = await tokenContract.methods.isApprovedForAll(selectedAccount, DigiDistilleryCA).call();
+  console.log("Are DigiDaemons approved for all", selectedAccount,"? Answer is",approvedForAll);
+  if(approvedForAll) {
+    document.getElementById("burn2mint").innerHTML = "🔥🔥BURN🔥🔥";
+    document.getElementById("revText").innerHTML = "Revoke Approval";
+  } else {
+    document.getElementById("burn2mint").innerHTML = "Approve";
+    document.getElementById("revText").innerHTML = "Revoked Already";
+  }
+}
+
+
 //Token loader
 async function populateNFTs(address) {
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
@@ -391,7 +408,7 @@ async function populateNFTs(address) {
 
   let stakedList = await getMyStakedIds(DigiDistilleryCA, DigiDistilleryABI);
 
-  document.getElementById("rye-hold-statement").innerHTML = `You have ${stakedList.length} staked DigiDaemons`
+  document.getElementById("rye-staked-statement").innerHTML = `You have ${stakedList.length} staked DigiDaemons`
 
   if (stakedList.length > 0) {
     var ryeStakedContainer = document.getElementById('rye-staked-container')
