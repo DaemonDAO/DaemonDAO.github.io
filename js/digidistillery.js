@@ -363,7 +363,7 @@ async function checkApprovalStatus() {
 async function revoke() {
   const web3 = new Web3(provider);
   let tokenContract = await new web3.eth.Contract(DigiTokenABI, DigiTokenCA);
-
+  console.log("revoke attempt");
   if (approvedForAll) {
     let value = await tokenContract
                         .methods
@@ -385,8 +385,8 @@ async function revoke() {
 async function approve() {
   const web3 = new Web3(provider);
   let tokenContract = await new web3.eth.Contract(DigiTokenABI, DigiTokenCA);
-
-  if (approvedForAll) {
+  console.log("approve attempt");
+  if (approvedForAll == false) {
     let value = await tokenContract
                         .methods
                         .setApprovalForAll(DigiDistilleryCA, true)
