@@ -26,6 +26,8 @@ const ryeStaked = document.querySelector('#rye-staked');
 let approvedForAll;
 let selectedIds;
 
+setInterval(setRyeNumbers, 6000); //repeat every 6 seconds
+
 
 ryeToggle.addEventListener('change', () => {
   if (ryeToggle.checked) {
