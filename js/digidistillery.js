@@ -22,6 +22,10 @@ const ryeToggle = document.querySelector('#rye-toggle input[type="checkbox"]');
 const ryeHeld = document.querySelector('#rye-held');
 const ryeStaked = document.querySelector('#rye-staked');
 
+// For later
+let approvedForAll;
+let selectedIds;
+
 ryeToggle.addEventListener('change', () => {
   if (ryeToggle.checked) {
     ryeHeld.classList.add('show');
@@ -146,6 +150,7 @@ async function fetchAccountData() {
   document.getElementById("addWallet").innerHTML = display;
   //populate NFTs
   await populateNFTs(selectedAccount);
+  await checkApprovalStatus();
   //collapsible divs
   var coll = document.getElementsByClassName("collapsible");
   console.log(coll);
@@ -333,6 +338,7 @@ async function refreshNFTs() {
   const web3 = new Web3(provider);
   const accounts = await web3.eth.getAccounts();
   selectedAccount = accounts[0];
+  await checkApprovalStatus();
   await populateNFTs(selectedAccount);
 }
 
@@ -344,11 +350,55 @@ async function checkApprovalStatus() {
   approvedForAll = await tokenContract.methods.isApprovedForAll(selectedAccount, DigiDistilleryCA).call();
   console.log("Are DigiDaemons approved for all", selectedAccount,"? Answer is",approvedForAll);
   if(approvedForAll) {
-    document.getElementById("burn2mint").innerHTML = "🔥🔥BURN🔥🔥";
-    document.getElementById("revText").innerHTML = "Revoke Approval";
+    document.getElementById("approval-status").innerHTML = "Approval status: ✅";
+    document.getElementById("approval-action").innerHTML = `<button id="<btn-revoke" class="button-2 traverse button w-button">Revoke</button>`;
   } else {
-    document.getElementById("burn2mint").innerHTML = "Approve";
-    document.getElementById("revText").innerHTML = "Revoked Already";
+    document.getElementById("burn2mint").innerHTML = "Approval status: ❌";
+    document.getElementById("revText").innerHTML = `<button id="<btn-approve" class="button-2 traverse button w-button">Approve</button>`;
+  }
+}
+
+async function revoke() {
+  const web3 = new Web3(provider);
+  let tokenContract = await new web3.eth.Contract(DigiTokenABI, DigiTokenCA);
+
+  if (approvedForAll) {
+    let value = await tokenContract
+                        .methods
+                        .setApprovalForAll(CA, false)
+                        .send({ from: selectedAccount })
+                        .on(
+                          'transactionHash',
+                          function(hash) {
+                            console.log(`setApprovalForAll(${DigiDistilleryCA}, false)`, hash);
+                          }
+                        );
+    if (!value) {
+      console.log("setApprovalForAll(${CA}, false) failed");
+    }
+    await checkStatus();
+  }
+}
+
+async function approve() {
+  const web3 = new Web3(provider);
+  let tokenContract = await new web3.eth.Contract(DigiTokenABI, DigiTokenCA);
+
+  if (approvedForAll) {
+    let value = await tokenContract
+                        .methods
+                        .setApprovalForAll(DigiDistilleryCA, true)
+                        .send({ from: selectedAccount })
+                        .on(
+                          'transactionHash',
+                          function(hash) {
+                            console.log(`setApprovalForAll(${DigiDistilleryCA}, true)`, hash);
+                          }
+                        );
+    if (!value) {
+      console.log("setApprovalForAll(${CA}, false) failed");
+    }
+    await checkStatus();
   }
 }
 
@@ -430,7 +480,7 @@ async function populateNFTs(address) {
      ryeStakedContainer.innerHTML = galleryCode
   }
 
-  //select Tinys
+  //select to stake
   $(".info-selector").on("click", function() {
     $(this).toggleClass('info-selected');
     selectedIds = $('.info-selected').map(function() {
