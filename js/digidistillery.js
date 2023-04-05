@@ -351,10 +351,12 @@ async function checkApprovalStatus() {
   console.log("Are DigiDaemons approved for all", selectedAccount,"? Answer is",approvedForAll);
   if(approvedForAll) {
     document.getElementById("approval-status").innerHTML = "Approval status: ✅";
-    document.getElementById("approval-action").innerHTML = `<button id="<btn-revoke" class="button-2 traverse button w-button">Revoke</button>`;
+    document.getElementById("approval-action").innerHTML = `<button id="<btn-revoke" class="button-2 traverse button w-button">REVOKE</button>`;
+    $("#btn-revoke").on("click", revoke);
   } else {
     document.getElementById("approval-status").innerHTML = "Approval status: ❌";
-    document.getElementById("approval-action").innerHTML = `<button id="<btn-approve" class="button-2 traverse button w-button">Approve</button>`;
+    document.getElementById("approval-action").innerHTML = `<button id="<btn-approve" class="button-2 traverse button w-button">APPROVE</button>`;
+    $("#btn-approve").on("click", approve);
   }
 }
 
