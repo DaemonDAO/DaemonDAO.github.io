@@ -26,6 +26,7 @@ const ryeStaked = document.querySelector('#rye-staked');
 let approvedForAll;
 let selectedIds;
 
+
 ryeToggle.addEventListener('change', () => {
   if (ryeToggle.checked) {
     ryeHeld.classList.add('show');
@@ -170,12 +171,6 @@ async function fetchAccountData() {
   //end collapsible
 }
 
-/**
- * Fetch account data for UI when
- * - User switches accounts in wallet
- * - User switches networks in wallet
- * - User connects wallet initially
- */
 
 async function refreshAccountData() {
 
@@ -304,16 +299,43 @@ window.onload = function(){
 }
 
 
+async function getCurrentBlock() {
 
+  const query = 'https://tuber.build/api?module=block&action=eth_block_number';
+
+  const result = await axios.get(query)
+    .then(response => {
+      // console.log('Axios got a response...');console.log(response);
+      return response.data.result
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  
+    num = parseInt(result)
+
+    return num
+}
 
 // web3 call() for how many Digis have been staked in a contract
 async function getTotalStakedBalance(contractAddress, ABI) {
-  const web3 = new Web3(provider);
+  const web3 = new Web3(rpc);
   let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
   let value = await tokenContract.methods.totalStaked().call();
   console.log(value, " total DigiDaemons staked");
+  //document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${value} 👹</p>`;
   return value;
 }
+
+async function getRewardsPerBlock(contractAddress, ABI) {
+  const web3 = new Web3(rpc);
+  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
+  let value = await tokenContract.methods.tokensPerBlock().call();
+  value = value / 1e18;
+  console.log(value, " tokens per block");
+  return value;
+}
+
 
 // get selectedAccount's staked balance
 async function getMyStakedIds(contractAddress, ABI) {
@@ -334,6 +356,13 @@ async function getChainID() {
   return chainId;
 }
 
+async function setRyeNumbers() {
+  const totalStaked = await getTotalStakedBalance(DigiDistilleryABI, DigiDistilleryCA);
+  document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${totalStaked} 👹</p>`;
+
+  const block = await getCurrentBlock();
+  document.getElementById("rye-block").innerHTML = `<p>Block: ${block}</p>`;
+}
 async function refreshNFTs() {
   const web3 = new Web3(provider);
   const accounts = await web3.eth.getAccounts();
@@ -341,6 +370,8 @@ async function refreshNFTs() {
   await checkApprovalStatus();
   await populateNFTs(selectedAccount);
 }
+
+
 
 // TinyDaemon Approve/Burn button
 
