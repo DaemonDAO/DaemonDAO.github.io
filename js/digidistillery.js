@@ -35,6 +35,11 @@ ryeToggle.addEventListener('change', () => {
     ryeHeld.classList.remove('show');
     ryeStaked.classList.add('show');
   }
+const divs = document.querySelectorAll('.info-selected');
+console.log(`number of selected divs: ${divs.length}`);
+divs.forEach(div => {
+div.classList.toggle('info-selector');
+});
 });
 
 
@@ -200,6 +205,7 @@ async function onConnect() {
     return;
   }
 
+  await swapChain("0x1e14", 7700);
   fetchAccountData();
 
   // Subscribe to accounts change
@@ -521,7 +527,6 @@ async function populateNFTs(address) {
     }).get();
     console.log(selectedIds);
     document.getElementById("held-count").innerHTML = `${selectedIds.length} Selected`
-
   });
 }
 

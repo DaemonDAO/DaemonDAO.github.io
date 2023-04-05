@@ -143,3 +143,11 @@ body {
   background-image: url("../images/Block.png");
   background-size: 100% auto;
 }
+
+#rye-held-container {
+  max-width: 646px;
+}
+
+#rye-staked-container{
+  max-width: 646px
+}
