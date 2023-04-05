@@ -51,3 +51,15 @@ body {
 .info-selected {
   background: url("../images/dd03.gif");
 }
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-box {
+  border-style: solid;
+	border-width: 3px;
+	border-color: #fff;
+	border-radius: 3px;
+}

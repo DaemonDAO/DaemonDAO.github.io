@@ -68,7 +68,6 @@ body {
 
 .rye {
     display: none;
-    max-width: 646px;
   }
 
   
@@ -77,7 +76,7 @@ body {
   }
   
   .info-selector {
-	width: 90px;
+	width: 110px;
 	text-align: center;
 	display: inline-block;
 	vertical-align: top;
@@ -91,6 +90,10 @@ body {
 .info-selector img {
 	width: 250px;
 	height: 100%;
+  border-style: solid;
+	border-width: 2px;
+	border-color: #fff;
+	border-radius: 2px;
 }
 .info-selector p {
 	margin: 0;
@@ -104,5 +107,19 @@ body {
 }
 
 .info-selected {
-  background: url("../images/fireanim2.gif");
+  background: url("../images/dd03.gif");
+}
+
+.stats-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stats-box {
+  border-style: solid;
+	border-width: 1px;
+	border-color: #fff;
+  background-color: rgba(256, 256, 256, 0.5);
+	border-radius: 3px;
+  width:24%;
 }
