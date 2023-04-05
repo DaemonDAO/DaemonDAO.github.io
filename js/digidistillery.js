@@ -353,8 +353,8 @@ async function checkApprovalStatus() {
     document.getElementById("approval-status").innerHTML = "Approval status: ✅";
     document.getElementById("approval-action").innerHTML = `<button id="<btn-revoke" class="button-2 traverse button w-button">Revoke</button>`;
   } else {
-    document.getElementById("burn2mint").innerHTML = "Approval status: ❌";
-    document.getElementById("revText").innerHTML = `<button id="<btn-approve" class="button-2 traverse button w-button">Approve</button>`;
+    document.getElementById("approval-status").innerHTML = "Approval status: ❌";
+    document.getElementById("approval-action").innerHTML = `<button id="<btn-approve" class="button-2 traverse button w-button">Approve</button>`;
   }
 }
 
