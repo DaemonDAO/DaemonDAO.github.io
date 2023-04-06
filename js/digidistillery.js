@@ -326,19 +326,19 @@ async function getCurrentBlock() {
 }
 
 // web3 call() for how many Digis have been staked in a contract
-async function getTotalStakedBalance(contractAddress, ABI) {
+async function getTotalStakedBalance() {
   const web3 = new Web3(rpc);
-  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
-  let value = await tokenContract.methods.totalStaked().call();
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  let value = await ryeContract.methods.totalStaked().call();
   console.log(value, " total DigiDaemons staked");
   //document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${value} 👹</p>`;
   return value;
 }
 
-async function getRewardsPerBlock(contractAddress, ABI) {
+async function getRewardsPerBlock() {
   const web3 = new Web3(rpc);
-  let tokenContract = await new web3.eth.Contract(ABI, contractAddress);
-  let value = await tokenContract.methods.tokensPerBlock().call();
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  let value = await ryeContract.methods.tokensPerBlock().call();
   value = value / 1e18;
   console.log(value, " tokens per block");
   return value;
@@ -365,12 +365,15 @@ async function getChainID() {
 }
 
 async function setRyeNumbers() {
-  const totalStaked = await getTotalStakedBalance(DigiDistilleryABI, DigiDistilleryCA);
+  const totalStaked = await getTotalStakedBalance();
   document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${totalStaked} 👹</p>`;
 
   const block = await getCurrentBlock();
   document.getElementById("rye-block").innerHTML = `<p>Block: ${block}</p>`;
+
+  const rpb = await getRewardsPerBlock();
 }
+
 async function refreshNFTs() {
   const web3 = new Web3(provider);
   const accounts = await web3.eth.getAccounts();
