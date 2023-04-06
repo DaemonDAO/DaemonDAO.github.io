@@ -483,7 +483,12 @@ async function populateNFTs(address) {
 
   if (tokenList.length > 0) {
     var ryeHeldContainer = document.getElementById('rye-held-container');
-    var galleryCode = ``
+    var galleryCode = `<h3 id='held-count'></h3>`;
+    if(approvedForAll) {
+      galleryCode += `<h3 id="allow-stake"><button id="btn-stake" class="button-2 traverse button w-button">STAKE</button></h3>`;
+    } else {
+      galleryCode += `<h3 id="allow-stake">Approve to stake</button></h3>`;
+    }
     //let i = 0;
     for(let i = 0; i < tokenList.length; i++){
 
