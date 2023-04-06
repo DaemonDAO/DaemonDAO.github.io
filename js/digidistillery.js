@@ -524,6 +524,8 @@ async function populateNFTs(address) {
         <p><img alt="DIGIDMN_${stakedList[i]}" src=${tokenMetadata["image"]} /></p>
         <h3>DIGIDMN #${stakedList[i]}</h3>
         <h3>${tokenMetadata["name"]}</h3>
+        <p>FACTION: ${tokenMetadata["attributes"]["DigiFaction"]} </br> 
+        PORTAL: ${tokenMetadata["attributes"]["DigiPortal"]}</p>
       </div>
       `;
      }
