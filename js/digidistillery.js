@@ -207,7 +207,7 @@ async function onConnect() {
     return;
   }
 
-  await swapChain("0x1e14", 7700);
+  await swapChain(7700, "0x1e14");
   fetchAccountData();
 
   // Subscribe to accounts change
