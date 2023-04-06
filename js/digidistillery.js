@@ -320,7 +320,7 @@ async function getCurrentBlock() {
       console.log(error)
     })
   
-    num = parseInt(result)
+    const num = parseInt(result);
 
     return num
 }
@@ -360,6 +360,7 @@ async function getChainID() {
 
   // chainId
   const chainId = await web3.eth.getChainId();
+  console.log(`chain ID is: ${chainId}`);
 
   return chainId;
 }
