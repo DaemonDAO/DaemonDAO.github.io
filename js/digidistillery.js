@@ -479,7 +479,8 @@ async function populateNFTs(address) {
   //const token_trx = Object.values(dictionary)
   console.log(tokenList);
   console.log(`${address} owns ${tokenList.length} DigiDaemons`);
-  let boxNFT = 'info-selector'
+  let boxNFT = 'info-selector';
+  let boxStakedNFT = 'info-staked-selector';
   //trouble below
 
   if (tokenList.length > 0) {
@@ -521,7 +522,7 @@ async function populateNFTs(address) {
       const tokenMetadata = await fetch(tokenMetadataURI).then((response) => response.json());
 
       galleryCode += `
-      <div id="${stakedList[i]}" class="${boxNFT}">
+      <div id="${stakedList[i]}" class="${boxStakedNFT}">
         <p><img alt="DIGIDMN_${stakedList[i]}" src=${tokenMetadata["image"]} /></p>
         <h3>DIGIDMN #${stakedList[i]}</h3>
         <h3>${tokenMetadata["name"]}</h3>
