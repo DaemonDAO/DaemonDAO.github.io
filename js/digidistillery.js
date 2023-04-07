@@ -514,7 +514,9 @@ async function populateNFTs(address) {
 
   if (stakedList.length > 0) {
     var ryeStakedContainer = document.getElementById('rye-staked-container')
-    var galleryCode = ``
+    var galleryCode = `<h3 id='held-staked-count'>0 Selected</h3>`;
+    galleryCode += `<h3 id="allow-unstake"><button id="btn-unstake" class="button-2 traverse button w-button">UNSTAKE</button></h3>`;
+
     //let i = 0;
     for(let i = 0; i < stakedList.length; i++){
 
@@ -539,8 +541,20 @@ async function populateNFTs(address) {
       return this.id;
     }).get();
     console.log(selectedIds);
-    document.getElementById("held-count").innerHTML = `${selectedIds.length} Selected`
+    document.getElementById("gant").innerHTML = `${selectedIds.length} Selected`
   });
+
+  $(".info-staked-selector").on("click", function() {
+    $(this).toggleClass('info-staked-selected');
+    selectedIds = $('.info-staked-selected').map(function() {
+      return this.id;
+    }).get();
+    console.log(selectedIds);
+    document.getElementById("held-staked-count").innerHTML = `${selectedIds.length} Selected`
+  });
+
+  //STAKE/UNSTAKE
+  
 }
 
 // master event listener... combines all the shit above.
