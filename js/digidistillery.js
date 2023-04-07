@@ -25,6 +25,7 @@ const ryeStaked = document.querySelector('#rye-staked');
 // For later
 let approvedForAll;
 let selectedIds;
+let selectedStakedIds;
 
 setInterval(setRyeNumbers, 6000); //repeat every 6 seconds
 
@@ -441,12 +442,54 @@ async function approve() {
                           }
                         );
     if (!value) {
-      console.log("setApprovalForAll(${CA}, false) failed");
+      console.log(`setApprovalForAll(${DigiDistilleryCA}, true) failed`);
     }
     await refreshNFTs();
   }
 }
 
+
+async function ryeStake(){
+  const web3 = new Web3(provider);
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  if (approvedForAll) {
+    let value = await ryeContract
+                        .methods
+                        .stakeNFTS(selectedIds)
+                        .send({ from: selectedAccount })
+                        .on(
+                          'transactionHash',
+                          function(hash) {
+                            console.log(`stakeNFTs(${selectedIds})`, hash);
+                          }
+                        );
+    if (!value) {
+      console.log(`stakeNFTs(${selectedIds}) failed`);
+    }
+  await refreshNFTs();
+  }
+}
+
+async function ryeUnstake(){
+  const web3 = new Web3(provider);
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  if (approvedForAll) {
+    let value = await ryeContract
+                        .methods
+                        .unStakeNFTS(selectedIds)
+                        .send({ from: selectedAccount })
+                        .on(
+                          'transactionHash',
+                          function(hash) {
+                            console.log(`unStakeNFTs(${selectedIds})`, hash);
+                          }
+                        );
+    if (!value) {
+      console.log(`unStakeNFTs(${selectedIds}) failed`);
+    }
+    await refreshNFTs();
+  }
+}
 
 //Token loader
 async function populateNFTs(address) {
@@ -546,15 +589,17 @@ async function populateNFTs(address) {
 
   $(".info-staked-selector").on("click", function() {
     $(this).toggleClass('info-staked-selected');
-    selectedIds = $('.info-staked-selected').map(function() {
+    selectedStakedIds = $('.info-staked-selected').map(function() {
       return this.id;
     }).get();
-    console.log(selectedIds);
-    document.getElementById("held-staked-count").innerHTML = `${selectedIds.length} Selected`
+    console.log(selectedStakedIds);
+    document.getElementById("held-staked-count").innerHTML = `${selectedStakedIds.length} Selected`
   });
 
   //STAKE/UNSTAKE
-  
+
+  $("#btn-stake").on("click", ryeStake);
+  $("#btn-unstake").on("click", ryeUnstake);
 }
 
 // master event listener... combines all the shit above.
