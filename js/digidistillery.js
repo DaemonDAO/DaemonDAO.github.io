@@ -485,7 +485,7 @@ async function populateNFTs(address) {
 
   if (tokenList.length > 0) {
     var ryeHeldContainer = document.getElementById('rye-held-container');
-    var galleryCode = `<h3 id='held-count'></h3>`;
+    var galleryCode = `<h3 id='held-count'>0 Selected</h3>`;
     if(approvedForAll) {
       galleryCode += `<h3 id="allow-stake"><button id="btn-stake" class="button-2 traverse button w-button">STAKE</button></h3>`;
     } else {
