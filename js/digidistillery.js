@@ -476,16 +476,37 @@ async function ryeUnstake(){
   if (approvedForAll) {
     let value = await ryeContract
                         .methods
-                        .unStakeNFTS(selectedIds)
+                        .unStakeNFTS(selectedStakedIds)
                         .send({ from: selectedAccount })
                         .on(
                           'transactionHash',
                           function(hash) {
-                            console.log(`unStakeNFTs(${selectedIds})`, hash);
+                            console.log(`unStakeNFTs(${selectedStakedIds})`, hash);
                           }
                         );
     if (!value) {
-      console.log(`unStakeNFTs(${selectedIds}) failed`);
+      console.log(`unStakeNFTs(${selectedStakedIds}) failed`);
+    }
+    await refreshNFTs();
+  }
+}
+
+async function ryeHarvest(){
+  const web3 = new Web3(provider);
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  if (approvedForAll) {
+    let value = await ryeContract
+                        .methods
+                        .harvestMultiple(selectedStakedIds)
+                        .send({ from: selectedAccount })
+                        .on(
+                          'transactionHash',
+                          function(hash) {
+                            console.log(`harvestMultiple(${selectedStakedIds})`, hash);
+                          }
+                        );
+    if (!value) {
+      console.log(`harvestMultiple(${selectedStakedIds}) failed`);
     }
     await refreshNFTs();
   }
@@ -583,7 +604,7 @@ async function populateNFTs(address) {
     selectedIds = $('.info-selected').map(function() {
       return this.id;
     }).get();
-    console.log(selectedIds);
+    //console.log(selectedIds);
     document.getElementById("gant").innerHTML = `${selectedIds.length} Selected`
   });
 
@@ -592,7 +613,7 @@ async function populateNFTs(address) {
     selectedStakedIds = $('.info-staked-selected').map(function() {
       return this.id;
     }).get();
-    console.log(selectedStakedIds);
+    //console.log(selectedStakedIds);
     document.getElementById("held-staked-count").innerHTML = `${selectedStakedIds.length} Selected`
   });
 
