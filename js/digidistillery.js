@@ -584,7 +584,7 @@ async function populateNFTs(address) {
     //let i = 0;
     for(let i = 0; i < stakedList.length; i++){
 
-      let tokenMetadataURI = `https://gateway.maxflowo2.com/ipfs/QmNdDwKB6kfUo33i4dvDZEi2QzdFPEozMRxzG8sVVuq1k6/${tokenList[i]}.json`;
+      let tokenMetadataURI = `https://gateway.maxflowo2.com/ipfs/QmNdDwKB6kfUo33i4dvDZEi2QzdFPEozMRxzG8sVVuq1k6/${stakedList[i]}.json`;
       const tokenMetadata = await fetch(tokenMetadataURI).then((response) => response.json());
 
       galleryCode += `
