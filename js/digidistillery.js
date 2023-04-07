@@ -421,7 +421,7 @@ async function revoke() {
     if (!value) {
       console.log("setApprovalForAll(${CA}, false) failed");
     }
-    await checkStatus();
+    await refreshNFTs();
   }
 }
 
@@ -443,7 +443,7 @@ async function approve() {
     if (!value) {
       console.log("setApprovalForAll(${CA}, false) failed");
     }
-    await checkStatus();
+    await refreshNFTs();
   }
 }
 
@@ -500,7 +500,7 @@ async function populateNFTs(address) {
         <p><img alt="DIGIDMN_${tokenList[i]}" src=${tokenMetadata["image"]} /></p>
         <h3>DIGIDMN #${tokenList[i]}</h3>
         <h3>${tokenMetadata["name"]}</h3>
-        <p>FACTION: ${tokenMetadata["attributes"]["DigiFaction"]} </br> 
+        <p>FACTION: ${tokenMetadata["attributes"]} </br> 
         PORTAL: ${tokenMetadata["attributes"]["DigiPortal"]}</p>
       </div>
       `;
@@ -526,7 +526,7 @@ async function populateNFTs(address) {
         <p><img alt="DIGIDMN_${stakedList[i]}" src=${tokenMetadata["image"]} /></p>
         <h3>DIGIDMN #${stakedList[i]}</h3>
         <h3>${tokenMetadata["name"]}</h3>
-        <p>FACTION: ${tokenMetadata["attributes"]["DigiFaction"]} </br> 
+        <p>FACTION: ${tokenMetadata["attributes"]} </br> 
         PORTAL: ${tokenMetadata["attributes"]["DigiPortal"]}</p>
       </div>
       `;
