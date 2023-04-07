@@ -649,7 +649,7 @@ async function populateNFTs(address) {
       return this.id;
     }).get();
     //console.log(selectedIds);
-    document.getElementById("gant").innerHTML = `${selectedIds.length} Selected`
+    document.getElementById("held-count").innerHTML = `${selectedIds.length} Selected`
   });
 
   $(".info-staked-selector").on("click", function() {
