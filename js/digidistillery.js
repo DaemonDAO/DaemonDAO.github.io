@@ -28,9 +28,23 @@ const rpcEndpoints = [
 
 const testRPC = async (endpoint) => {
   try {
-    const response = await fetch(endpoint, { method: 'POST' });
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        method: 'eth_blockNumber',
+        params: [],
+        id: 1
+      })
+    });
     if (response.status >= 200 && response.status < 300) {
-      return true;
+      const data = await response.json();
+      if (data.result) {
+        return true;
+      }
     }
   } catch (error) {
     console.error(`Error testing RPC ${endpoint}`, error);
