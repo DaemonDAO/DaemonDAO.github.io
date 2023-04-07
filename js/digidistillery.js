@@ -450,6 +450,7 @@ async function approve() {
 
 //Token loader
 async function populateNFTs(address) {
+  checkApprovalStatus();
   // TODO: in the future, to see all NFTs, modify contractCreation and use 0
   let startBlock = 3039938 //just before minting
   const query = `https://tuber.build/api?module=account&action=tokentx`
