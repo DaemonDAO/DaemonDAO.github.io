@@ -70,6 +70,7 @@ const ryeStaked = document.querySelector('#rye-staked');
 let approvedForAll;
 let selectedIds;
 let selectedStakedIds;
+let pendingRewards;
 
 setInterval(setRyeNumbers, 6000); //repeat every 6 seconds
 
@@ -380,6 +381,8 @@ async function getTotalStakedBalance() {
   return value;
 }
 
+getRewardsEarnedForWallet
+
 async function getRewardsPerBlock() {
   const web3 = new Web3(rpc);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
@@ -387,6 +390,17 @@ async function getRewardsPerBlock() {
   value = value / 1e18;
   console.log(value, " tokens per block");
   return value;
+}
+
+async function getPendingRewards() {
+  const web3 = new Web3(rpc);
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  let value = await ryeContract.methods.getRewardsEarnedForWallet().call();
+  value = value / 1e18;
+  pendingRewards = value.toFixed(3);
+  document.getElementById("harvest-statement").innerHTML = `<button id="<btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending rewards: ⋐${pendingRewards}`
+  console.log(pendingRewards, " pendng rewards");
+  //document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${value} 👹</p>`;
 }
 
 
@@ -430,7 +444,7 @@ async function refreshNFTs() {
 
 
 
-// TinyDaemon Approve/Burn button
+// DigiDaemon Approve/Revoke button
 
 async function checkApprovalStatus() {
   const web3 = new Web3(rpc);
@@ -538,7 +552,7 @@ async function ryeUnstake(){
 async function ryeHarvest(){
   const web3 = new Web3(provider);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
-  if (approvedForAll) {
+  if (pendingRewards > 0) {
     let value = await ryeContract
                         .methods
                         .harvestMultiple(selectedStakedIds)
@@ -553,6 +567,9 @@ async function ryeHarvest(){
       console.log(`harvestMultiple(${selectedStakedIds}) failed`);
     }
     await refreshNFTs();
+  }
+  else {
+    console.log('no pending rewards available to harvest');
   }
 }
 
@@ -624,6 +641,7 @@ async function populateNFTs(address) {
     var ryeStakedContainer = document.getElementById('rye-staked-container')
     var galleryCode = `<h3 id='held-staked-count'>0 Selected</h3>`;
     galleryCode += `<h3 id="allow-unstake"><button id="btn-unstake" class="button-2 traverse button w-button">UNSTAKE</button></h3>`;
+    galleryCode += `<h3 id=harvest-statement><button id="<btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending rewards: ⋐0.000</h3>`
 
     //let i = 0;
     for(let i = 0; i < stakedList.length; i++){
@@ -641,6 +659,8 @@ async function populateNFTs(address) {
      }
      ryeStakedContainer.innerHTML = galleryCode
   }
+
+  await getPendingRewards();
 
   //select to stake
   $(".info-selector").on("click", function() {
@@ -665,6 +685,7 @@ async function populateNFTs(address) {
 
   $("#btn-stake").on("click", ryeStake);
   $("#btn-unstake").on("click", ryeUnstake);
+  $("#btn-harvest").on("click", ryeHarvest);
 }
 
 // master event listener... combines all the shit above.
