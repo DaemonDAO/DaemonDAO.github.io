@@ -550,6 +550,7 @@ async function ryeUnstake(){
 
 async function ryeHarvest(){
   const web3 = new Web3(provider);
+  console.log('Attempting harvest');
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   if (pendingRewards > 0) {
     let value = await ryeContract
