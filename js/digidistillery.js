@@ -641,7 +641,7 @@ async function populateNFTs(address) {
     var ryeStakedContainer = document.getElementById('rye-staked-container')
     var galleryCode = `<h3 id='held-staked-count'>0 Selected</h3>`;
     galleryCode += `<h3 id="allow-unstake"><button id="btn-unstake" class="button-2 traverse button w-button">UNSTAKE</button></h3>`;
-    galleryCode += `<h3 id=harvest-statement><button id="<btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐0.000</h3>`
+    galleryCode += `<h3 id=harvest-statement><button id="btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐0.000</h3>`
 
     //let i = 0;
     for(let i = 0; i < stakedList.length; i++){
@@ -660,7 +660,7 @@ async function populateNFTs(address) {
      ryeStakedContainer.innerHTML = galleryCode
      
      await getPendingRewards();
-     document.querySelector("#btn-harvest").addEventListener("click", ryeHarvest);
+     //document.querySelector("#btn-harvest").addEventListener("click", ryeHarvest);
     }
 
   //await getPendingRewards();
@@ -688,7 +688,7 @@ async function populateNFTs(address) {
 
   $("#btn-stake").on("click", ryeStake);
   $("#btn-unstake").on("click", ryeUnstake);
-  //$("#btn-harvest").on("click", ryeHarvest);
+  $("#btn-harvest").on("click", ryeHarvest);
 }
 
 // master event listener... combines all the shit above.
