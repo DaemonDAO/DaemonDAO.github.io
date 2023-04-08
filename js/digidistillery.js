@@ -394,7 +394,7 @@ async function getRewardsPerBlock() {
 async function getPendingRewards() {
   const web3 = new Web3(rpc);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
-  let value = await ryeContract.methods.getRewardsEarnedForWallet().call();
+  let value = await ryeContract.methods.getRewardsEarnedForWallet(selectedAccount).call();
   value = value / 1e18;
   pendingRewards = value.toFixed(3);
   document.getElementById("harvest-statement").innerHTML = `<button id="<btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending rewards: ⋐${pendingRewards}`
