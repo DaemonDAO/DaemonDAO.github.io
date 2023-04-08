@@ -381,7 +381,6 @@ async function getTotalStakedBalance() {
   return value;
 }
 
-getRewardsEarnedForWallet
 
 async function getRewardsPerBlock() {
   const web3 = new Web3(rpc);
