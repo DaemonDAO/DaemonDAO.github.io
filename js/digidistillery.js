@@ -397,7 +397,7 @@ async function getPendingRewards() {
   let value = await ryeContract.methods.getRewardsEarnedForWallet(selectedAccount).call();
   value = value / 1e18;
   pendingRewards = value.toFixed(3);
-  document.getElementById("harvest-statement").innerHTML = `<button id="<btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending rewards: ⋐${pendingRewards}`
+  document.getElementById("harvest-statement").innerHTML = `<button id="<btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐${pendingRewards}`
   console.log(pendingRewards, " pendng rewards");
   //document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${value} 👹</p>`;
 }
@@ -641,7 +641,7 @@ async function populateNFTs(address) {
     var ryeStakedContainer = document.getElementById('rye-staked-container')
     var galleryCode = `<h3 id='held-staked-count'>0 Selected</h3>`;
     galleryCode += `<h3 id="allow-unstake"><button id="btn-unstake" class="button-2 traverse button w-button">UNSTAKE</button></h3>`;
-    galleryCode += `<h3 id=harvest-statement><button id="<btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending rewards: ⋐0.000</h3>`
+    galleryCode += `<h3 id=harvest-statement><button id="<btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐0.000</h3>`
 
     //let i = 0;
     for(let i = 0; i < stakedList.length; i++){
@@ -658,9 +658,12 @@ async function populateNFTs(address) {
       `;
      }
      ryeStakedContainer.innerHTML = galleryCode
-  }
+     
+     await getPendingRewards();
+     document.querySelector("#btn-harvest").addEventListener("click", ryeHarvest);
+    }
 
-  await getPendingRewards();
+  //await getPendingRewards();
 
   //select to stake
   $(".info-selector").on("click", function() {
@@ -685,7 +688,7 @@ async function populateNFTs(address) {
 
   $("#btn-stake").on("click", ryeStake);
   $("#btn-unstake").on("click", ryeUnstake);
-  $("#btn-harvest").on("click", ryeHarvest);
+  //$("#btn-harvest").on("click", ryeHarvest);
 }
 
 // master event listener... combines all the shit above.
