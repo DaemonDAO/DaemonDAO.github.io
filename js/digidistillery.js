@@ -376,7 +376,7 @@ async function getTotalStakedBalance() {
   const web3 = new Web3(rpc);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   let value = await ryeContract.methods.totalStaked().call();
-  console.log(value, " total DigiDaemons staked");
+  //console.log(value, " total DigiDaemons staked");
   //document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${value} 👹</p>`;
   return value;
 }
@@ -387,7 +387,7 @@ async function getRewardsPerBlock() {
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   let value = await ryeContract.methods.tokensPerBlock().call();
   value = value / 1e18;
-  console.log(value, " tokens per block");
+  //console.log(value, " tokens per block");
   return value;
 }
 
