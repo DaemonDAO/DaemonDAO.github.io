@@ -397,7 +397,7 @@ async function getPendingRewards() {
   let value = await ryeContract.methods.getRewardsEarnedForWallet(selectedAccount).call();
   value = value / 1e18;
   pendingRewards = value.toFixed(3);
-  document.getElementById("harvest-statement").innerHTML = `<button id="<btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐${pendingRewards}`
+  document.getElementById("harvest-statement").innerHTML = `<button id="btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐${pendingRewards}`
   console.log(pendingRewards, " pendng rewards");
   //document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${value} 👹</p>`;
 }
@@ -660,7 +660,7 @@ async function populateNFTs(address) {
      ryeStakedContainer.innerHTML = galleryCode
      
      await getPendingRewards();
-     //document.querySelector("#btn-harvest").addEventListener("click", ryeHarvest);
+     //document.querySelector("#btn-harvest").addEventListener("click", ryeHarvest); //alt
     }
 
   //await getPendingRewards();
