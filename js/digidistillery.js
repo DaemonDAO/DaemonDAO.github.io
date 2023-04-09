@@ -431,6 +431,11 @@ async function setRyeNumbers() {
   document.getElementById("rye-block").innerHTML = `<p>Block: ${block}</p>`;
 
   const rpb = await getRewardsPerBlock();
+  document.getElementById("rye-APR").innerHTML = `<p>Emission rate: ⋐${rpb}/block</p>`
+
+  const stakedList = await getMyStakedIds(DigiDistilleryCA, DigiDistilleryABI);
+  const poolWeight = (100 * stakedList.length / totalStaked).toFixed(2);
+  document.getElementById("rye-coin-balance").innerHTML = <p>Your pool share: ${poolWeight}%</p> 
 }
 
 async function refreshNFTs() {
