@@ -552,19 +552,20 @@ async function ryeHarvest(){
   const web3 = new Web3(provider);
   console.log('Attempting harvest');
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  let stakedList = await getMyStakedIds(DigiDistilleryCA, DigiDistilleryABI);
   if (pendingRewards > 0) {
     let value = await ryeContract
                         .methods
-                        .harvestMultiple(selectedStakedIds)
+                        .harvestMultiple(stakedList)
                         .send({ from: selectedAccount })
                         .on(
                           'transactionHash',
                           function(hash) {
-                            console.log(`harvestMultiple(${selectedStakedIds})`, hash);
+                            console.log(`harvestMultiple(${stakedList})`, hash);
                           }
                         );
     if (!value) {
-      console.log(`harvestMultiple(${selectedStakedIds}) failed`);
+      console.log(`harvestMultiple(${stakedList}) failed`);
     }
     await refreshNFTs();
   }
