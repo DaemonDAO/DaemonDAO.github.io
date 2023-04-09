@@ -435,7 +435,7 @@ async function setRyeNumbers() {
 
   const stakedList = await getMyStakedIds(DigiDistilleryCA, DigiDistilleryABI);
   const poolWeight = (100 * stakedList.length / totalStaked).toFixed(2);
-  document.getElementById("rye-coin-balance").innerHTML = <p>Your pool share: ${poolWeight}%</p> 
+  document.getElementById("rye-coin-balance").innerHTML = `<p>Your pool share: ${poolWeight}%</p>`
 }
 
 async function refreshNFTs() {
