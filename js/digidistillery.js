@@ -312,13 +312,13 @@ async function swapChain(network, number) {
   } catch (error) {
     // This error code indicates that the chain has not been added to MetaMask
     // if it is not, then install it into the user MetaMask
-    if (error.code === 4902) {
+    //if (error.code === 4902) {
       try {
         addNetwork(number);
       } catch (addError) {
         console.error(addError);
       }
-    }
+    //}
     console.error(error);
   }
 }
