@@ -312,13 +312,13 @@ async function swapChain(network, number) {
   } catch (error) {
     // This error code indicates that the chain has not been added to MetaMask
     // if it is not, then install it into the user MetaMask
-    //if (error.code === 4902) {
+    if (error.code === 4902) {
       try {
         addNetwork(number);
       } catch (addError) {
         console.error(addError);
       }
-    //}
+    }
     console.error(error);
   }
 }
@@ -436,9 +436,6 @@ async function setRyeNumbers() {
   const rpb = await getRewardsPerBlock();
   document.getElementById("rye-APR").innerHTML = `<p>Emission rate: ⋐${rpb}/block</p>`
 
-  const stakedList = await getMyStakedIds(DigiDistilleryCA, DigiDistilleryABI);
-  const poolWeight = (100 * stakedList.length / totalStaked).toFixed(2);
-  document.getElementById("rye-coin-balance").innerHTML = `<p>Your pool share: ${poolWeight}%</p>`
 }
 
 async function refreshNFTs() {
@@ -645,6 +642,10 @@ async function populateNFTs(address) {
   let stakedList = await getMyStakedIds(DigiDistilleryCA, DigiDistilleryABI);
 
   document.getElementById("rye-staked-statement").innerHTML = `You have ${stakedList.length} staked DigiDaemons`
+
+  let poolWeight = (100 * stakedList.length / totalStaked).toFixed(2);
+  console.log(`your Rye pool share is ${poolWeight}`);
+  document.getElementById("rye-coin-balance").innerHTML = `<p>Your pool share: ${poolWeight}%</p>`;
 
   if (stakedList.length > 0) {
     var ryeStakedContainer = document.getElementById('rye-staked-container')
