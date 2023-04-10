@@ -254,7 +254,7 @@ async function onConnect() {
     return;
   }
 
-  await swapChain(7700, "0x1e14");
+  await swapChain("0x1e14", 7700);
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
   fetchAccountData();
@@ -302,19 +302,19 @@ async function onDisconnect() {
 }
 
 // These set/swap chains immediately... useful later in this plethora of wtf
-async function swapChain(network, hex) {
+async function swapChain(network, number) {
   try {
     // check if the chain to connect to is installed
     await window.ethereum.request({
       method: 'wallet_switchEthereumChain',
-      params: [{ chainId: hex }], // chainId must be in hexadecimal numbers
+      params: [{ chainId: network }], // chainId must be in hexadecimal numbers
     });
   } catch (error) {
     // This error code indicates that the chain has not been added to MetaMask
     // if it is not, then install it into the user MetaMask
     if (error.code === 4902) {
       try {
-        addNetwork(network);
+        addNetwork(number);
       } catch (addError) {
         console.error(addError);
       }
