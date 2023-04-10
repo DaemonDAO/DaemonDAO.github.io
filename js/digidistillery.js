@@ -705,6 +705,4 @@ window.addEventListener('load', async () => {
   init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
-  //document.querySelector("#btn-refreshNFTs").addEventListener("click", refreshNFTs);
-  //document.querySelector("#btn-buyNFT").addEventListener("click", spawnTinyDaemon);
 });
