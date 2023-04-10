@@ -1,4 +1,4 @@
-/*__      __  __  ______  __  __   __  __    
+/*__      __  __  ______  __  __   __  __
 * /\ \    /\ \/\ \/\  ___\/\ \/ /  /\ \_\ \   
 * \ \ \___\ \ \_\ \ \ \___\ \  _"-.\ \____ \  
 *  \ \_____\ \_____\ \_____\ \_\ \_\\/\_____\ 
@@ -243,6 +243,28 @@ async function refreshAccountData() {
   document.querySelector("#btn-connect").removeAttribute("disabled")
 }
 
+// These set/swap chains immediately... useful later in this plethora of wtf
+async function swapChain(network, hex) {
+  try {
+    // check if the chain to connect to is installed
+    await window.ethereum.request({
+      method: 'wallet_switchEthereumChain',
+      params: [{ chainId: hex }], // chainId must be in hexadecimal numbers
+    });
+  } catch (error) {
+    // This error code indicates that the chain has not been added to MetaMask
+    // if it is not, then install it into the user MetaMask
+    if (error.code === 4902) {
+      try {
+        addNetwork(network);
+      } catch (addError) {
+        console.error(addError);
+      }
+    }
+    console.error(error);
+  }
+}
+
 // "connect button"
 async function onConnect() {
 
@@ -254,7 +276,8 @@ async function onConnect() {
     return;
   }
 
-  await swapChain("0x1e14", 7700);
+  await swapChain(7700, "0x1e14");
+
   let chainID = await getChainID();
   console.log("Chain ID is", chainID);
   fetchAccountData();
@@ -299,49 +322,6 @@ async function onDisconnect() {
   // Set the UI back to the initial state
   document.querySelector("#prepare").style.display = "block";
   document.querySelector("#connected").style.display = "none";
-}
-
-// These set/swap chains immediately... useful later in this plethora of wtf
-async function swapChain(network, number) {
-  try {
-    // check if the chain to connect to is installed
-    await window.ethereum.request({
-      method: 'wallet_switchEthereumChain',
-      params: [{ chainId: network }], // chainId must be in hexadecimal numbers
-    });
-  } catch (error) {
-    // This error code indicates that the chain has not been added to MetaMask
-    // if it is not, then install it into the user MetaMask
-    if (error.code === 4902) {
-      try {
-        addNetwork(number);
-      } catch (addError) {
-        console.error(addError);
-      }
-    }
-    console.error(error);
-  }
-}
-
-async function swapToEth(hex) {
-  try {
-    // check if the chain to connect to is installed
-    await window.ethereum.request({
-      method: 'wallet_switchEthereumChain',
-      params: [{ chainId: hex }], // chainId must be in hexadecimal numbers
-    });
-  } catch (error) {
-    // This error code indicates that the chain has not been added to MetaMask
-    // It's Ethereum... it should be there.
-   if (error.code === 4902) {
-      try {
-        console.log("ETH not installed??");
-      } catch (addError) {
-        console.error(addError);
-      }
-    }
-    console.error(error);
-  }
 }
 
 //after window is loaded completely
