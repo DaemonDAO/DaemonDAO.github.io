@@ -623,6 +623,7 @@ async function populateNFTs(address) {
 
   document.getElementById("rye-staked-statement").innerHTML = `You have ${stakedList.length} staked DigiDaemons`
 
+ let totalStaked = await getTotalStakedBalance();
   let poolWeight = (100 * stakedList.length / totalStaked).toFixed(2);
   console.log(`your Rye pool share is ${poolWeight}`);
   document.getElementById("rye-coin-balance").innerHTML = `<p>Your pool share: ${poolWeight}%</p>`;
