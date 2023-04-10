@@ -103,7 +103,7 @@ let web3Modal
 // Chosen wallet provider given by the dialog window
 let provider;
 
-// Add's networks to metamask
+// Add networks to metamask
 async function addNetwork(id) {
   let networkData;
   switch (id) {
@@ -139,6 +139,7 @@ let selectedAccount;
 
 // init() web3modal
 function init() {
+  
 
   console.log("Initializing example");
   console.log("WalletConnectProvider is", WalletConnectProvider);
@@ -254,6 +255,8 @@ async function onConnect() {
   }
 
   await swapChain(7700, "0x1e14");
+  let chainID = await getChainID();
+  console.log("Chain ID is", chainID);
   fetchAccountData();
 
   // Subscribe to accounts change
