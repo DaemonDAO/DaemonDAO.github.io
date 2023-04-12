@@ -314,9 +314,9 @@ let totalBalance;
 let totalPending;
 
 setInterval(setBlockStats, 6000); //repeat every 6 seconds
-setInterval(setBalanceStats, 30000); //repeat every 60 seconds
 
 async function setBalanceStats(){
+  console.log('setting balance/reward statistics')
   totalBalance = await getBalance();
   document.getElementById("balance").innerHTML = `Contract balance: ${totalBalance}`;
 
@@ -502,4 +502,5 @@ window.addEventListener('load', async () => {
   init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
+  document.querySelector("#btn-refresh-rewards").addEventListener("click", setBalanceStats);
 });
