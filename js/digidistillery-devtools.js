@@ -466,7 +466,7 @@ async function getTotalPendingHarvest() {
 
   const mintCount = await getDigiMintCount();
 
-  const lastId = startId + mintCount - 1001;
+  const lastId = parseInt(startId) + parseInt(mintCount) - 1001;
 
   console.log(`start: ${startId}, latest: ${lastId}`);
 
@@ -483,7 +483,7 @@ async function getTotalPendingHarvest() {
   let pendingArray = getPendingHarvests(ids);
 
   const total = pendingArray.reduce((partialSum, a) => partialSum + a, 0);
-  
+
   return total;
 }
 
