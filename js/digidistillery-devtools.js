@@ -307,49 +307,59 @@ window.onload = function(){
   }, 1000);
 }
 
+let block;
+let end;
+let rpb;
+let blockCountdown;
+let dateCountdown;
+let totalBalance;
 
-setInterval(setStats, 6000); //repeat every 6 seconds
+setInterval(setBlockStats, 6000); //repeat every 6 seconds
+setInterval(setBalanceStats, 10000); //repeat every 60 seconds
 
-async function setStats() {
-  const block = await getCurrentBlock();
-  const end = await getEndBlock();
-  const rpb = await getRewardsPerBlock();
-  const blockCountdown = end-block;
-  const dateCountdown = formatSeconds(blockCountdown*6);
+async function setBalanceStats(){
+  totalBalance = await getBalance();
+  document.getElementById("balance").innerHTML = `Contract balance: ${totalBalance}`;
+
+}
+
+async function setBlockStats() {
+  block = await getCurrentBlock();
+  end = await getEndBlock();
+  rpb = await getRewardsPerBlock();
+  blockCountdown = end-block;
+  dateCountdown = formatDuration(blockCountdown*6);
 
   document.getElementById("block-now-last").innerHTML = `Block now: ${block} | Block end: ${end}`;
   document.getElementById("block-countdown").innerHTML = `Countdown: ${blockCountdown} | In time: ${dateCountdown}`;
-
-  let totalPending = getTotalPendingHarvest();
-  let totalBalance = getBalance();
-
-  totalPending = totalPending / 1e18;
-  totalBalance = totalBalance / 1e18;
-
-  document.getElementById("balance").innerHTML = `Contract balance: ${totalBalance}`;
-  document.getElementById("pending").innerHTML = `Pending rewards: ${totalPending}`;
-
 }
 
-async function formatSeconds(seconds) {
-  var days = Math.floor(seconds / (24 * 60 * 60));
-  seconds -= days * (24 * 60 * 60);
-  var hours = Math.floor(seconds / (60 * 60));
-  seconds -= hours * (60 * 60);
-  var minutes = Math.floor(seconds / 60);
-  seconds -= minutes * 60;
+function formatDuration(seconds) {
+  let days = Math.floor(seconds / (24 * 60 * 60));
+  let hours = Math.floor((seconds % (24 * 60 * 60)) / (60 * 60));
+  let minutes = Math.floor((seconds % (60 * 60)) / 60);
+  let remainingSeconds = seconds % 60;
 
-  return (
-    (days < 10 ? "0" : "") +
-    days +
-    ":" +
-    (hours < 10 ? "0" : "") +
-    hours +
-    ":" +
-    (minutes < 10 ? "0" : "") +
-    minutes
-  );
+  let result = "";
+  if (days > 0) {
+    result += days + "D:";
+  }
+  if (hours < 10) {
+    result += "0";
+  }
+  result += hours + "H:";
+  if (minutes < 10) {
+    result += "0";
+  }
+  result += minutes + "M:";
+  if (remainingSeconds < 10) {
+    result += "0";
+  }
+  result += (remainingSeconds+"S");
+
+  return result;
 }
+
 
 
 async function getCurrentBlock() {
@@ -377,7 +387,7 @@ async function getBalance() {
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   let value = await ryeContract.methods.getStakeContractBalance().call();
   value = value / 1e18;
-  //console.log(value, " tokens per block");
+  console.log(`stake contract balance: ${value}`);
   return value;
 }
 
@@ -395,7 +405,6 @@ async function getEndBlock() {
   const web3 = new Web3(rpc);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   let value = await ryeContract.methods.rewardsEndBlock().call();
-  value = value / 1e18;
   //console.log(value, " tokens per block");
   return value;
 }
@@ -433,10 +442,11 @@ async function getChainID() {
   return chainId;
 }
 
+/*
 async function getContractTransactions() {
   const web3 = new Web3(rpc);
   const fromBlock = 3638333; // Start block number
-  const toBlock = 'latest'; // End block number (or 'latest' for most recent block)
+  const toBlock = block; // End block number (or 'latest' for most recent block)
   
   // Create filter options to search for contract events
   const filterOptions = {
@@ -452,7 +462,9 @@ async function getContractTransactions() {
   const addresses = [...new Set(contractEvents.map(event => event.address))];
   
   return addresses;
-}
+}*/
+
+
 
 async function getTotalPendingHarvest() {
 
