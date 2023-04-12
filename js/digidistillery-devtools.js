@@ -313,13 +313,17 @@ let rpb;
 let blockCountdown;
 let dateCountdown;
 let totalBalance;
+let totalPending;
 
 setInterval(setBlockStats, 6000); //repeat every 6 seconds
-setInterval(setBalanceStats, 10000); //repeat every 60 seconds
+setInterval(setBalanceStats, 30000); //repeat every 60 seconds
 
 async function setBalanceStats(){
   totalBalance = await getBalance();
   document.getElementById("balance").innerHTML = `Contract balance: ${totalBalance}`;
+
+  totalPending = await getTotalPendingHarvest();
+  document.getElementById("pending").innerHTML = `Pending rewards: ${totalPending}`;
 
 }
 
@@ -410,17 +414,6 @@ async function getEndBlock() {
 }
 
 
-async function getPendingRewards(address) {
-  const web3 = new Web3(rpc);
-  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
-  let value = await ryeContract.methods.getRewardsEarnedForWallet(address).call();
-  value = value / 1e18;
-  pendingRewards = value.toFixed(3);
-  document.getElementById("harvest-statement").innerHTML = `<button id="btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐${pendingRewards}`
-  console.log(pendingRewards, " pendng rewards");
-  //document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${value} 👹</p>`;
-}
-
 
 // get selectedAccount's staked balance
 async function getMyStakedIds(contractAddress, ABI) {
@@ -442,46 +435,52 @@ async function getChainID() {
   return chainId;
 }
 
-/*
-async function getContractTransactions() {
+async function getPendingHarvest(id) {
   const web3 = new Web3(rpc);
-  const fromBlock = 3638333; // Start block number
-  const toBlock = block; // End block number (or 'latest' for most recent block)
-  
-  // Create filter options to search for contract events
-  const filterOptions = {
-    fromBlock: fromBlock,
-    toBlock: toBlock,
-    address: DigiDistilleryCA,
-  };
-  
-  // Get contract events matching the filter options
-  const contractEvents = await web3.eth.getPastLogs(filterOptions);
-  
-  // Extract all unique addresses that have transacted with the contract
-  const addresses = [...new Set(contractEvents.map(event => event.address))];
-  
-  return addresses;
-}*/
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  let value = await ryeContract.methods.getRewardsEarned(id).call();
+  value = value / 1e18;
 
-
+  return value
+}
 
 async function getTotalPendingHarvest() {
 
-  let addresses = getContractTransactions();
+  const startId = 946;
 
-  console.log(addresses);
+  const mintCount = await getDigiMintCount();
 
-  let total = 0;
-  var i;
-  for (i = 0; i < addresses.length; i++) {
+  const lastId = startId + mintCount - 1001;
 
-    let harvest = getPendingRewards(addresses[i]);
-    total = total + harvest
+  console.log(`start: ${startId}, latest: ${lastId}`);
+
+  const arr = [];
+
+  for (let i = startId; i <= 999; i++) {
+    arr.push(i);
   }
 
-  return total;
+  for (let i = 0; i <= lastId; i++) {
+    arr.push(i);
+  }
 
+
+  var pending;
+  var total = 0;
+  for (let i = 0; i < arr.length; i++) {
+      pending = await getPendingHarvest(arr[i]);
+      console.log(pending);
+      total = total + pending;
+  }
+  return total;
+}
+
+async function getDigiMintCount() {
+  const web3 = new Web3(rpc);
+  let digiContract = await new web3.eth.Contract(DigiTokenABI, DigiTokenCA);
+  let value = await digiContract.methods.minterMinted().call();
+  console.log(value, " DigiDaemons minted");
+  return value;
 }
 
 
