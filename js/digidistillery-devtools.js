@@ -478,7 +478,7 @@ async function getTotalPendingHarvest() {
     ids.push(i);
   }
 
-  let pendingArray = getPendingHarvests(ids);
+  let pendingArray = await getPendingHarvests(ids);
 
   let total = 0;
   for (let e of pendingArray){
