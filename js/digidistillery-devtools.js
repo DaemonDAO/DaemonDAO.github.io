@@ -176,9 +176,7 @@ async function fetchAccountData() {
   var endString = selectedAccount.substring(selectedAccount.length - 3)
   var display = startString+dots+endString;
   document.getElementById("addWallet").innerHTML = display;
-  //populate NFTs
-  await populateNFTs(selectedAccount);
-  await checkApprovalStatus();
+
   //collapsible divs
   var coll = document.getElementsByClassName("collapsible");
   console.log(coll);
@@ -449,14 +447,14 @@ async function getPendingHarvests(ids) {
   const web3 = new Web3(rpc);
   const ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
 
-  const pendingHarvests = [];
+  var pendingHarvests = [];
   for (let i = 0; i < ids.length; i++) {
     const id = ids[i];
     const value = await ryeContract.methods.getRewardsEarned(id).call();
     pendingHarvests.push(value / 1e18);
-    console.log(`pending harvest: ${(value/1e18).toFixed(3)} for id ${id}`);
+    //console.log(`pending harvest: ${(value/1e18).toFixed(3)} for id ${id}`);
   }
-
+  console.log(pendingHarvests);
   return pendingHarvests;
 }
 
