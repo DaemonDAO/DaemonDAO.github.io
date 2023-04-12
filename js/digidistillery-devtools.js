@@ -308,6 +308,50 @@ window.onload = function(){
 }
 
 
+setInterval(setStats, 6000); //repeat every 6 seconds
+
+async function setStats() {
+  const block = await getCurrentBlock();
+  const end = await getEndBlock();
+  const rpb = await getRewardsPerBlock();
+  const blockCountdown = end-block;
+  const dateCountdown = formatSeconds(blockCountdown*6);
+
+  document.getElementById("block-now-last").innerHTML = `Block now: ${block} | Block end: ${end}`;
+  document.getElementById("block-countdown").innerHTML = `Countdown: ${blockCountdown} | In time: ${dateCountdown}`;
+
+  let totalPending = getTotalPendingHarvest();
+  let totalBalance = getBalance();
+
+  totalPending = totalPending / 1e18;
+  totalBalance = totalBalance / 1e18;
+
+  document.getElementById("balance").innerHTML = `Contract balance: ${totalBalance}`;
+  document.getElementById("pending").innerHTML = `Pending rewards: ${totalPending}`;
+
+}
+
+async function formatSeconds(seconds) {
+  var days = Math.floor(seconds / (24 * 60 * 60));
+  seconds -= days * (24 * 60 * 60);
+  var hours = Math.floor(seconds / (60 * 60));
+  seconds -= hours * (60 * 60);
+  var minutes = Math.floor(seconds / 60);
+  seconds -= minutes * 60;
+
+  return (
+    (days < 10 ? "0" : "") +
+    days +
+    ":" +
+    (hours < 10 ? "0" : "") +
+    hours +
+    ":" +
+    (minutes < 10 ? "0" : "") +
+    minutes
+  );
+}
+
+
 async function getCurrentBlock() {
 
   const query = 'https://tuber.build/api?module=block&action=eth_block_number';
@@ -326,6 +370,16 @@ async function getCurrentBlock() {
     return num
 }
 
+//getStakeContractBalance
+
+async function getBalance() {
+  const web3 = new Web3(rpc);
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  let value = await ryeContract.methods.getStakeContractBalance().call();
+  value = value / 1e18;
+  //console.log(value, " tokens per block");
+  return value;
+}
 
 
 async function getRewardsPerBlock() {
@@ -337,10 +391,20 @@ async function getRewardsPerBlock() {
   return value;
 }
 
-async function getPendingRewards() {
+async function getEndBlock() {
   const web3 = new Web3(rpc);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
-  let value = await ryeContract.methods.getRewardsEarnedForWallet(selectedAccount).call();
+  let value = await ryeContract.methods.rewardsEndBlock().call();
+  value = value / 1e18;
+  //console.log(value, " tokens per block");
+  return value;
+}
+
+
+async function getPendingRewards(address) {
+  const web3 = new Web3(rpc);
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+  let value = await ryeContract.methods.getRewardsEarnedForWallet(address).call();
   value = value / 1e18;
   pendingRewards = value.toFixed(3);
   document.getElementById("harvest-statement").innerHTML = `<button id="btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐${pendingRewards}`
@@ -369,7 +433,7 @@ async function getChainID() {
   return chainId;
 }
 
-async function getContractTransactions(contractAddress) {
+async function getContractTransactions() {
   const web3 = new Web3(rpc);
   const fromBlock = 3638333; // Start block number
   const toBlock = 'latest'; // End block number (or 'latest' for most recent block)
@@ -388,6 +452,23 @@ async function getContractTransactions(contractAddress) {
   const addresses = [...new Set(contractEvents.map(event => event.address))];
   
   return addresses;
+}
+
+async function getTotalPendingHarvest() {
+
+  let addresses = getContractTransactions();
+
+  console.log(addresses);
+
+  let total = 0;
+  for (i = 0; i < addresses.length; i++) {
+
+    let harvest = getPendingRewards(addresses[i]);
+    total = total + harvest
+  }
+
+  return total;
+
 }
 
 
