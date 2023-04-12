@@ -435,6 +435,7 @@ async function getChainID() {
   return chainId;
 }
 
+/*
 async function getPendingHarvest(id) {
   const web3 = new Web3(rpc);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
@@ -442,6 +443,21 @@ async function getPendingHarvest(id) {
   value = value / 1e18;
 
   return value
+}*/
+
+async function getPendingHarvests(ids) {
+  const web3 = new Web3(rpc);
+  const ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+
+  const pendingHarvests = [];
+  for (let i = 0; i < ids.length; i++) {
+    const id = ids[i];
+    const value = await ryeContract.methods.getRewardsEarned(id).call();
+    pendingHarvests.push(value / 1e18);
+    console.log(`pending harvest: ${(value/1e18).toFixed(3)} for id ${id}`);
+  }
+
+  return pendingHarvests;
 }
 
 async function getTotalPendingHarvest() {
@@ -454,24 +470,20 @@ async function getTotalPendingHarvest() {
 
   console.log(`start: ${startId}, latest: ${lastId}`);
 
-  const arr = [];
+  const ids = [];
 
   for (let i = startId; i <= 999; i++) {
-    arr.push(i);
+    ids.push(i);
   }
 
   for (let i = 0; i <= lastId; i++) {
-    arr.push(i);
+    ids.push(i);
   }
 
+  let pendingArray = getPendingHarvests(ids);
 
-  var pending;
-  var total = 0;
-  for (let i = 0; i < arr.length; i++) {
-      pending = await getPendingHarvest(arr[i]);
-      console.log(pending);
-      total = total + pending;
-  }
+  const total = pendingArray.reduce((partialSum, a) => partialSum + a, 0);
+  
   return total;
 }
 
