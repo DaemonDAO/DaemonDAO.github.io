@@ -461,6 +461,7 @@ async function getTotalPendingHarvest() {
   console.log(addresses);
 
   let total = 0;
+  var i;
   for (i = 0; i < addresses.length; i++) {
 
     let harvest = getPendingRewards(addresses[i]);
