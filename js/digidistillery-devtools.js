@@ -482,7 +482,10 @@ async function getTotalPendingHarvest() {
 
   let pendingArray = getPendingHarvests(ids);
 
-  const total = pendingArray.reduce((partialSum, a) => partialSum + a, 0);
+  let total = 0;
+  for (let e of pendingArray){
+    total += e;
+  }
 
   return total;
 }
