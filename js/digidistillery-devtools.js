@@ -496,6 +496,27 @@ async function getDigiMintCount() {
   return value;
 }
 
+async function ryeDepo(){
+  let quant = $('#deposit-amount').val();
+  console.log(`Attempting to deposit ${quant}`);
+  quant = Math.floor(quant * 1e18);
+  const web3 = new Web3(provider);
+  let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
+    let value = await ryeContract
+                        .methods
+                        .depoTokens(quant)
+                        .send({ from: selectedAccount })
+                        .on(
+                          'transactionHash',
+                          function(hash) {
+                            console.log(`deposit ${quant}`, hash);
+                          }
+                        );
+    if (!value) {
+      console.log(`deposit ${selectedIds} failed`);
+  }
+}
+
 
 // master event listener... combines all the shit above.
 window.addEventListener('load', async () => {
@@ -503,4 +524,5 @@ window.addEventListener('load', async () => {
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
   document.querySelector("#btn-refresh-rewards").addEventListener("click", setBalanceStats);
+  document.querySelector("#btn-deposit").addEventListener("click", ryeDepo);
 });
