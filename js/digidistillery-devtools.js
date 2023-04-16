@@ -499,7 +499,9 @@ async function getDigiMintCount() {
 async function ryeDepo(){
   let quant = $('#deposit-amount').val();
   console.log(`Attempting to deposit ${quant}`);
-  quant = Math.floor(quant * 1e18);
+  //quant = Math.floor(quant * 1e18);
+  quant = web3.utils.toWei(quant);
+  console.log(`In wei: ${quant}`);
   const web3 = new Web3(provider);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
     let value = await ryeContract
