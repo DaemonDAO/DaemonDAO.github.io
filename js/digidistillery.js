@@ -680,7 +680,6 @@ async function populateNFTs(address) {
   });
 
   //STAKE/UNSTAKE
-
   $("#btn-stake").on("click", ryeStake);
   $("#btn-unstake").on("click", ryeUnstake);
   $("#btn-harvest").on("click", ryeHarvest);
