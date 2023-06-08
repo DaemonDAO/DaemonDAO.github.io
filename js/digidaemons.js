@@ -279,7 +279,7 @@ window.setInterval(async () => {
   }
 
   // Find the distance between now and the count down date
-  var distance = saleStart - timeMeow;
+  var distance = Number(saleStart) - Number(timeMeow);
 
   if (distance > 0) {
     // Time calculations for days, hours, minutes and seconds
@@ -336,7 +336,7 @@ async function setTheNumbers() {
   let theCount = await queryMinted();
   let theTotal = await queryAlloted();
   mintFees = await fetchMintFee();
-  document.getElementById("price").innerHTML = (mintFees / Math.pow(10,18)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  document.getElementById("price").innerHTML = Number(mintFees / BigInt('1000000000000000000')).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   document.getElementById("count").innerHTML = theCount;
   document.getElementById("total").innerHTML = theTotal;
 }
