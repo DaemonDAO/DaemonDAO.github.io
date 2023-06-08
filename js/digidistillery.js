@@ -370,7 +370,7 @@ async function getRewardsPerBlock() {
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   let value = await ryeContract.methods.tokensPerBlock().call();
   //value = value / 1e18;
-  value = value / BigInt('1000000000000000000');
+  value = Number(value) / 1e18;
   //console.log(value, " tokens per block");
   return value;
 }
