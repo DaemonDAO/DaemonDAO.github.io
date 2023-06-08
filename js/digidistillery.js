@@ -628,7 +628,7 @@ async function populateNFTs(address) {
  // let poolWeight = (100 * stakedList.length / totalStaked).toFixed(2);
  // console.log(`your Rye pool share is ${poolWeight}`);
  let poolWeight = (BigInt(100) * BigInt(stakedList.length) / totalStaked);
- poolWeight = Number(poolWeight.toFixed(2)); // Convert back to number for simplicity and practicality
+ poolWeight = Number(poolWeight).toFixed(2); // Convert back to number for simplicity and practicality
  console.log(`your Rye pool share is ${poolWeight}`);
   document.getElementById("rye-coin-balance").innerHTML = `<p>Your pool share: ${poolWeight}%</p>`;
 
