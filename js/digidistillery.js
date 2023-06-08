@@ -380,7 +380,7 @@ async function getPendingRewards() {
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   let value = await ryeContract.methods.getRewardsEarnedForWallet(selectedAccount).call();
   value = value / BigInt('1000000000000000000');
-  pendingRewards = value.toFixed(3);
+  pendingRewards = Number(value).toFixed(3);
   document.getElementById("harvest-statement").innerHTML = `<button id="btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐${pendingRewards}`
   console.log(pendingRewards, " pendng rewards");
   //document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${value} 👹</p>`;
@@ -628,8 +628,7 @@ async function populateNFTs(address) {
  // let poolWeight = (100 * stakedList.length / totalStaked).toFixed(2);
  // console.log(`your Rye pool share is ${poolWeight}`);
  let poolWeight = (BigInt(100) * BigInt(stakedList.length) / totalStaked);
- poolWeight = Number(poolWeight); // Convert back to number for simplicity and practicality
- poolWeight = poolWeight.toFixed(2);
+ poolWeight = Number(poolWeight).toFixed(2); // Convert back to number for simplicity and practicality
  console.log(`your Rye pool share is ${poolWeight}`);
   document.getElementById("rye-coin-balance").innerHTML = `<p>Your pool share: ${poolWeight}%</p>`;
 
