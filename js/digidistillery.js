@@ -371,7 +371,7 @@ async function getRewardsPerBlock() {
   let value = await ryeContract.methods.tokensPerBlock().call();
   //value = value / 1e18;
   console.log(value);
-  value = web3.utils.fromWei(value);
+  value = Number(value) / 1e18;
   console.log(value);
   //console.log(value, " tokens per block");
   return value;
