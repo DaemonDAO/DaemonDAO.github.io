@@ -311,7 +311,7 @@ async function onDisconnect() {
 
     // If the cached provider is not cleared,
     // WalletConnect will default to the existing session
-    // and does not allow to re-scan the QR code with a new wallet.
+    // & does not allow to re-scan the QR code with a new wallet.
     // Depending on your use case you may want or want not his behavir.
     await web3Modal.clearCachedProvider();
     provider = null;
@@ -381,8 +381,8 @@ async function getPendingRewards() {
   const web3 = new Web3(rpc);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   let value = await ryeContract.methods.getRewardsEarnedForWallet(selectedAccount).call();
-  value = value / BigInt('1000000000000000000');
-  pendingRewards = Number(value).toFixed(3);
+  value = Number(value) / 1e18;
+  pendingRewards = value.toFixed(3);
   document.getElementById("harvest-statement").innerHTML = `<button id="btn-harvest" class="button-2 traverse button w-button">HARVEST ALL</button> pending: ⋐${pendingRewards}`
   console.log(pendingRewards, " pendng rewards");
   //document.getElementById("rye-digi-balance").innerHTML = `<p>Staked: ${value} 👹</p>`;
