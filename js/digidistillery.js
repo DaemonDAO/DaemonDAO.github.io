@@ -623,7 +623,6 @@ async function populateNFTs(address) {
   }
 
   let stakedList = await getMyStakedIds(DigiDistilleryCA, DigiDistilleryABI);
-  stakedList = stakedList;
 
   document.getElementById("rye-staked-statement").innerHTML = `You have ${stakedList.length} staked DigiDaemons`
 
