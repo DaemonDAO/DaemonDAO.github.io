@@ -345,7 +345,7 @@ async function setTheNumbers() {
 async function mintNFT() {
   let quant = $('#quantNFT').val();
   mintFees = await fetchMintFee();
-  let value = quant * mintFees;
+  let value = quant * Number(mintFees);
   var timeMeow = new Date().getTime();
   timeMeow = parseInt(timeMeow/1000);
 
