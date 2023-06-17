@@ -21,7 +21,51 @@ const ABI = [{"type":"constructor","stateMutability":"nonpayable","inputs":[]},{
 // Useful for later you'll see
 let saleStart;
 let mintFees;
-const rpc = 'https://canto.slingshot.finance/';
+//const rpc = 'https://canto.slingshot.finance/';
+
+let rpc = null;
+
+const rpcEndpoints = [
+  'https://canto.slingshot.finance/',
+  'https://mainnode.plexnode.org:8545',
+  'https://canto.neobase.one'
+];
+
+const testRPC = async (endpoint) => {
+  try {
+    const response = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        jsonrpc: '2.0',
+        method: 'eth_blockNumber',
+        params: [],
+        id: 1
+      })
+    });
+    if (response.status >= 200 && response.status < 300) {
+      const data = await response.json();
+      if (data.result) {
+        return true;
+      }
+    }
+  } catch (error) {
+    console.error(`Error testing RPC ${endpoint}`, error);
+  }
+  return false;
+}
+
+(async () => {
+  for (const endpoint of rpcEndpoints) {
+    if (await testRPC(endpoint)) {
+      rpc = endpoint;
+      break;
+    }
+  }
+  console.log(`Selected RPC endpoint: ${rpc}`);
+})();
 
 // after window is loaded completely (load screen)
 window.onload = function(){
