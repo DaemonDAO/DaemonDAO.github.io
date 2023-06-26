@@ -388,7 +388,7 @@ async function getBalance() {
   const web3 = new Web3(rpc);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   let value = await ryeContract.methods.getStakeContractBalance().call();
-  value = value / 1e18;
+  value = Number(value) / 1e18;
   console.log(`stake contract balance: ${value}`);
   return value;
 }
@@ -398,7 +398,7 @@ async function getRewardsPerBlock() {
   const web3 = new Web3(rpc);
   let ryeContract = await new web3.eth.Contract(DigiDistilleryABI, DigiDistilleryCA);
   let value = await ryeContract.methods.tokensPerBlock().call();
-  value = value / 1e18;
+  value = Number(value) / 1e18;
   //console.log(value, " tokens per block");
   return value;
 }
