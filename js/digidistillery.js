@@ -52,15 +52,6 @@ const testRPC = async (endpoint) => {
   return false;
 }
 
-(async () => {
-  for (const endpoint of rpcEndpoints) {
-    if (await testRPC(endpoint)) {
-      rpc = endpoint;
-      break;
-    }
-  }
-  console.log(`Selected RPC endpoint: ${rpc}`);
-})();
 
 const ryeToggle = document.querySelector('#rye-toggle input[type="checkbox"]');
 const ryeHeld = document.querySelector('#rye-held');
@@ -139,6 +130,16 @@ let selectedAccount;
 
 // init() web3modal
 function init() {
+
+  (async () => {
+    for (const endpoint of rpcEndpoints) {
+      if (await testRPC(endpoint)) {
+        rpc = endpoint;
+        break;
+      }
+    }
+    console.log(`Selected RPC endpoint: ${rpc}`);
+  })();
   
 
   console.log("Initializing example");
