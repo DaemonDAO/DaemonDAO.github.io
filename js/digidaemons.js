@@ -57,7 +57,7 @@ const testRPC = async (endpoint) => {
   return false;
 }
 
-(async () => {
+async function selectRPCEndpoint() {
   for (const endpoint of rpcEndpoints) {
     if (await testRPC(endpoint)) {
       rpc = endpoint;
@@ -65,7 +65,7 @@ const testRPC = async (endpoint) => {
     }
   }
   console.log(`Selected RPC endpoint: ${rpc}`);
-})();
+}
 
 // after window is loaded completely (load screen)
 window.onload = function(){
@@ -126,7 +126,10 @@ async function addNetwork(id) {
 let selectedAccount;
 
 // init() web3modal
-function init() {
+async function init() {
+  
+
+  await selectRPCEndpoint();
 
   console.log("Initializing example");
   console.log("WalletConnectProvider is", WalletConnectProvider);
@@ -417,7 +420,7 @@ async function mintNFT() {
 
 // master event listener... combines all the shit above.
 window.addEventListener('load', async () => {
-  init();
+  await init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
   document.querySelector("#btn-buyNFT").addEventListener("click", mintNFT);
