@@ -52,6 +52,16 @@ const testRPC = async (endpoint) => {
   return false;
 }
 
+async function selectRPCEndpoint() {
+  for (const endpoint of rpcEndpoints) {
+    if (await testRPC(endpoint)) {
+      rpc = endpoint;
+      break;
+    }
+  }
+  console.log(`Selected RPC endpoint: ${rpc}`);
+}
+
 
 const ryeToggle = document.querySelector('#rye-toggle input[type="checkbox"]');
 const ryeHeld = document.querySelector('#rye-held');
@@ -129,18 +139,10 @@ async function addNetwork(id) {
 let selectedAccount;
 
 // init() web3modal
-function init() {
-
-  (async () => {
-    for (const endpoint of rpcEndpoints) {
-      if (await testRPC(endpoint)) {
-        rpc = endpoint;
-        break;
-      }
-    }
-    console.log(`Selected RPC endpoint: ${rpc}`);
-  })();
+async function init() {
   
+
+  await selectRPCEndpoint();
 
   console.log("Initializing example");
   console.log("WalletConnectProvider is", WalletConnectProvider);
@@ -690,7 +692,7 @@ async function populateNFTs(address) {
 
 // master event listener... combines all the shit above.
 window.addEventListener('load', async () => {
-  init();
+  await init();
   document.querySelector("#btn-connect").addEventListener("click", onConnect);
   document.querySelector("#btn-disconnect").addEventListener("click", onDisconnect);
 });
