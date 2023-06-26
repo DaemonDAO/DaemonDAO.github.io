@@ -329,7 +329,7 @@ async function setBlockStats() {
   block = await getCurrentBlock();
   end = await getEndBlock();
   rpb = await getRewardsPerBlock();
-  blockCountdown = end-block;
+  blockCountdown = Number(end)-Number(block);
   dateCountdown = formatDuration(blockCountdown*6);
 
   document.getElementById("block-now-last").innerHTML = `Block now: ${block} | Block end: ${end}`;
@@ -451,7 +451,7 @@ async function getPendingHarvests(ids) {
   for (let i = 0; i < ids.length; i++) {
     const id = ids[i];
     const value = await ryeContract.methods.getRewardsEarned(id).call();
-    pendingHarvests.push(value / 1e18);
+    pendingHarvests.push(Number(value) / 1e18);
     //console.log(`pending harvest: ${(value/1e18).toFixed(3)} for id ${id}`);
   }
   console.log(pendingHarvests);
