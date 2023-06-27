@@ -26,9 +26,9 @@ let mintFees;
 let rpc = null;
 
 const rpcEndpoints = [
-  'https://canto.slingshot.finance/',
   'https://mainnode.plexnode.org:8545',
-  'https://canto.neobase.one'
+  'https://canto.neobase.one',
+  'https://canto.slingshot.finance/'
 ];
 
 const testRPC = async (endpoint) => {
