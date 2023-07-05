@@ -101,7 +101,7 @@ async function addNetwork(id) {
         {
           chainId: "0x1e14",
           chainName: "Canto",
-          rpcUrls: rpcEndpoints,
+          rpcUrls: ["https://mainnode.plexnode.org:8545"],
           nativeCurrency: {
             name: "Canto",
             symbol: "CANTO",
