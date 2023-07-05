@@ -101,7 +101,7 @@ async function addNetwork(id) {
         {
           chainId: "0x1e14",
           chainName: "Canto",
-          rpcUrls: ["https://canto.slingshot.finance"],
+          rpcUrls: rpcEndpoints,
           nativeCurrency: {
             name: "Canto",
             symbol: "CANTO",
