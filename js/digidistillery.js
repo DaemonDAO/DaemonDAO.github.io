@@ -62,6 +62,10 @@ const rpc = 'https://mainnode.plexnode.org:8545';
 //   console.log(`Selected RPC endpoint: ${rpc}`);
 // }
 
+let approvedForAll;
+let selectedIds;
+let selectedStakedIds;
+let pendingRewards;
 
 const ryeToggle = document.querySelector('#rye-toggle input[type="checkbox"]');
 const ryeHeld = document.querySelector('#rye-held');
@@ -294,13 +298,8 @@ async function onConnect() {
   //const element = document.getElementById('helloplsconnect');
   //element.remove();
 // For later
-let approvedForAll;
-let selectedIds;
-let selectedStakedIds;
-let pendingRewards;
 
-await setInterval(setRyeNumbers, 6000); //repeat every 6 seconds
-await refreshNFTs();
+setInterval(setRyeNumbers, 6000); //repeat every 6 seconds
 
 }
 
