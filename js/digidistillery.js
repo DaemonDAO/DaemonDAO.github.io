@@ -16,64 +16,56 @@ import DigiTokenABI from "../abi/digidaemons_token.js";
 const DigiDistilleryCA = "0x3B21c992D69Dde32aee0c935A2806743f9EE8C2d";
 const DigiTokenCA = "0x6eA48824253f64662945Ae77A790331D7183f8c0";
 
-//const rpc = 'https://canto.slingshot.finance/';
+const rpc = 'https://mainnode.plexnode.org:8545';
 
-let rpc = null;
+// let rpc = null;
 
-const rpcEndpoints = [
-  'https://mainnode.plexnode.org:8545',
-  'https://canto.neobase.one',
-  'https://canto.slingshot.finance/'
-];
+// const rpcEndpoints = [
+//   'https://mainnode.plexnode.org:8545',
+//   'https://canto.neobase.one',
+//   'https://canto.slingshot.finance/'
+// ];
 
-const testRPC = async (endpoint) => {
-  try {
-    const response = await fetch(endpoint, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        jsonrpc: '2.0',
-        method: 'eth_blockNumber',
-        params: [],
-        id: 1
-      })
-    });
-    if (response.status >= 200 && response.status < 300) {
-      const data = await response.json();
-      if (data.result) {
-        return true;
-      }
-    }
-  } catch (error) {
-    console.error(`Error testing RPC ${endpoint}`, error);
-  }
-  return false;
-}
+// const testRPC = async (endpoint) => {
+//   try {
+//     const response = await fetch(endpoint, {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json'
+//       },
+//       body: JSON.stringify({
+//         jsonrpc: '2.0',
+//         method: 'eth_blockNumber',
+//         params: [],
+//         id: 1
+//       })
+//     });
+//     if (response.status >= 200 && response.status < 300) {
+//       const data = await response.json();
+//       if (data.result) {
+//         return true;
+//       }
+//     }
+//   } catch (error) {
+//     console.error(`Error testing RPC ${endpoint}`, error);
+//   }
+//   return false;
+// }
 
-async function selectRPCEndpoint() {
-  for (const endpoint of rpcEndpoints) {
-    if (await testRPC(endpoint)) {
-      rpc = endpoint;
-      break;
-    }
-  }
-  console.log(`Selected RPC endpoint: ${rpc}`);
-}
+// async function selectRPCEndpoint() {
+//   for (const endpoint of rpcEndpoints) {
+//     if (await testRPC(endpoint)) {
+//       rpc = endpoint;
+//       break;
+//     }
+//   }
+//   console.log(`Selected RPC endpoint: ${rpc}`);
+// }
 
 
 const ryeToggle = document.querySelector('#rye-toggle input[type="checkbox"]');
 const ryeHeld = document.querySelector('#rye-held');
 const ryeStaked = document.querySelector('#rye-staked');
-
-// For later
-let approvedForAll;
-let selectedIds;
-let selectedStakedIds;
-let pendingRewards;
-
-setInterval(setRyeNumbers, 6000); //repeat every 6 seconds
 
 
 ryeToggle.addEventListener('change', () => {
@@ -142,7 +134,7 @@ let selectedAccount;
 async function init() {
   
 
-  await selectRPCEndpoint();
+  // await selectRPCEndpoint();
 
   console.log("Initializing example");
   console.log("WalletConnectProvider is", WalletConnectProvider);
@@ -301,6 +293,15 @@ async function onConnect() {
   });
   //const element = document.getElementById('helloplsconnect');
   //element.remove();
+// For later
+let approvedForAll;
+let selectedIds;
+let selectedStakedIds;
+let pendingRewards;
+
+await setInterval(setRyeNumbers, 6000); //repeat every 6 seconds
+await refreshNFTs();
+
 }
 
 // "disconnect button"
