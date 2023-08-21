@@ -390,33 +390,81 @@ async function setTheNumbers() {
 }
 
 
-async function mintNFT() {
-  let quant = $('#quantNFT').val();
-  mintFees = await fetchMintFee();
-  let value = quant * Number(mintFees);
-  var timeMeow = new Date().getTime();
-  timeMeow = parseInt(timeMeow/1000);
+// async function mintNFT() {
+//   let quant = $('#quantNFT').val();
+//   mintFees = await fetchMintFee();
+//   let value = quant * Number(mintFees);
+//   var timeMeow = new Date().getTime();
+//   timeMeow = parseInt(timeMeow/1000);
 
-  if (timeMeow >= saleStart) {
-    const web3 = new Web3(provider);
-    let tdContract = await new web3.eth.Contract(ABI, CA);
-    let mintIt = tdContract
-                   .methods
-                   .publicMint(quant)
-                   .send({ from: selectedAccount, value: value})
-                   .on(
-                     'transactionHash',
-                     function(hash) {
-                       console.log(`publicMint(${quant})`, hash);
-                     }
-                   );
-    if (!mintIt) {
-      console.log(`Failed publicMint(${quant})`);
-    }
-  } else {
-    console.log('Too soon junior, is it now',timeMeow,'and the mint is at',saleStart);
+//   if (timeMeow >= saleStart) {
+//     const web3 = new Web3(provider);
+//     let tdContract = await new web3.eth.Contract(ABI, CA);
+//     let mintIt = tdContract
+//                    .methods
+//                    .publicMint(quant)
+//                    .send({ from: selectedAccount, value: value})
+//                    .on(
+//                      'transactionHash',
+//                      function(hash) {
+//                        console.log(`publicMint(${quant})`, hash);
+//                      }
+//                    );
+//     if (!mintIt) {
+//       console.log(`Failed publicMint(${quant})`);
+//     }
+//   } else {
+//     console.log('Too soon junior, is it now',timeMeow,'and the mint is at',saleStart);
+//   }
+// }
+
+async function mintNFT() { // New minter function, handling cases where a function other than publicMint is called
+  try {
+      let quant = $('#quantNFT').val();
+      let mintFees = await fetchMintFee();
+      let value = quant * Number(mintFees);
+      var timeMeow = new Date().getTime();
+      timeMeow = parseInt(timeMeow / 1000);
+
+      if (timeMeow >= saleStart) {
+          const web3 = new Web3(provider);
+          let tdContract = await new web3.eth.Contract(ABI, CA);
+
+          // Validate that the data corresponds to the publicMint function
+          const publicMintFunctionSignature = web3.eth.abi.encodeFunctionSignature("publicMint(uint256)");
+          const callData = tdContract.methods.publicMint(quant).encodeABI();
+          
+          if (callData.slice(0, 10) !== publicMintFunctionSignature) {
+              throw new Error("Attempted to call a function other than publicMint");
+          }
+
+          let mintIt;
+          try {
+              mintIt = await tdContract
+                  .methods
+                  .publicMint(quant)
+                  .send({ from: selectedAccount, value: value })
+                  .on('transactionHash', function (hash) {
+                      console.log(`publicMint(${quant})`, hash);
+                  });
+          } catch (error) {
+              console.error(`Failed publicMint(${quant}) due to: ${error.message}`);
+              // Here you can handle the error or inform the user as needed
+          }
+
+          if (!mintIt) {
+              console.log(`Failed publicMint(${quant})`);
+          }
+      } else {
+          console.log('Too soon junior, is it now', timeMeow, 'and the mint is at', saleStart);
+      }
+  } catch (error) {
+      console.error("An error occurred:", error.message);
+      alert("Only publicMint transactions are allowed. Please try again.");
   }
 }
+
+
 
 // master event listener... combines all the shit above.
 window.addEventListener('load', async () => {
