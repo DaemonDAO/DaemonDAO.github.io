@@ -417,52 +417,65 @@ async function setTheNumbers() {
 //     console.log('Too soon junior, is it now',timeMeow,'and the mint is at',saleStart);
 //   }
 // }
-
-async function mintNFT() { // New minter function, handling cases where a function other than publicMint is called
+async function mintNFT() {
   try {
-      let quant = $('#quantNFT').val();
-      let mintFees = await fetchMintFee();
-      let value = quant * Number(mintFees);
-      var timeMeow = new Date().getTime();
-      timeMeow = parseInt(timeMeow / 1000);
+      // Create a new web3 instance
+      const web3 = new Web3(provider);
 
-      if (timeMeow >= saleStart) {
-          const web3 = new Web3(provider);
-          let tdContract = await new web3.eth.Contract(ABI, CA);
-
-          // Validate that the data corresponds to the publicMint function
-          const publicMintFunctionSignature = web3.eth.abi.encodeFunctionSignature("publicMint(uint256)");
-          const callData = tdContract.methods.publicMint(quant).encodeABI();
-          
-          if (callData.slice(0, 10) !== publicMintFunctionSignature) {
-              throw new Error("Attempted to call a function other than publicMint");
-          }
-
-          let mintIt;
-          try {
-              mintIt = await tdContract
-                  .methods
-                  .publicMint(quant)
-                  .send({ from: selectedAccount, value: value })
-                  .on('transactionHash', function (hash) {
-                      console.log(`publicMint(${quant})`, hash);
-                  });
-          } catch (error) {
-              console.error(`Failed publicMint(${quant}) due to: ${error.message}`);
-              // Here you can handle the error or inform the user as needed
-          }
-
-          if (!mintIt) {
-              console.log(`Failed publicMint(${quant})`);
-          }
-      } else {
-          console.log('Too soon junior, is it now', timeMeow, 'and the mint is at', saleStart);
+      // Check if the Web3 instance is connected
+      if (!web3) {
+          console.error("Web3 instance not created");
+          return;
       }
+
+      // Retrieve the mint fee for a single token
+      const mintFee = await fetchMintFee();
+      if (!mintFee) {
+          console.error("Unable to fetch mint fee");
+          return;
+      }
+
+      // Get the quantity a user wants to mint
+      let quant = $('#quantNFT').val();
+      if (!quant) {
+          console.error("Please enter a quantity to mint");
+          return;
+      }
+
+      // Calculate the total cost for minting the quantity
+      //const totalCost = web3.utils.toWei((mintFee * quant).toString(), 'ether');
+      const totalCost = quant * Number(mintFee);
+
+      // Get the contract instance
+      const contract = new web3.eth.Contract(ABI, CA);
+
+      // Check if the contract instance is available
+      if (!contract) {
+          console.error("Contract instance not created");
+          return;
+      }
+
+      // Trigger the publicMint function on the smart contract
+      await contract.methods.publicMint(quant)
+          .send({
+              from: selectedAccount,
+              value: totalCost
+          })
+          .on('transactionHash', (hash) => {
+              console.log("Transaction Hash:", hash);
+          })
+          .on('confirmation', (confirmationNumber, receipt) => {
+              console.log("Transaction confirmed");
+          })
+          .on('error', (error) => {
+              console.error("Error during transaction:", error.message);
+          });
+
   } catch (error) {
-      console.error("An error occurred:", error.message);
-      alert("Only publicMint transactions are allowed. Please try again.");
+      console.error("An unexpected error occurred:", error.message);
   }
 }
+
 
 
 
