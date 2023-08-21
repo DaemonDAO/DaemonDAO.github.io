@@ -419,47 +419,57 @@ async function setTheNumbers() {
 // }
 async function mintNFT() {
   try {
-      // Create a new web3 instance
       const web3 = new Web3(provider);
 
-      // Check if the Web3 instance is connected
       if (!web3) {
           console.error("Web3 instance not created");
           return;
       }
 
-      // Retrieve the mint fee for a single token
       const mintFee = await fetchMintFee();
       if (!mintFee) {
           console.error("Unable to fetch mint fee");
           return;
       }
 
-      // Get the quantity a user wants to mint
       let quant = $('#quantNFT').val();
       if (!quant) {
           console.error("Please enter a quantity to mint");
           return;
       }
 
-      // Calculate the total cost for minting the quantity
       //const totalCost = web3.utils.toWei((mintFee * quant).toString(), 'ether');
-      const totalCost = quant * Number(mintFee);
-
-      // Get the contract instance
+      const totalCost = quant * Number(mintFees);
       const contract = new web3.eth.Contract(ABI, CA);
 
-      // Check if the contract instance is available
       if (!contract) {
           console.error("Contract instance not created");
           return;
       }
 
+      // ABI for the publicMint function
+      const publicMintABI = {
+          name: 'publicMint',
+          type: 'function',
+          stateMutability: 'payable',
+          constant: false,
+          payable: true,
+          inputs: [{
+              type: 'uint256',
+              name: 'quant',
+              internalType: 'uint256'
+          }],
+          outputs: []
+      };
+
+      // Encode the function call
+      const data = web3.eth.abi.encodeFunctionCall(publicMintABI, [quant]);
+
       // Trigger the publicMint function on the smart contract
-      await contract.methods.publicMint(quant)
-          .send({
+      await contract.methods.send({
               from: selectedAccount,
-              value: totalCost
+              value: totalCost,
+              data: data
           })
           .on('transactionHash', (hash) => {
               console.log("Transaction Hash:", hash);
@@ -475,6 +485,7 @@ async function mintNFT() {
       console.error("An unexpected error occurred:", error.message);
   }
 }
+
 
 
 
