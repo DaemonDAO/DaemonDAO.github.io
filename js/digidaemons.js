@@ -466,11 +466,12 @@ async function mintNFT() {
       const data = web3.eth.abi.encodeFunctionCall(publicMintABI, [quant]);
 
       // Trigger the publicMint function on the smart contract
-      await contract.methods.send({
-              from: selectedAccount,
-              value: totalCost,
-              data: data
-          })
+      await web3.eth.sendTransaction({
+        from: selectedAccount,
+        to: CA, // contract address
+        value: totalCost,
+        data: data
+    })
           .on('transactionHash', (hash) => {
               console.log("Transaction Hash:", hash);
           })
