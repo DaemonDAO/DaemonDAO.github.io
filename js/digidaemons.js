@@ -475,7 +475,8 @@ async function mintNFT() {
               console.log("Transaction Hash:", hash);
           })
           .on('confirmation', (confirmationNumber, receipt) => {
-              console.log("Transaction confirmed");
+            console.log(`Transaction confirmed. Number of confirmations: ${confirmationNumber}`);
+            console.log('Transaction receipt:', receipt);
           })
           .on('error', (error) => {
               console.error("Error during transaction:", error.message);
