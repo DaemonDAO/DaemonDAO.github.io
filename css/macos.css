@@ -99,6 +99,33 @@ img {
 	padding: 10px 0 50px 0px;
 }
 
+.mac-banner {
+  display: flex;
+  justify-content: space-between;  /* Separates the text and the button */
+  align-items: center;             /* Vertically centers the items */
+  background-color:rgba(0,0,0,.7);
+  color: white;
+  padding: 0px 20px;
+}
+
+.mac-banner-text {
+  font-size: 18px;
+  color: white;
+}
+
+.mac-banner-btn {
+  background-color: #e74c3c;
+  border: none;
+  color: white;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.mac-banner-btn:hover {
+  background-color: #c0392b;
+}
+
 .mac-icons {
 	float: right;
 	display: block;

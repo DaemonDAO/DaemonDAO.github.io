@@ -1,0 +1,7 @@
+{
+  "name": "Daemonica",
+  "version": "1.0.0",
+  "dependencies": {
+    "@rainbow-me/rainbowkit": "^1.0.11"
+  }
+}
