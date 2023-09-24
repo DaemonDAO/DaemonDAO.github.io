@@ -1,4 +1,4 @@
-//import { RainbowKit } from '@rainbow-me/rainbowkit';
+import { RainbowKit } from '@rainbow-me/rainbowkit';
 import DigiDistilleryABI from "../abi/digidistillery_contract.js";
 import DigiTokenABI from "../abi/digidaemons_token.js";
 
